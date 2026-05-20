@@ -3373,15 +3373,24 @@
             if (window.innerWidth < 900) { wrap.style.display = 'none'; return; }
             wrap.style.display = '';
 
-            /* Tính AFYP + KH theo tháng */
+            /* Tính AFYP + KH theo tháng — chỉ dùng số AD cấp phòng (giống renderMain) */
+            var adKeys = [];
+            for (var pN in CO_CAU) CO_CAU[pN].forEach(function(k) { adKeys.push(k); });
             var months = [];
             var totalAfyp = 0, totalKh = 0;
             var curM = parseInt(CUR_MONTH, 10);
             for (var m = 1; m <= 12; m++) {
                 var mk = CUR_YEAR + '-' + String(m).padStart(2, '0');
-                var rows = DATA.filter(function(x) { return x.ky === mk && x.ten_nhan_vien; });
+                var mRows = DATA.filter(function(x) { return x.ky === mk && x.ten_nhan_vien; });
                 var afyp = 0, kh = 0;
-                rows.forEach(function(r) { afyp += num(r.afyp); kh += num(r.ke_hoach_afyp); });
+                adKeys.forEach(function(adKey) {
+                    var row = mRows.find(function(x) {
+                        var ten = normKey(x.ten_nhan_vien);
+                        var key = normKey(adKey);
+                        return ten && key && (ten === key || ten.indexOf(key) !== -1 || key.indexOf(ten) !== -1);
+                    });
+                    if (row) { afyp += num(row.afyp); kh += num(row.ke_hoach_afyp); }
+                });
                 months.push({ month: m, label: 'T' + m, afyp: afyp, kh: kh });
                 if (m <= curM) { totalAfyp += afyp; totalKh += kh; }
             }
