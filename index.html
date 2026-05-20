@@ -2243,98 +2243,117 @@
         .afyp-chart .chart-legend { display: flex; gap: 12px; margin-top: 14px; justify-content: center; flex-wrap: wrap; }
         .afyp-chart .legend-item { display: flex; align-items: center; gap: 6px; font-size: .7rem; color: #7aa0be; }
         .afyp-chart .legend-dot { width: 10px; height: 10px; border-radius: 3px; flex-shrink: 0; }
-        /* ===== DESKTOP: 2-column split layout ===== */
+        /* ===== DESKTOP: DASHBOARD GRID LAYOUT ===== */
         @media (min-width: 900px) {
             .afyp-chart-wrap { display: block; }
+
+            /* --- MAIN CONTAINER --- */
             #view-main {
                 display: flex;
                 flex-direction: column;
                 gap: 0;
-                padding: 0 24px;
+                padding: 16px 24px 24px;
                 max-width: none;
                 margin: 0 auto;
             }
-            #view-main header { max-width: 1800px; width: 100%; text-align: center; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid #ffffff0d; }
-            #kpi-company { margin-bottom: 28px; margin-top: 0; padding-bottom: 24px; border-bottom: 1px solid #ffffff0d; }
-            .nav-grid { margin-bottom: 32px; padding-bottom: 20px; border-bottom: 1px solid #ffffff0d; }
+
+            /* --- TOP BAR: title left + controls right --- */
+            #view-main header {
+                max-width: 1800px; width: 100%;
+                display: flex; align-items: center; justify-content: space-between;
+                margin-bottom: 20px; padding-bottom: 16px;
+                border-bottom: 1px solid #1a2a44;
+            }
+            .hero-title { font-size: 1.3rem !important; margin: 0 !important; }
+            .hero-sub { display: none; }
+            .ctrl-bar { margin-top: 0 !important; gap: 6px; }
+
+            /* --- NAV: compact pill row --- */
             #view-main .notice-bar { max-width: 1800px; width: 100%; }
             #view-main #kpi-company { max-width: 1800px; width: 100%; }
             #view-main .nav-grid { max-width: 1800px; width: 100%; }
             #view-main .link-grid { max-width: 1800px; width: 100%; }
+            .nav-grid {
+                display: flex; gap: 6px; margin: 0 0 20px; flex-wrap: nowrap;
+                padding-bottom: 16px; border-bottom: 1px solid #1a2a44;
+            }
+            .nav-row-3 { display: contents; }
+            .nav-btn { flex: 1; padding: 8px 10px; font-size: 10px; border-radius: 8px; white-space: nowrap; }
+            .nav-btn .nav-icon { font-size: 11px; }
 
-            /* === Desktop 2-column split: Left = info, Right = chart === */
+            /* === 3-COLUMN DASHBOARD GRID: Company | Chart | Departments === */
             .desktop-split {
                 display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 24px;
+                grid-template-columns: 280px 1fr 1fr;
+                gap: 16px;
                 width: 100%;
                 max-width: 1800px;
                 align-self: center;
+                align-items: start;
             }
-            .split-left { display: flex; flex-direction: column; gap: 0; }
-            .split-right { display: flex; flex-direction: column; gap: 10px; position: sticky; top: 20px; align-self: start; padding-left: 28px; border-left: 1px solid #1a3355; }
+            .split-left { display: flex; flex-direction: column; gap: 0; position: sticky; top: 16px; align-self: start; }
+            .split-center { display: flex; flex-direction: column; gap: 10px; }
+            .split-right { display: flex; flex-direction: column; gap: 0; }
 
-            /* === Company card: horizontal dashboard layout === */
-            #kpi-company { margin-top: 0; }
-            .kpi-cty { padding: 18px 28px 22px; margin-bottom: 0; }
-            .cty-inner { display: grid; grid-template-columns: 1fr auto; gap: 0 28px; align-items: center; }
-            .cty-head { grid-column: 1 / -1; margin-bottom: 14px; gap: 16px; }
-            .cty-body { grid-column: 1; grid-row: 2; gap: 12px; grid-template-columns: minmax(0, 1fr) minmax(180px, 300px); }
-            .cty-stats { grid-column: 2; grid-row: 2; display: flex; gap: 12px; margin-top: 0; }
-            .cty-stat { border-radius: 10px; padding: 10px 16px; text-align: center; min-width: 80px; }
-            .cty-stat-label { font-size: 9px; margin-bottom: 4px; }
-            .cty-stat-val { font-size: 22px; }
-            .cty-progress { grid-column: 1; grid-row: 3; margin-top: 12px; height: 16px; }
-            .cty-name { font-size: 12px; gap: 8px; }
-            .cty-name i { font-size: 13px; }
-            .cty-pct-num { font-size: 1.6rem; }
-            .cty .afyp-big { font-size: 1.3rem; }
-            .cty .kh-small { font-size: .68rem; }
+            /* === COMPANY CARD: vertical compact panel (left column) === */
+            #kpi-company { margin: 0; padding: 0; border: none; }
+            .kpi-cty {
+                padding: 16px 18px 18px; margin: 0;
+                border-radius: 14px;
+                display: flex; flex-direction: column;
+            }
+            .cty-inner { display: flex; flex-direction: column; gap: 0; }
+            .cty-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 12px; }
+            .cty-name { font-size: 11px; gap: 6px; }
+            .cty-name i { font-size: 12px; }
+            .cty-pct-num { font-size: 1.8rem; }
+            .cty-body { display: flex; flex-direction: column; gap: 6px; }
+            .cty .afyp-big { font-size: 1.4rem; }
+            .cty .kh-small { font-size: .65rem; }
+            .cty-progress { margin-top: 8px; height: 12px; }
+            .cty-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 12px; }
+            .cty-stat { border-radius: 8px; padding: 8px 6px; text-align: center; min-width: 0; }
+            .cty-stat-label { font-size: 7px; margin-bottom: 3px; }
+            .cty-stat-val { font-size: 18px; }
 
-            /* === AFYP Chart: fills right column === */
-            .afyp-chart-wrap { border-radius: 14px; padding: 14px 16px 16px; width: 100%; flex: 1; display: flex; flex-direction: column; }
-            .afyp-chart { flex: 1; min-height: 360px; width: 100%; }
+            /* === AFYP CHART: center column === */
+            .afyp-chart-wrap { border-radius: 14px; padding: 16px 18px 18px; width: 100%; flex: 1; display: flex; flex-direction: column; }
+            .afyp-chart { flex: 1; min-height: 380px; width: 100%; }
             .afyp-chart svg { width: 100%; height: 100%; }
-            .afyp-chart-summary { gap: 8px; margin-bottom: 10px; }
-            .afyp-chart-summary .sum-item { padding: 7px 10px; }
-            .afyp-chart-summary .sum-label { font-size: .58rem; }
-            .afyp-chart-summary .sum-val { font-size: .82rem; }
-            .afyp-chart-title { font-size: .8rem; margin-bottom: 10px; }
+            .afyp-chart-summary { gap: 6px; margin-bottom: 12px; }
+            .afyp-chart-summary .sum-item { padding: 6px 8px; }
+            .afyp-chart-summary .sum-label { font-size: .55rem; }
+            .afyp-chart-summary .sum-val { font-size: .8rem; }
+            .afyp-chart-title { font-size: .78rem; margin-bottom: 10px; }
 
-            /* === Nav grid: horizontal bar === */
-            .nav-grid { display: flex; gap: 8px; margin-top: 0; flex-wrap: nowrap; }
-            .nav-row-3 { display: contents; }
-            .nav-btn { flex: 1; padding: 9px 10px; font-size: 10px; border-radius: 8px; white-space: nowrap; }
-            .nav-btn .nav-icon { font-size: 12px; }
+            /* === SECTION DIVIDER === */
+            .section-divider { margin: 0 0 8px; font-size: 9px; color: #5a7a9a; text-transform: uppercase; letter-spacing: .08em; font-weight: 700; }
 
-            /* === Section divider === */
-            .section-divider { margin-top: 0; margin-bottom: 4px; font-size: 10px; }
-
-            /* === Department cards: single column, full width of left side === */
+            /* === DEPARTMENTS: right column, compact === */
             .kpi-stack {
                 display: flex !important;
                 flex-direction: column;
-                gap: 14px;
-                margin-top: 0;
+                gap: 12px;
+                margin: 0;
             }
             .dept-section { display: flex; flex-direction: column; gap: 6px; }
-            .kpi-phong { margin-top: 0; padding: 8px 10px 8px; border-radius: 10px; }
-            .phong-head { margin-bottom: 2px; gap: 6px; }
+            .kpi-phong { margin: 0; padding: 10px 12px 10px; border-radius: 10px; }
+            .phong-head { margin-bottom: 4px; gap: 6px; }
             .phong-name { font-size: 10px; gap: 5px; white-space: nowrap; }
             .phong-name i { font-size: 11px; }
             .phong-pct { font-size: 14px; }
-            .phong-body { gap: 5px; grid-template-columns: minmax(0, 1fr) minmax(80px, 160px); }
-            .phong .afyp-big { font-size: 1rem; }
-            .phong .kh-small { font-size: .58rem; }
-            .phong-progress { height: 6px; }
+            .phong-body { gap: 4px; grid-template-columns: minmax(0, 1fr) minmax(60px, 140px); }
+            .phong .afyp-big { font-size: .95rem; }
+            .phong .kh-small { font-size: .55rem; }
+            .phong-progress { height: 5px; }
             .phong-stats { gap: 4px; margin-top: 4px; }
-            .phong-stat { border-radius: 6px; padding: 4px 4px 3px; }
-            .phong-stat-label { font-size: 6px; margin-bottom: 0; }
-            .phong-stat-val { font-size: 12px; }
+            .phong-stat { border-radius: 6px; padding: 4px 3px 3px; }
+            .phong-stat-label { font-size: 5.5px; margin-bottom: 0; }
+            .phong-stat-val { font-size: 11px; }
 
-            /* === AD grid: 2 employees per row, names no wrap === */
+            /* === AD (employee) grid: 1 per row in right column === */
             .ad-grid { display: grid !important; grid-template-columns: 1fr 1fr; gap: 4px; margin-top: 4px; margin-bottom: 0; align-items: stretch; }
-            .kpi-ad { padding: 4px 6px 3px; border-radius: 8px; }
+            .kpi-ad { padding: 5px 7px 4px; border-radius: 8px; }
             .ad-inner { display: flex; flex-direction: column; height: 100%; }
             .ad-top { gap: 3px; grid-template-columns: 1fr; }
             .ad-left { display: flex; flex-direction: column; }
@@ -2349,54 +2368,51 @@
             .ad-stat-val { font-size: 8px; }
             .ad-progress { height: 2px; margin-top: auto; }
 
-            /* === Link grid === */
             .link-grid { gap: 8px; }
         }
+
         @media (min-width: 1024px) {
-            #view-main { gap: 0; padding: 0 32px; }
-            #view-main header { margin-bottom: 28px; padding-bottom: 24px; }
-            #kpi-company { margin-bottom: 32px; padding-bottom: 28px; }
-            .nav-grid { margin-bottom: 32px; padding-bottom: 24px; }
-            .desktop-split { gap: 32px; }
-            .split-right { padding-left: 32px; }
-            .afyp-chart { min-height: 420px; }
-            .nav-btn { padding: 10px 12px; font-size: 10px; }
-            .cty-stat-val { font-size: 22px; }
-            .cty-stat { min-width: 82px; padding: 10px 14px; }
-            .cty-pct-num { font-size: 1.9rem; }
-            .cty .afyp-big { font-size: 1.6rem; }
-            .ad-grid { grid-template-columns: 1fr 1fr; gap: 5px; }
-            .kpi-phong { padding: 10px 12px 10px; }
+            #view-main { padding: 20px 32px 28px; }
+            #view-main header { margin-bottom: 22px; padding-bottom: 18px; }
+            .hero-title { font-size: 1.4rem !important; }
+            .nav-grid { margin-bottom: 22px; padding-bottom: 18px; }
+            .desktop-split { grid-template-columns: 300px 1fr 1fr; gap: 18px; }
+            .afyp-chart { min-height: 400px; }
+            .kpi-cty { padding: 18px 20px 20px; }
+            .cty-pct-num { font-size: 2rem; }
+            .cty .afyp-big { font-size: 1.5rem; }
+            .cty-stat-val { font-size: 20px; }
             .phong-pct { font-size: 15px; }
-            .phong .afyp-big { font-size: 1.1rem; }
-            .phong-stat-val { font-size: 13px; }
+            .phong .afyp-big { font-size: 1.05rem; }
+            .phong-stat-val { font-size: 12px; }
             .ad-name { font-size: 9.5px; }
             .ad-pct { font-size: 10.5px; }
             .ad-stat-val { font-size: 8.5px; }
         }
+
         @media (min-width: 1400px) {
-            #view-main { gap: 0; padding: 0 40px; }
-            #view-main header { margin-bottom: 32px; padding-bottom: 28px; }
-            #kpi-company { margin-bottom: 36px; padding-bottom: 32px; }
-            .nav-grid { margin-bottom: 36px; padding-bottom: 28px; }
-            .desktop-split { gap: 36px; grid-template-columns: 1fr 1fr; }
-            .split-right { padding-left: 36px; }
-            .afyp-chart { min-height: 480px; }
-            .afyp-chart-wrap { padding: 16px 20px 18px; }
-            .cty-pct-num { font-size: 1.9rem; }
+            #view-main { padding: 24px 40px 32px; }
+            #view-main header { margin-bottom: 24px; padding-bottom: 20px; }
+            .hero-title { font-size: 1.5rem !important; }
+            .nav-grid { margin-bottom: 24px; padding-bottom: 20px; }
+            .desktop-split { grid-template-columns: 320px 1fr 1fr; gap: 20px; }
+            .afyp-chart { min-height: 440px; }
+            .afyp-chart-wrap { padding: 18px 22px 20px; }
+            .kpi-cty { padding: 20px 22px 22px; }
+            .cty-pct-num { font-size: 2.2rem; }
             .cty .afyp-big { font-size: 1.6rem; }
             .cty-stat-val { font-size: 22px; }
-            .cty-stat-label { font-size: 9px; }
-            .cty-stat { min-width: 84px; padding: 9px 14px; }
-            .kpi-phong { padding: 10px 14px 10px; }
+            .cty-stat-label { font-size: 7.5px; }
+            .kpi-stack { gap: 14px; }
+            .kpi-phong { padding: 12px 14px 12px; }
             .phong-pct { font-size: 16px; }
-            .phong .afyp-big { font-size: 1.15rem; }
-            .phong-stat-val { font-size: 14px; }
-            .phong-stat-label { font-size: 6.5px; }
+            .phong .afyp-big { font-size: 1.1rem; }
+            .phong-stat-val { font-size: 13px; }
+            .phong-stat-label { font-size: 6px; }
+            .ad-grid { gap: 5px; }
             .ad-name { font-size: 10px; }
             .ad-pct { font-size: 11px; }
             .ad-stat-val { font-size: 9px; }
-            .ad-stats { grid-template-columns: repeat(3, 1fr); }
         }
 
         /* === USER OVERRIDES: Unified table headers, alignment, sticky title === */
@@ -2577,19 +2593,22 @@
                 </div>
             </nav>
 
-            <!-- Desktop 2-column wrapper -->
+            <!-- Desktop 3-column wrapper: Company | Chart | Departments -->
             <div class="desktop-split" id="desktop-split">
-                <div class="split-left">
-                    <div class="section-divider" id="sec-divider" style="display:none">Chi tiết các phòng</div>
-                    <div class="kpi-stack" id="main-content" style="display:none"></div>
+                <div class="split-left" id="split-company">
+                    <!-- Company card goes here (JS moves it) -->
                 </div>
-                <div class="split-right">
+                <div class="split-center" id="split-chart">
                     <!-- AFYP Chart (desktop only) -->
                     <div id="afyp-chart-wrap" class="afyp-chart-wrap" style="display:none">
                         <div class="afyp-chart-title"><i class="fa-solid fa-chart-line"></i> Biến động AFYP theo tháng</div>
                         <div id="afyp-chart-summary" class="afyp-chart-summary"></div>
                         <div id="afyp-chart" class="afyp-chart"></div>
                     </div>
+                </div>
+                <div class="split-right" id="split-depts">
+                    <div class="section-divider" id="sec-divider" style="display:none">Chi tiết các phòng</div>
+                    <div class="kpi-stack" id="main-content" style="display:none"></div>
                 </div>
             </div>
 
@@ -3653,6 +3672,11 @@
 
             box.innerHTML = htmlParts.join('');
             ctyBox.innerHTML = buildCtyCard(total);
+            /* Desktop: move company card into split-company column */
+            if (window.innerWidth >= 900) {
+                var splitCompany = $('split-company');
+                if (splitCompany && ctyBox.parentNode !== splitCompany) splitCompany.appendChild(ctyBox);
+            }
             bindDashboardEvents();
             triggerAnimations();
             renderAfypChart();
@@ -6052,7 +6076,15 @@ if (ok) { toast('Đã xóa', 'ok'); ccf(); await lfs(); }
         var _afypResizeTimer;
         window.addEventListener('resize', function() {
             clearTimeout(_afypResizeTimer);
-            _afypResizeTimer = setTimeout(renderAfypChart, 200);
+            _afypResizeTimer = setTimeout(function() {
+                renderAfypChart();
+                /* Desktop: move company card into split-company column; mobile: leave in place */
+                var ctyBox = $('kpi-company');
+                var splitCompany = $('split-company');
+                if (window.innerWidth >= 900 && splitCompany && ctyBox && ctyBox.parentNode !== splitCompany) {
+                    splitCompany.appendChild(ctyBox);
+                }
+            }, 200);
         });
     </script>
 
