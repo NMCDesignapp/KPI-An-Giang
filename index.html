@@ -2249,11 +2249,13 @@
             #view-main {
                 display: flex;
                 flex-direction: column;
-                gap: 10px;
+                gap: 6px;
                 padding: 0 24px;
                 max-width: none;
                 margin: 0 auto;
             }
+            #kpi-company { margin-bottom: 4px; }
+            .nav-grid { margin-bottom: 8px; }
             #view-main header { max-width: 1800px; width: 100%; text-align: center; }
             #view-main .notice-bar { max-width: 1800px; width: 100%; }
             #view-main #kpi-company { max-width: 1800px; width: 100%; }
@@ -2264,13 +2266,13 @@
             .desktop-split {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
-                gap: 16px;
+                gap: 20px;
                 width: 100%;
                 max-width: 1800px;
                 align-self: center;
             }
-            .split-left { display: flex; flex-direction: column; gap: 8px; }
-            .split-right { display: flex; flex-direction: column; gap: 8px; position: sticky; top: 24px; align-self: start; }
+            .split-left { display: flex; flex-direction: column; gap: 16px; }
+            .split-right { display: flex; flex-direction: column; gap: 10px; position: sticky; top: 20px; align-self: start; }
 
             /* === Company card: horizontal dashboard layout === */
             #kpi-company { margin-top: 0; }
@@ -2312,10 +2314,10 @@
             .kpi-stack {
                 display: flex !important;
                 flex-direction: column;
-                gap: 14px;
+                gap: 20px;
                 margin-top: 0;
             }
-            .dept-section { display: flex; flex-direction: column; gap: 8px; }
+            .dept-section { display: flex; flex-direction: column; gap: 10px; }
             .kpi-phong { margin-top: 0; padding: 10px 14px 12px; border-radius: 12px; }
             .phong-head { margin-bottom: 4px; gap: 8px; }
             .phong-name { font-size: 11px; gap: 7px; white-space: nowrap; }
@@ -2351,8 +2353,11 @@
             .link-grid { gap: 8px; }
         }
         @media (min-width: 1024px) {
-            #view-main { gap: 12px; padding: 0 32px; }
-            .desktop-split { gap: 18px; }
+            #view-main { gap: 8px; padding: 0 32px; }
+            #kpi-company { margin-bottom: 8px; }
+            .nav-grid { margin-bottom: 12px; }
+            .desktop-split { gap: 24px; }
+            .split-left { gap: 20px; }
             .afyp-chart { min-height: 420px; }
             .nav-btn { padding: 10px 12px; font-size: 10px; }
             .cty-stat-val { font-size: 20px; }
@@ -2362,8 +2367,11 @@
             .ad-grid { grid-template-columns: 1fr 1fr; gap: 6px; }
         }
         @media (min-width: 1400px) {
-            #view-main { gap: 14px; padding: 0 40px; }
-            .desktop-split { gap: 20px; grid-template-columns: 1fr 1fr; }
+            #view-main { gap: 10px; padding: 0 40px; }
+            #kpi-company { margin-bottom: 12px; }
+            .nav-grid { margin-bottom: 14px; }
+            .desktop-split { gap: 28px; grid-template-columns: 1fr 1fr; }
+            .split-left { gap: 24px; }
             .afyp-chart { min-height: 480px; }
             .afyp-chart-wrap { padding: 16px 20px 18px; }
             .cty-pct-num { font-size: 1.9rem; }
