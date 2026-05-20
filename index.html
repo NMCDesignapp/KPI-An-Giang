@@ -2254,9 +2254,9 @@
                 max-width: none;
                 margin: 0 auto;
             }
-            #kpi-company { margin-bottom: 16px; }
-            .nav-grid { margin-bottom: 18px; }
-            #view-main header { max-width: 1800px; width: 100%; text-align: center; }
+            #view-main header { max-width: 1800px; width: 100%; text-align: center; margin-bottom: 20px; }
+            #kpi-company { margin-bottom: 24px; margin-top: 0; }
+            .nav-grid { margin-bottom: 28px; }
             #view-main .notice-bar { max-width: 1800px; width: 100%; }
             #view-main #kpi-company { max-width: 1800px; width: 100%; }
             #view-main .nav-grid { max-width: 1800px; width: 100%; }
@@ -2276,15 +2276,15 @@
 
             /* === Company card: horizontal dashboard layout === */
             #kpi-company { margin-top: 0; }
-            .kpi-cty { padding: 12px 20px 14px; margin-bottom: 0; }
-            .cty-inner { display: grid; grid-template-columns: 1fr auto; gap: 0 20px; align-items: center; }
-            .cty-head { grid-column: 1 / -1; margin-bottom: 6px; gap: 12px; }
-            .cty-body { grid-column: 1; grid-row: 2; gap: 8px; grid-template-columns: minmax(0, 1fr) minmax(160px, 260px); }
-            .cty-stats { grid-column: 2; grid-row: 2; display: flex; gap: 8px; margin-top: 0; }
-            .cty-stat { border-radius: 8px; padding: 7px 10px; text-align: center; min-width: 70px; }
-            .cty-stat-label { font-size: 8px; margin-bottom: 2px; }
-            .cty-stat-val { font-size: 18px; }
-            .cty-progress { grid-column: 1; grid-row: 3; margin-top: 6px; height: 14px; }
+            .kpi-cty { padding: 16px 24px 18px; margin-bottom: 0; }
+            .cty-inner { display: grid; grid-template-columns: 1fr auto; gap: 0 24px; align-items: center; }
+            .cty-head { grid-column: 1 / -1; margin-bottom: 10px; gap: 14px; }
+            .cty-body { grid-column: 1; grid-row: 2; gap: 10px; grid-template-columns: minmax(0, 1fr) minmax(160px, 280px); }
+            .cty-stats { grid-column: 2; grid-row: 2; display: flex; gap: 10px; margin-top: 0; }
+            .cty-stat { border-radius: 10px; padding: 8px 14px; text-align: center; min-width: 76px; }
+            .cty-stat-label { font-size: 8.5px; margin-bottom: 3px; }
+            .cty-stat-val { font-size: 20px; }
+            .cty-progress { grid-column: 1; grid-row: 3; margin-top: 10px; height: 16px; }
             .cty-name { font-size: 12px; gap: 8px; }
             .cty-name i { font-size: 13px; }
             .cty-pct-num { font-size: 1.6rem; }
@@ -2354,8 +2354,9 @@
         }
         @media (min-width: 1024px) {
             #view-main { gap: 0; padding: 0 32px; }
-            #kpi-company { margin-bottom: 20px; }
-            .nav-grid { margin-bottom: 20px; }
+            #view-main header { margin-bottom: 24px; }
+            #kpi-company { margin-bottom: 28px; }
+            .nav-grid { margin-bottom: 24px; }
             .desktop-split { gap: 28px; }
             .split-right { padding-left: 28px; }
             .afyp-chart { min-height: 420px; }
@@ -2375,8 +2376,9 @@
         }
         @media (min-width: 1400px) {
             #view-main { gap: 0; padding: 0 40px; }
-            #kpi-company { margin-bottom: 24px; }
-            .nav-grid { margin-bottom: 22px; }
+            #view-main header { margin-bottom: 28px; }
+            #kpi-company { margin-bottom: 32px; }
+            .nav-grid { margin-bottom: 28px; }
             .desktop-split { gap: 32px; grid-template-columns: 1fr 1fr; }
             .split-right { padding-left: 32px; }
             .afyp-chart { min-height: 480px; }
