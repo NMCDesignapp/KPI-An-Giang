@@ -2196,6 +2196,7 @@
         }
         /* Desktop-only elements hidden by default (mobile) */
         .dsk-company { display: none; }
+        .dsk-ad-wrap { display: none; }
         .dsk-ad-table { display: none; }
         .afyp-chart-title {
             font-size: .82rem;
@@ -2437,6 +2438,10 @@
             /* ===== AD TABLE inside department ===== */
             .ad-grid {
                 display: none !important; /* hide mobile AD cards on desktop */
+            }
+            .dsk-ad-wrap {
+                display: block;
+                margin-top: 8px;
             }
             .dsk-ad-table {
                 display: table;
@@ -3917,7 +3922,7 @@
 
         /* AD table: compact table for desktop department sections */
         function buildAdTable(ads, delay) {
-            var html = '<div class="ad-grid"><table class="dsk-ad-table">';
+            var html = '<div class="dsk-ad-wrap"><table class="dsk-ad-table">';
             html += '<thead><tr>' +
                 '<th>AD</th><th>% KH</th><th>AFYP</th><th>HĐ</th><th>TD</th><th>Chuẩn</th><th>IP</th><th></th>' +
                 '</tr></thead><tbody>';
