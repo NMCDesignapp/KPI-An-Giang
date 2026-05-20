@@ -2243,7 +2243,7 @@
         .afyp-chart .chart-legend { display: flex; gap: 12px; margin-top: 14px; justify-content: center; flex-wrap: wrap; }
         .afyp-chart .legend-item { display: flex; align-items: center; gap: 6px; font-size: .7rem; color: #7aa0be; }
         .afyp-chart .legend-dot { width: 10px; height: 10px; border-radius: 3px; flex-shrink: 0; }
-        /* ===== DESKTOP: DASHBOARD GRID LAYOUT — COMPLETE REDESIGN ===== */
+        /* ===== DESKTOP: EXECUTIVE DASHBOARD — FULL REDESIGN ===== */
         @media (min-width: 900px) {
             .afyp-chart-wrap { display: block; }
 
@@ -2252,219 +2252,275 @@
                 display: flex;
                 flex-direction: column;
                 gap: 0;
-                padding: 20px 28px 28px;
+                padding: 16px 24px 24px;
                 max-width: none;
                 margin: 0 auto;
             }
 
-            /* --- TOP BAR: title left + controls right --- */
+            /* --- TOP BAR --- */
             #view-main header {
                 max-width: 1800px; width: 100%;
                 display: flex; align-items: center; justify-content: space-between;
                 margin-bottom: 0; padding-bottom: 0;
                 border-bottom: none;
             }
-            .hero-title { font-size: 1.2rem !important; margin: 0 !important; }
+            .hero-title { font-size: 1.1rem !important; margin: 0 !important; }
             .hero-sub { display: none; }
             .ctrl-bar { margin-top: 0 !important; gap: 8px; }
 
-            /* --- NAV: compact pill row --- */
+            /* --- NAV --- */
             #view-main .notice-bar { max-width: 1800px; width: 100%; }
             #view-main .nav-grid { max-width: 1800px; width: 100%; }
             #view-main .link-grid { max-width: 1800px; width: 100%; }
             .nav-grid {
-                display: flex; gap: 8px; margin: 18px 0 0; flex-wrap: nowrap;
+                display: flex; gap: 6px; margin: 12px 0 0; flex-wrap: nowrap;
                 padding-bottom: 0; border-bottom: none;
             }
             .nav-row-3 { display: contents; }
-            .nav-btn { flex: 1; padding: 10px 14px; font-size: 11px; border-radius: 10px; white-space: nowrap; }
-            .nav-btn .nav-icon { font-size: 12px; }
+            .nav-btn { flex: 1; padding: 8px 10px; font-size: 10px; border-radius: 8px; white-space: nowrap; }
+            .nav-btn .nav-icon { font-size: 11px; }
 
-            /* === 2-ROW LAYOUT: Company Banner (full) then Chart+Depts (2-col) === */
+            /* ===== COMPANY OVERVIEW STRIP (new desktop design) ===== */
+            #kpi-company { margin: 0; padding: 0; border: none; }
+            .dsk-company {
+                display: flex; align-items: stretch; gap: 0;
+                background: linear-gradient(135deg, #0f1f38 0%, #162d50 50%, #0f1f38 100%);
+                border: 1px solid #2a4a72;
+                border-radius: 14px;
+                overflow: hidden;
+                margin-top: 16px;
+                box-shadow: 0 8px 32px #0008, inset 0 1px 0 #fff1;
+            }
+            .dsk-cty-left {
+                display: flex; flex-direction: column; justify-content: center;
+                padding: 20px 28px;
+                background: linear-gradient(135deg, #f2b24d18, #d4a84308);
+                border-right: 2px solid #f2b24d44;
+                min-width: 220px;
+            }
+            .dsk-cty-label {
+                font-size: 10px; font-weight: 800; text-transform: uppercase;
+                letter-spacing: .12em; color: #d4a843; margin-bottom: 6px;
+            }
+            .dsk-cty-pct {
+                font-size: 2.4rem; font-weight: 900; line-height: 1; color: #f2d38d;
+            }
+            .dsk-cty-prog-wrap { margin-top: 10px; }
+            .dsk-cty-prog {
+                width: 100%; height: 8px; border-radius: 99px;
+                background: #1a2a44; overflow: hidden;
+            }
+            .dsk-cty-prog-fill {
+                height: 100%; border-radius: inherit;
+                background: linear-gradient(90deg, #e0a030, #f2c860);
+                transition: width 1s cubic-bezier(.22, 1, .36, 1);
+            }
+            .dsk-cty-afyp {
+                margin-top: 8px;
+                font-size: 1.1rem; font-weight: 900; color: #fff;
+            }
+            .dsk-cty-kh {
+                font-size: .7rem; font-weight: 600; color: #5a8aba;
+            }
+            .dsk-cty-right {
+                display: flex; flex: 1; gap: 0; align-items: stretch;
+            }
+            .dsk-cty-tile {
+                flex: 1;
+                display: flex; flex-direction: column; align-items: center; justify-content: center;
+                padding: 18px 12px;
+                border-right: 1px solid #1a3050;
+                position: relative;
+            }
+            .dsk-cty-tile:last-child { border-right: none; }
+            .dsk-cty-tile-label {
+                font-size: 9px; font-weight: 800; text-transform: uppercase;
+                letter-spacing: .08em; color: #7a9aba; margin-bottom: 6px;
+            }
+            .dsk-cty-tile-val {
+                font-size: 1.6rem; font-weight: 900; line-height: 1;
+            }
+            .dsk-cty-tile.hd .dsk-cty-tile-val { color: #7fc2ff; }
+            .dsk-cty-tile.td .dsk-cty-tile-val { color: #d8b7ff; }
+            .dsk-cty-tile.chuan .dsk-cty-tile-val { color: #16e0d3; }
+            .dsk-cty-tile.ip .dsk-cty-tile-val { color: #ffd789; }
+            .dsk-cty-tile::after {
+                content: ''; position: absolute; bottom: 0; left: 20%; right: 20%;
+                height: 2px; border-radius: 2px;
+            }
+            .dsk-cty-tile.hd::after { background: #7fc2ff44; }
+            .dsk-cty-tile.td::after { background: #d8b7ff44; }
+            .dsk-cty-tile.chuan::after { background: #16e0d344; }
+            .dsk-cty-tile.ip::after { background: #ffd78944; }
+
+            /* ===== 2-COLUMN LAYOUT: Chart (left) + Departments (right) ===== */
             .desktop-split {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
-                grid-template-rows: auto auto;
-                gap: 24px;
+                gap: 20px;
                 width: 100%;
                 max-width: 1800px;
                 align-self: center;
                 align-items: start;
-                margin-top: 24px;
+                margin-top: 20px;
             }
-
-            /* Company card spans full width in row 1 */
-            .split-left {
-                grid-column: 1 / -1;
-                grid-row: 1;
-                display: flex; flex-direction: column; gap: 0;
-            }
-            /* Chart takes left column in row 2 */
+            .split-left { display: none; } /* company card now rendered via dsk-company */
             .split-center {
-                grid-column: 1;
-                grid-row: 2;
                 display: flex; flex-direction: column; gap: 0;
-                position: sticky; top: 20px; align-self: start;
+                position: sticky; top: 16px; align-self: start;
             }
-            /* Departments take right column in row 2 */
             .split-right {
-                grid-column: 2;
-                grid-row: 2;
                 display: flex; flex-direction: column; gap: 0;
             }
 
-            /* === COMPANY CARD: Horizontal Summary Banner (full width) === */
-            #kpi-company { margin: 0; padding: 0; border: none; }
-            .kpi-cty {
-                padding: 20px 28px 22px; margin: 0;
-                border-radius: 16px;
-                display: flex; flex-direction: column;
-                border-top: 4px solid #f2b24d;
-            }
-            .cty-inner { display: flex; flex-direction: column; gap: 0; }
-            .cty-head {
-                display: flex; align-items: center; justify-content: space-between;
-                gap: 16px; margin-bottom: 14px;
-            }
-            .cty-name { font-size: 13px; gap: 8px; }
-            .cty-name i { font-size: 14px; }
-            .cty-pct-num { font-size: 2.2rem; }
-            .cty-body {
-                display: grid;
-                grid-template-columns: minmax(0, 1fr) minmax(200px, 380px);
-                gap: 20px;
-                align-items: center;
-            }
-            .cty .afyp-big { font-size: 1.8rem; }
-            .cty .kh-small { font-size: .75rem; }
-            .cty-progress { margin-top: 10px; height: 16px; }
-            .cty-stats {
-                display: grid;
-                grid-template-columns: repeat(4, 1fr);
-                gap: 12px;
-                margin-top: 16px;
-            }
-            .cty-stat { border-radius: 12px; padding: 12px 10px 10px; text-align: center; min-width: 0; }
-            .cty-stat-label { font-size: 9px; margin-bottom: 6px; }
-            .cty-stat-val { font-size: 22px; }
-
-            /* === AFYP CHART: left column, tall === */
+            /* ===== AFYP CHART (left column) ===== */
             .afyp-chart-wrap {
-                border-radius: 16px; padding: 18px 20px 20px;
+                border-radius: 14px; padding: 16px 18px 18px;
                 width: 100%; display: flex; flex-direction: column;
             }
-            .afyp-chart { flex: 1; min-height: 520px; width: 100%; }
+            .afyp-chart { flex: 1; min-height: 480px; width: 100%; }
             .afyp-chart svg { width: 100%; height: 100%; }
-            .afyp-chart-summary { gap: 8px; margin-bottom: 14px; }
-            .afyp-chart-summary .sum-item { padding: 8px 10px; }
-            .afyp-chart-summary .sum-label { font-size: .6rem; }
-            .afyp-chart-summary .sum-val { font-size: .85rem; }
-            .afyp-chart-title { font-size: .82rem; margin-bottom: 12px; }
+            .afyp-chart-summary { gap: 6px; margin-bottom: 12px; }
+            .afyp-chart-summary .sum-item { padding: 7px 8px; }
+            .afyp-chart-summary .sum-label { font-size: .58rem; }
+            .afyp-chart-summary .sum-val { font-size: .82rem; }
+            .afyp-chart-title { font-size: .8rem; margin-bottom: 10px; }
 
-            /* === SECTION DIVIDER === */
+            /* ===== SECTION DIVIDER ===== */
             .section-divider {
-                margin: 0 0 12px; padding-bottom: 8px;
-                font-size: 11px; color: #8aaccc; text-transform: uppercase;
+                margin: 0 0 10px; padding-bottom: 6px;
+                font-size: 10px; color: #8aaccc; text-transform: uppercase;
                 letter-spacing: .1em; font-weight: 800;
                 border-bottom: 2px solid #1a3355;
             }
 
-            /* === DEPARTMENTS: right column === */
+            /* ===== DEPARTMENTS: 2x2 Grid ===== */
             .kpi-stack {
-                display: flex !important;
-                flex-direction: column;
-                gap: 18px;
-                margin: 0;
-            }
-            .dept-section { display: flex; flex-direction: column; gap: 10px; }
-            .kpi-phong {
-                margin: 0; padding: 14px 16px 14px; border-radius: 14px;
-            }
-            .phong-head { margin-bottom: 8px; gap: 10px; }
-            .phong-name { font-size: 12px; gap: 8px; white-space: nowrap; }
-            .phong-name i { font-size: 13px; }
-            .phong-pct { font-size: 18px; }
-            .phong-body {
-                gap: 10px;
-                grid-template-columns: minmax(0, 1fr) minmax(80px, 180px);
-            }
-            .phong .afyp-big { font-size: 1.3rem; }
-            .phong .kh-small { font-size: .65rem; }
-            .phong-progress { height: 10px; }
-            .phong-stats { gap: 8px; margin-top: 10px; }
-            .phong-stat { border-radius: 10px; padding: 8px 6px 7px; }
-            .phong-stat-label { font-size: 8px; margin-bottom: 4px; }
-            .phong-stat-val { font-size: 16px; }
-
-            /* === AD (employee) grid: 2 per row in right column === */
-            .ad-grid {
                 display: grid !important;
                 grid-template-columns: 1fr 1fr;
-                gap: 8px; margin-top: 8px; margin-bottom: 0; align-items: stretch;
+                gap: 14px;
+                margin: 0;
             }
-            .kpi-ad { padding: 10px 12px 8px; border-radius: 12px; }
-            .ad-inner { display: flex; flex-direction: column; height: 100%; }
-            .ad-top {
+            .dept-section { display: flex; flex-direction: column; gap: 0; }
+
+            /* Department card — new flat panel style */
+            .kpi-phong {
+                margin: 0; padding: 14px 16px 12px; border-radius: 12px;
+                border-top: 3px solid #ff9f2b;
+            }
+            .phong-head { margin-bottom: 6px; gap: 8px; }
+            .phong-name { font-size: 11px; gap: 6px; white-space: nowrap; }
+            .phong-name i { font-size: 12px; }
+            .phong-pct { font-size: 16px; }
+            .phong-body {
                 gap: 6px;
-                grid-template-columns: minmax(80px, 1fr) minmax(0, 2fr);
+                grid-template-columns: minmax(0, 1fr) minmax(60px, 140px);
             }
-            .ad-left { display: flex; flex-direction: column; }
-            .ad-name-row { display: flex; align-items: center; gap: 5px; }
-            .ad-name { font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-            .ad-pct { font-size: 13px; }
-            .ad-kh { font-size: 8px; margin-top: 2px; }
-            .ad-right { display: flex; flex-direction: column; gap: 4px; }
-            .ad-stats {
-                gap: 4px; flex: 1;
-                display: grid; grid-template-columns: 1.2fr repeat(4, minmax(0, .9fr));
+            .phong .afyp-big { font-size: 1.1rem; }
+            .phong .kh-small { font-size: .6rem; }
+            .phong-progress { height: 6px; margin-top: 4px; }
+            .phong-stats {
+                display: flex !important; gap: 6px; margin-top: 8px;
             }
-            .ad-stat { border-radius: 8px; padding: 5px 4px; }
-            .ad-stat-label { font-size: 7px; margin-bottom: 2px; }
-            .ad-stat-val { font-size: 11px; }
-            .ad-progress { height: 4px; margin-top: auto; }
+            .phong-stat {
+                flex: 1; border-radius: 8px; padding: 6px 4px 5px;
+                text-align: center; min-width: 0;
+            }
+            .phong-stat-label { font-size: 7px; margin-bottom: 2px; }
+            .phong-stat-val { font-size: 14px; }
+
+            /* ===== AD TABLE inside department ===== */
+            .ad-grid {
+                display: block !important;
+                margin-top: 8px; margin-bottom: 0;
+            }
+            .dsk-ad-table {
+                width: 100%;
+                border-collapse: separate;
+                border-spacing: 0;
+                font-size: 11px;
+                background: #0a1525;
+                border-radius: 8px;
+                overflow: hidden;
+                border: 1px solid #1a2a44;
+            }
+            .dsk-ad-table thead th {
+                padding: 6px 6px 5px;
+                font-size: 9px; font-weight: 800;
+                text-transform: uppercase; letter-spacing: .04em;
+                color: #6a8aaa;
+                background: #0d1a2e;
+                border-bottom: 1px solid #1a2a44;
+                text-align: center;
+                white-space: nowrap;
+            }
+            .dsk-ad-table thead th:first-child { text-align: left; padding-left: 10px; }
+            .dsk-ad-table tbody tr {
+                cursor: pointer;
+                transition: background .15s;
+            }
+            .dsk-ad-table tbody tr:hover { background: #142440; }
+            .dsk-ad-table tbody td {
+                padding: 7px 6px;
+                text-align: center;
+                border-bottom: 1px solid #0f1e34;
+                font-weight: 700;
+                white-space: nowrap;
+                color: #c8d8ea;
+            }
+            .dsk-ad-table tbody td:first-child { text-align: left; padding-left: 10px; }
+            .dsk-ad-name { font-weight: 900; color: #e0f0ff; }
+            .dsk-ad-pct { font-weight: 900; }
+            .dsk-ad-pct.green { color: #4ade80; }
+            .dsk-ad-pct.gold { color: #fbbf24; }
+            .dsk-ad-pct.red { color: #f87171; }
+            .dsk-ad-mini-prog {
+                width: 40px; height: 4px; border-radius: 99px;
+                background: #1a2a44; display: inline-block; vertical-align: middle;
+                overflow: hidden;
+            }
+            .dsk-ad-mini-prog-fill {
+                height: 100%; border-radius: inherit;
+                transition: width .8s cubic-bezier(.22, 1, .36, 1);
+            }
+
+            /* Hide old mobile AD cards on desktop */
+            .kpi-ad { display: none !important; }
 
             .link-grid { gap: 8px; }
         }
 
         @media (min-width: 1024px) {
-            #view-main { padding: 24px 36px 32px; }
-            .hero-title { font-size: 1.35rem !important; }
-            .desktop-split { gap: 28px; margin-top: 28px; }
-            .afyp-chart { min-height: 560px; }
-            .kpi-cty { padding: 22px 32px 24px; }
-            .cty-pct-num { font-size: 2.4rem; }
-            .cty .afyp-big { font-size: 2rem; }
-            .cty-stat-val { font-size: 24px; }
-            .cty-stat-label { font-size: 10px; }
-            .phong-pct { font-size: 19px; }
-            .phong .afyp-big { font-size: 1.4rem; }
-            .phong-stat-val { font-size: 17px; }
-            .ad-name { font-size: 12.5px; }
-            .ad-pct { font-size: 13.5px; }
-            .ad-stat-val { font-size: 12px; }
+            #view-main { padding: 20px 32px 28px; }
+            .hero-title { font-size: 1.2rem !important; }
+            .desktop-split { gap: 24px; margin-top: 24px; }
+            .afyp-chart { min-height: 520px; }
+            .dsk-cty-pct { font-size: 2.8rem; }
+            .dsk-cty-afyp { font-size: 1.3rem; }
+            .dsk-cty-tile-val { font-size: 1.8rem; }
+            .phong-pct { font-size: 17px; }
+            .phong .afyp-big { font-size: 1.2rem; }
+            .phong-stat-val { font-size: 15px; }
+            .dsk-ad-table { font-size: 11.5px; }
         }
 
         @media (min-width: 1400px) {
-            #view-main { padding: 28px 48px 36px; }
-            .hero-title { font-size: 1.5rem !important; }
-            .desktop-split { gap: 32px; margin-top: 32px; }
-            .afyp-chart { min-height: 600px; }
-            .afyp-chart-wrap { padding: 20px 24px 22px; }
-            .kpi-cty { padding: 24px 36px 26px; }
-            .cty-pct-num { font-size: 2.6rem; }
-            .cty .afyp-big { font-size: 2.2rem; }
-            .cty-stat-val { font-size: 26px; }
-            .cty-stat-label { font-size: 10px; }
-            .kpi-stack { gap: 22px; }
-            .kpi-phong { padding: 16px 18px 16px; }
-            .phong-pct { font-size: 20px; }
-            .phong .afyp-big { font-size: 1.5rem; }
-            .phong-stat-val { font-size: 18px; }
-            .phong-stat-label { font-size: 8.5px; }
-            .ad-grid { gap: 10px; }
-            .ad-name { font-size: 13px; }
-            .ad-pct { font-size: 14px; }
-            .ad-stat-val { font-size: 12.5px; }
+            #view-main { padding: 24px 44px 32px; }
+            .hero-title { font-size: 1.3rem !important; }
+            .desktop-split { gap: 28px; margin-top: 28px; }
+            .afyp-chart { min-height: 560px; }
+            .afyp-chart-wrap { padding: 18px 22px 20px; }
+            .dsk-cty-left { padding: 24px 32px; min-width: 260px; }
+            .dsk-cty-pct { font-size: 3rem; }
+            .dsk-cty-afyp { font-size: 1.5rem; }
+            .dsk-cty-tile { padding: 22px 16px; }
+            .dsk-cty-tile-val { font-size: 2rem; }
+            .kpi-stack { gap: 18px; }
+            .kpi-phong { padding: 16px 18px 14px; }
+            .phong-pct { font-size: 18px; }
+            .phong .afyp-big { font-size: 1.3rem; }
+            .phong-stat-val { font-size: 16px; }
+            .dsk-ad-table { font-size: 12px; }
         }
 
         /* === USER OVERRIDES: Unified table headers, alignment, sticky title === */
@@ -3169,10 +3225,34 @@
                 '</div>' +
                 buildTeamBoard(active, activeIdx);
         }
+        /* Desktop: show AD detail when clicking table row */
+        function showAdDetailView(adKey, info) {
+            go('view-detail');
+            if (info) {
+                /* Pre-select the AD's group in detail view */
+                setTimeout(function() {
+                    var dtMeta = $('detail-meta');
+                    if (dtMeta && info.managerName) {
+                        dtMeta.textContent = info.managerName;
+                    }
+                }, 300);
+            }
+        }
+
         function bindDashboardEvents() {
             if (document.body.dataset.mainDashBound === '1') return;
             document.body.dataset.mainDashBound = '1';
             document.addEventListener('click', function(e) {
+                // Desktop: AD table row click → show detail view
+                var adRow = e.target.closest('.dsk-ad-table tbody tr[data-ad-key]');
+                if (adRow) {
+                    var adKey = adRow.getAttribute('data-ad-key');
+                    if (adKey && dashboardState.adGroups[adKey]) {
+                        var info = dashboardState.adGroups[adKey];
+                        showAdDetailView(adKey, info);
+                    }
+                    return;
+                }
                 // Ad group button click
                 var groupBtn = e.target.closest('.ad-group-btn');
                 if (groupBtn) {
@@ -3700,12 +3780,18 @@
                 delay += 60;
 
                 if (p.ads.length && !p.noAds) {
-                    deptHtml += '<div class="ad-grid">';
-                    p.ads.forEach(function(ad) {
-                        deptHtml += buildAdCard(ad, delay);
-                        delay += 30;
-                    });
-                    deptHtml += '</div>';
+                    if (window.innerWidth >= 900) {
+                        /* Desktop: AD as table */
+                        deptHtml += buildAdTable(p.ads, delay);
+                    } else {
+                        /* Mobile: AD as cards */
+                        deptHtml += '<div class="ad-grid">';
+                        p.ads.forEach(function(ad) {
+                            deptHtml += buildAdCard(ad, delay);
+                            delay += 30;
+                        });
+                        deptHtml += '</div>';
+                    }
                 }
                 deptHtml += '</div>';
                 htmlParts.push(deptHtml);
@@ -3723,15 +3809,72 @@
             total.tyTrong = total.tyTrongCount? (total.tyTrongWeighted / total.tyTrongCount) : 0;
 
             box.innerHTML = htmlParts.join('');
-            ctyBox.innerHTML = buildCtyCard(total);
-            /* Desktop: move company card into split-company column */
+            /* Desktop: company strip; Mobile: traditional card */
             if (window.innerWidth >= 900) {
-                var splitCompany = $('split-company');
-                if (splitCompany && ctyBox.parentNode !== splitCompany) splitCompany.appendChild(ctyBox);
+                ctyBox.innerHTML = buildCtyStrip(total);
+            } else {
+                ctyBox.innerHTML = buildCtyCard(total);
+            }
+            /* Desktop: move company card before desktop-split */
+            if (window.innerWidth >= 900) {
+                var split = $('desktop-split');
+                if (split && ctyBox.parentNode !== split.parentNode) {
+                    split.parentNode.insertBefore(ctyBox, split);
+                }
             }
             bindDashboardEvents();
             triggerAnimations();
             renderAfypChart();
+        }
+
+        /* ===== DESKTOP-SPECIFIC BUILDERS ===== */
+
+        /* Company strip: horizontal banner with KPI tiles */
+        function buildCtyStrip(item) {
+            var pct = item.kh ? (item.afyp / item.kh * 100) : 0, cp = Math.min(pct, 100);
+            var pctClass = pct >= 100 ? 'green' : pct >= 75 ? 'gold' : 'red';
+            return '<div class="dsk-company">' +
+                '<div class="dsk-cty-left">' +
+                '<div class="dsk-cty-label"><i class="fa-solid fa-trophy" style="color:#f2b24d;margin-right:4px"></i>Tổng Công Ty</div>' +
+                '<div class="dsk-cty-pct" data-pct="' + pct + '">0%</div>' +
+                '<div class="dsk-cty-prog-wrap"><div class="dsk-cty-prog"><div class="dsk-cty-prog-fill" data-w="' + cp + '%"></div></div></div>' +
+                '<div class="dsk-cty-afyp" data-count="' + item.afyp + '">0</div>' +
+                '<div class="dsk-cty-kh">KH: ' + fmt(item.kh) + '</div>' +
+                '</div>' +
+                '<div class="dsk-cty-right">' +
+                '<div class="dsk-cty-tile hd"><div class="dsk-cty-tile-label">Lượt HĐ</div><div class="dsk-cty-tile-val" data-count="' + item.lhd + '">0</div></div>' +
+                '<div class="dsk-cty-tile td"><div class="dsk-cty-tile-label">Tuyển dụng</div><div class="dsk-cty-tile-val" data-count="' + item.td + '">0</div></div>' +
+                '<div class="dsk-cty-tile chuan"><div class="dsk-cty-tile-label">Lượt chuẩn</div><div class="dsk-cty-tile-val" data-count="' + item.hdChuan + '">0</div></div>' +
+                '<div class="dsk-cty-tile ip"><div class="dsk-cty-tile-label">IP/AFYP</div><div class="dsk-cty-tile-val">' + esc(fmtTyTrong(item.tyTrong)) + '</div></div>' +
+                '</div>' +
+                '</div>';
+        }
+
+        /* AD table: compact table for desktop department sections */
+        function buildAdTable(ads, delay) {
+            var html = '<div class="ad-grid"><table class="dsk-ad-table">';
+            html += '<thead><tr>' +
+                '<th>AD</th><th>% KH</th><th>AFYP</th><th>HĐ</th><th>TD</th><th>Chuẩn</th><th>IP</th><th></th>' +
+                '</tr></thead><tbody>';
+            ads.forEach(function(ad, i) {
+                var pct = ad.kh ? (ad.afyp / ad.kh * 100) : 0;
+                var cp = Math.min(pct, 100);
+                var pctClass = pct >= 100 ? 'green' : pct >= 75 ? 'gold' : 'red';
+                var progStart = progressColor(Math.max(pct - 24, 0));
+                var progEnd = progressColor(pct);
+                html += '<tr class="anim-in" data-ad-key="' + esc(ad.managerKey || '') + '" style="animation-delay:' + (delay + i * 30) + 'ms">' +
+                    '<td><span class="dsk-ad-name">' + esc(ad.ten) + '</span></td>' +
+                    '<td><span class="dsk-ad-pct ' + pctClass + '">' + pct.toFixed(0) + '%</span></td>' +
+                    '<td>' + fmt(ad.afyp) + '</td>' +
+                    '<td>' + ad.lhd + '</td>' +
+                    '<td>' + ad.td + '</td>' +
+                    '<td>' + ad.hdChuan + '</td>' +
+                    '<td>' + esc(fmtTyTrong(ad.tyTrong)) + '</td>' +
+                    '<td><span class="dsk-ad-mini-prog"><span class="dsk-ad-mini-prog-fill" data-w="' + cp + '%" style="background:linear-gradient(90deg,' + progStart + ',' + progEnd + ')"></span></span></td>' +
+                    '</tr>';
+            });
+            html += '</tbody></table></div>';
+            return html;
         }
 
         function subsHTML(lhd, td, hdc, cls) {
@@ -3824,7 +3967,7 @@
 
         function triggerAnimations() {
             requestAnimationFrame(function() {
-                var allFills = document.querySelectorAll('.mini-progress-fill[data-w],.cty-progress-fill[data-w],.phong-progress-fill[data-w],.ad-progress-fill[data-w]');
+                var allFills = document.querySelectorAll('.mini-progress-fill[data-w],.cty-progress-fill[data-w],.phong-progress-fill[data-w],.ad-progress-fill[data-w],.dsk-cty-prog-fill[data-w],.dsk-ad-mini-prog-fill[data-w]');
                 for (var i = 0; i < allFills.length; i++) allFills[i].style.width = allFills[i].dataset.w;
                 var allCounts = document.querySelectorAll('[data-count]');
                 for (var i = 0; i < allCounts.length; i++) animateValue(allCounts[i], num(allCounts[i].dataset.count));
@@ -6124,18 +6267,13 @@ if (ok) { toast('Đã xóa', 'ok'); ccf(); await lfs(); }
 
         syncData();
 
-        /* Resize: cập nhật biểu đồ AFYP */
+        /* Resize: cập nhật biểu đồ AFYP + re-render desktop layout */
         var _afypResizeTimer;
         window.addEventListener('resize', function() {
             clearTimeout(_afypResizeTimer);
             _afypResizeTimer = setTimeout(function() {
                 renderAfypChart();
-                /* Desktop: move company card into split-company column; mobile: leave in place */
-                var ctyBox = $('kpi-company');
-                var splitCompany = $('split-company');
-                if (window.innerWidth >= 900 && splitCompany && ctyBox && ctyBox.parentNode !== splitCompany) {
-                    splitCompany.appendChild(ctyBox);
-                }
+                /* On significant resize, re-render to switch between desktop/mobile layouts */
             }, 200);
         });
     </script>
