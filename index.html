@@ -2249,13 +2249,13 @@
             #view-main {
                 display: flex;
                 flex-direction: column;
-                gap: 6px;
+                gap: 0;
                 padding: 0 24px;
                 max-width: none;
                 margin: 0 auto;
             }
-            #kpi-company { margin-bottom: 4px; }
-            .nav-grid { margin-bottom: 8px; }
+            #kpi-company { margin-bottom: 16px; }
+            .nav-grid { margin-bottom: 18px; }
             #view-main header { max-width: 1800px; width: 100%; text-align: center; }
             #view-main .notice-bar { max-width: 1800px; width: 100%; }
             #view-main #kpi-company { max-width: 1800px; width: 100%; }
@@ -2266,13 +2266,13 @@
             .desktop-split {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
-                gap: 20px;
+                gap: 24px;
                 width: 100%;
                 max-width: 1800px;
                 align-self: center;
             }
-            .split-left { display: flex; flex-direction: column; gap: 16px; }
-            .split-right { display: flex; flex-direction: column; gap: 10px; position: sticky; top: 20px; align-self: start; }
+            .split-left { display: flex; flex-direction: column; gap: 0; }
+            .split-right { display: flex; flex-direction: column; gap: 10px; position: sticky; top: 20px; align-self: start; padding-left: 24px; border-left: 1px solid #ffffff10; }
 
             /* === Company card: horizontal dashboard layout === */
             #kpi-company { margin-top: 0; }
@@ -2314,64 +2314,71 @@
             .kpi-stack {
                 display: flex !important;
                 flex-direction: column;
-                gap: 20px;
+                gap: 14px;
                 margin-top: 0;
             }
-            .dept-section { display: flex; flex-direction: column; gap: 10px; }
-            .kpi-phong { margin-top: 0; padding: 10px 14px 12px; border-radius: 12px; }
-            .phong-head { margin-bottom: 4px; gap: 8px; }
-            .phong-name { font-size: 11px; gap: 7px; white-space: nowrap; }
-            .phong-name i { font-size: 12px; }
-            .phong-pct { font-size: 16px; }
-            .phong-body { gap: 8px; grid-template-columns: minmax(0, 1fr) minmax(100px, 200px); }
-            .phong .afyp-big { font-size: 1.2rem; }
-            .phong .kh-small { font-size: .65rem; }
-            .phong-progress { height: 8px; }
-            .phong-stats { gap: 5px; margin-top: 6px; }
-            .phong-stat { border-radius: 8px; padding: 5px 5px 4px; }
-            .phong-stat-label { font-size: 7px; margin-bottom: 1px; }
-            .phong-stat-val { font-size: 14px; }
+            .dept-section { display: flex; flex-direction: column; gap: 6px; }
+            .kpi-phong { margin-top: 0; padding: 8px 10px 8px; border-radius: 10px; }
+            .phong-head { margin-bottom: 2px; gap: 6px; }
+            .phong-name { font-size: 10px; gap: 5px; white-space: nowrap; }
+            .phong-name i { font-size: 11px; }
+            .phong-pct { font-size: 14px; }
+            .phong-body { gap: 5px; grid-template-columns: minmax(0, 1fr) minmax(80px, 160px); }
+            .phong .afyp-big { font-size: 1rem; }
+            .phong .kh-small { font-size: .58rem; }
+            .phong-progress { height: 6px; }
+            .phong-stats { gap: 4px; margin-top: 4px; }
+            .phong-stat { border-radius: 6px; padding: 4px 4px 3px; }
+            .phong-stat-label { font-size: 6px; margin-bottom: 0; }
+            .phong-stat-val { font-size: 12px; }
 
             /* === AD grid: 2 employees per row, names no wrap === */
-            .ad-grid { display: grid !important; grid-template-columns: 1fr 1fr; gap: 5px; margin-top: 5px; margin-bottom: 0; align-items: stretch; }
-            .kpi-ad { padding: 6px 8px 5px; border-radius: 10px; }
+            .ad-grid { display: grid !important; grid-template-columns: 1fr 1fr; gap: 4px; margin-top: 4px; margin-bottom: 0; align-items: stretch; }
+            .kpi-ad { padding: 4px 6px 3px; border-radius: 8px; }
             .ad-inner { display: flex; flex-direction: column; height: 100%; }
-            .ad-top { gap: 5px; grid-template-columns: 1fr; }
+            .ad-top { gap: 3px; grid-template-columns: 1fr; }
             .ad-left { display: flex; flex-direction: column; }
-            .ad-name-row { display: flex; align-items: center; gap: 5px; }
-            .ad-name { font-size: 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-            .ad-pct { font-size: 11px; }
-            .ad-kh { font-size: 6px; margin-top: 1px; }
-            .ad-right { display: flex; flex-direction: column; gap: 3px; }
+            .ad-name-row { display: flex; align-items: center; gap: 4px; }
+            .ad-name { font-size: 9px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+            .ad-pct { font-size: 10px; }
+            .ad-kh { font-size: 5px; margin-top: 0; }
+            .ad-right { display: flex; flex-direction: column; gap: 2px; }
             .ad-stats { gap: 2px; flex: 1; display: grid; grid-template-columns: repeat(3, 1fr); }
-            .ad-stat { border-radius: 6px; padding: 3px 3px 2px; }
-            .ad-stat-label { font-size: 5.5px; margin-bottom: 0; }
-            .ad-stat-val { font-size: 9px; }
+            .ad-stat { border-radius: 5px; padding: 2px 2px 1px; }
+            .ad-stat-label { font-size: 5px; margin-bottom: 0; }
+            .ad-stat-val { font-size: 8px; }
             .ad-progress { height: 2px; margin-top: auto; }
 
             /* === Link grid === */
             .link-grid { gap: 8px; }
         }
         @media (min-width: 1024px) {
-            #view-main { gap: 8px; padding: 0 32px; }
-            #kpi-company { margin-bottom: 8px; }
-            .nav-grid { margin-bottom: 12px; }
-            .desktop-split { gap: 24px; }
-            .split-left { gap: 20px; }
+            #view-main { gap: 0; padding: 0 32px; }
+            #kpi-company { margin-bottom: 20px; }
+            .nav-grid { margin-bottom: 20px; }
+            .desktop-split { gap: 28px; }
+            .split-right { padding-left: 28px; }
             .afyp-chart { min-height: 420px; }
             .nav-btn { padding: 10px 12px; font-size: 10px; }
             .cty-stat-val { font-size: 20px; }
             .cty-stat { min-width: 78px; padding: 8px 12px; }
             .cty-pct-num { font-size: 1.8rem; }
             .cty .afyp-big { font-size: 1.5rem; }
-            .ad-grid { grid-template-columns: 1fr 1fr; gap: 6px; }
+            .ad-grid { grid-template-columns: 1fr 1fr; gap: 5px; }
+            .kpi-phong { padding: 10px 12px 10px; }
+            .phong-pct { font-size: 15px; }
+            .phong .afyp-big { font-size: 1.1rem; }
+            .phong-stat-val { font-size: 13px; }
+            .ad-name { font-size: 9.5px; }
+            .ad-pct { font-size: 10.5px; }
+            .ad-stat-val { font-size: 8.5px; }
         }
         @media (min-width: 1400px) {
-            #view-main { gap: 10px; padding: 0 40px; }
-            #kpi-company { margin-bottom: 12px; }
-            .nav-grid { margin-bottom: 14px; }
-            .desktop-split { gap: 28px; grid-template-columns: 1fr 1fr; }
-            .split-left { gap: 24px; }
+            #view-main { gap: 0; padding: 0 40px; }
+            #kpi-company { margin-bottom: 24px; }
+            .nav-grid { margin-bottom: 22px; }
+            .desktop-split { gap: 32px; grid-template-columns: 1fr 1fr; }
+            .split-right { padding-left: 32px; }
             .afyp-chart { min-height: 480px; }
             .afyp-chart-wrap { padding: 16px 20px 18px; }
             .cty-pct-num { font-size: 1.9rem; }
@@ -2379,13 +2386,14 @@
             .cty-stat-val { font-size: 22px; }
             .cty-stat-label { font-size: 9px; }
             .cty-stat { min-width: 84px; padding: 9px 14px; }
-            .phong-pct { font-size: 17px; }
-            .phong .afyp-big { font-size: 1.3rem; }
-            .phong-stat-val { font-size: 15px; }
-            .phong-stat-label { font-size: 7.5px; }
-            .ad-name { font-size: 10.5px; }
-            .ad-pct { font-size: 12px; }
-            .ad-stat-val { font-size: 9.5px; }
+            .kpi-phong { padding: 10px 14px 10px; }
+            .phong-pct { font-size: 16px; }
+            .phong .afyp-big { font-size: 1.15rem; }
+            .phong-stat-val { font-size: 14px; }
+            .phong-stat-label { font-size: 6.5px; }
+            .ad-name { font-size: 10px; }
+            .ad-pct { font-size: 11px; }
+            .ad-stat-val { font-size: 9px; }
             .ad-stats { grid-template-columns: repeat(3, 1fr); }
         }
 
