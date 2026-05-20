@@ -2155,28 +2155,29 @@
         /* ===== DESKTOP OPTIMIZATION ===== */
         @media (min-width: 641px) {
             /* Popup wider on desktop */
-            .td-page .pop-box { max-width: 1400px; width: 96%; border-radius: 12px; flex-direction: row; }
+            .td-page .pop-box { max-width: 1600px; width: 98%; border-radius: 12px; flex-direction: column; }
             .td-page .pop-bg.open .pop-box { border-radius: 12px; }
-            /* Desktop: poster left 1/3, table right 2/3 */
-            .td-page .pop-head { width: 33.333%; min-width: 280px; max-width: 420px; flex-shrink: 0; flex-direction: column; border-right: 1px solid var(--td-border); overflow-y: auto; }
-            .td-page .pop-media { flex-shrink: 0; }
-            .td-page .pop-poster, .td-page .pop-ph { aspect-ratio: auto; height: auto; width: 100%; }
-            .td-page .pop-poster { object-fit: contain; }
-            .td-page .pop-bar { position: relative; top: auto; flex-shrink: 0; padding: 14px 16px 16px; }
+            /* Desktop: poster on top, table full-width below */
+            .td-page .pop-head { width: 100%; min-width: 0; max-width: none; flex-shrink: 0; flex-direction: row; border-right: none; border-bottom: 1px solid var(--td-border); overflow-y: visible; }
+            .td-page .pop-media { flex-shrink: 0; width: 320px; min-width: 260px; max-width: 400px; }
+            .td-page .pop-poster, .td-page .pop-ph { aspect-ratio: auto; height: 100%; width: 100%; min-height: 180px; max-height: 280px; object-fit: cover; }
+            .td-page .pop-poster { object-fit: cover; }
+            .td-page .pop-bar { position: relative; top: auto; flex-shrink: 0; padding: 14px 16px 16px; flex: 1; }
             .td-page .pop-ct { flex: 1; min-width: 0; overflow: auto; }
-            .td-page .pop-bar h2 { font-size: 1.18rem; }
-            .td-page .pop-bar h2.po-title { font-size: 1.18rem; }
+            .td-page .pop-bar h2 { font-size: 1.18rem; text-align: left !important; }
+            .td-page .pop-bar h2.po-title { font-size: 1.18rem; text-align: left !important; }
             .td-page .pop-subline { font-size: .78rem; padding: 6px 10px; }
             .td-page .pop-ct > .ptw { margin-left: 12px; margin-right: 12px; }
 
-            /* Table on desktop — vẫn gọn */
-            .td-page .pt { font-size: 11px; }
-            .td-page .pt thead th { padding: 4px 3px; font-size: 9px; line-height: 1.15; }
-            .td-page .pt tbody td { padding: 3px 3px; font-size: 10px; line-height: 1.25; }
-            .td-page .pt td.d-info-left { padding-left: 6px; }
-            .td-page .pt .pst { font-size: 9px; min-width: 24px; }
-            .td-page .pt th.pst-h { font-size: 9px; }
-            .td-page .pt .dat-badge { padding: 1px 4px; font-size: 9px; }
+            /* Table on desktop — full readable */
+            .td-page .ptw { max-height: 68vh; }
+            .td-page .pt { font-size: 12px; }
+            .td-page .pt thead th { padding: 6px 5px; font-size: 10px; line-height: 1.2; }
+            .td-page .pt tbody td { padding: 5px 5px; font-size: 11px; line-height: 1.3; }
+            .td-page .pt td.d-info-left { padding-left: 8px; }
+            .td-page .pt .pst { font-size: 10px; min-width: 28px; }
+            .td-page .pt th.pst-h { font-size: 10px; }
+            .td-page .pt .dat-badge { padding: 2px 5px; font-size: 10px; }
 
             /* Pcard grid desktop */
             .td-page .card-grid { gap: 18px; }
@@ -2489,6 +2490,34 @@
             }
 
             .link-grid { gap: 8px; }
+
+            /* ===== DETAIL VIEW (Chi Tiết Ban Nhóm) - Desktop ===== */
+            #view-detail .detail-shell {
+                max-width: 1200px; width: 100%; margin: 0 auto; padding: 16px 24px;
+            }
+            #view-detail .detail-title { font-size: 1.8rem !important; }
+            #view-detail .detail-meta { font-size: 14px; }
+            /* Top 3 cards wider */
+            #view-detail .top3-grid { max-width: 900px; gap: 20px; }
+            .top3-card { padding: 18px 14px 14px; }
+            /* Group items: grid layout 2 columns on desktop */
+            #view-detail .detail-list-wrap {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+                max-width: 1200px;
+            }
+            .grp-item {
+                padding: 10px 14px 8px;
+                border-radius: 12px;
+            }
+            .grp-name { font-size: 14px; }
+            .grp-pct { font-size: 14px; }
+            .grp-stat-main, .grp-stat-kh { font-size: 12px; }
+            .grp-prog { height: 5px; }
+            /* Month & func selectors */
+            #view-detail .month-grid { max-width: 600px; margin: 0 auto; }
+            #view-detail .func-row { max-width: 600px; margin: 8px auto; }
         }
 
         @media (min-width: 1024px) {
@@ -2503,6 +2532,23 @@
             .phong .afyp-big { font-size: 1.2rem; }
             .phong-stat-val { font-size: 15px; }
             .dsk-ad-table { font-size: 11.5px; }
+
+            /* Popup table desktop 1024+ */
+            .td-page .pop-box { max-width: 1700px; }
+            .td-page .ptw { max-height: 72vh; }
+            .td-page .pt { font-size: 12.5px; }
+            .td-page .pt thead th { padding: 7px 6px; font-size: 10.5px; }
+            .td-page .pt tbody td { padding: 6px 6px; font-size: 11.5px; }
+            .td-page .pop-media { width: 380px; }
+            .td-page .pop-poster, .td-page .pop-ph { max-height: 300px; }
+
+            /* Detail view 1024+ */
+            #view-detail .detail-shell { max-width: 1400px; padding: 20px 32px; }
+            #view-detail .detail-title { font-size: 2rem !important; }
+            #view-detail .detail-list-wrap { gap: 12px; }
+            .grp-name { font-size: 15px; }
+            .grp-pct { font-size: 15px; }
+            .grp-stat-main, .grp-stat-kh { font-size: 13px; }
         }
 
         @media (min-width: 1400px) {
@@ -2522,6 +2568,19 @@
             .phong .afyp-big { font-size: 1.3rem; }
             .phong-stat-val { font-size: 16px; }
             .dsk-ad-table { font-size: 12px; }
+
+            /* Popup table desktop 1400+ */
+            .td-page .pop-box { max-width: 1800px; width: 98%; }
+            .td-page .ptw { max-height: 80vh; }
+            .td-page .pt { font-size: 13px; }
+            .td-page .pt thead th { padding: 8px 7px; font-size: 11px; }
+            .td-page .pt tbody td { padding: 7px 7px; font-size: 12px; }
+            .td-page .pop-media { width: 420px; }
+            .td-page .pop-poster, .td-page .pop-ph { max-height: 320px; }
+
+            /* Detail view 1400+ */
+            #view-detail .detail-shell { max-width: 1600px; }
+            #view-detail .detail-title { font-size: 2.2rem !important; }
         }
 
         /* === USER OVERRIDES: Unified table headers, alignment, sticky title === */
@@ -2549,6 +2608,19 @@
             letter-spacing: .03em !important;
         }
         .td-page .pop-meta { align-items: center !important; }
+
+        /* Desktop: title left-aligned in horizontal header */
+        @media (min-width: 641px) {
+            .td-page .pop-bar-main {
+                align-items: flex-start !important;
+                text-align: left !important;
+            }
+            .td-page .pop-bar h2,
+            .td-page .pop-bar h2.po-title {
+                text-align: left !important;
+            }
+            .td-page .pop-meta { align-items: flex-start !important; }
+        }
 
         /* Override: unified header alignment */
         .td-page .pt thead th {
