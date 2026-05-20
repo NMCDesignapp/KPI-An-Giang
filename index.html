@@ -2193,6 +2193,9 @@
             padding: 16px 18px 18px;
             box-shadow: 0 12px 40px #00000050, inset 0 1px 0 #ffffff06;
         }
+        /* Desktop-only elements hidden by default (mobile) */
+        .dsk-company { display: none; }
+        .dsk-ad-table { display: none; }
         .afyp-chart-title {
             font-size: .82rem;
             font-weight: 700;
@@ -2282,6 +2285,7 @@
 
             /* ===== COMPANY OVERVIEW STRIP (new desktop design) ===== */
             #kpi-company { margin: 0; padding: 0; border: none; }
+            .kpi-cty { display: none !important; } /* hide mobile card on desktop */
             .dsk-company {
                 display: flex; align-items: stretch; gap: 0;
                 background: linear-gradient(135deg, #0f1f38 0%, #162d50 50%, #0f1f38 100%);
@@ -2431,10 +2435,10 @@
 
             /* ===== AD TABLE inside department ===== */
             .ad-grid {
-                display: block !important;
-                margin-top: 8px; margin-bottom: 0;
+                display: none !important; /* hide mobile AD cards on desktop */
             }
             .dsk-ad-table {
+                display: table;
                 width: 100%;
                 border-collapse: separate;
                 border-spacing: 0;
@@ -2483,9 +2487,6 @@
                 height: 100%; border-radius: inherit;
                 transition: width .8s cubic-bezier(.22, 1, .36, 1);
             }
-
-            /* Hide old mobile AD cards on desktop */
-            .kpi-ad { display: none !important; }
 
             .link-grid { gap: 8px; }
         }
@@ -3780,18 +3781,14 @@
                 delay += 60;
 
                 if (p.ads.length && !p.noAds) {
-                    if (window.innerWidth >= 900) {
-                        /* Desktop: AD as table */
-                        deptHtml += buildAdTable(p.ads, delay);
-                    } else {
-                        /* Mobile: AD as cards */
-                        deptHtml += '<div class="ad-grid">';
-                        p.ads.forEach(function(ad) {
-                            deptHtml += buildAdCard(ad, delay);
-                            delay += 30;
-                        });
-                        deptHtml += '</div>';
-                    }
+                    /* Always render both mobile cards + desktop table; CSS handles visibility */
+                    deptHtml += '<div class="ad-grid">';
+                    p.ads.forEach(function(ad) {
+                        deptHtml += buildAdCard(ad, delay);
+                        delay += 30;
+                    });
+                    deptHtml += '</div>';
+                    deptHtml += buildAdTable(p.ads, delay);
                 }
                 deptHtml += '</div>';
                 htmlParts.push(deptHtml);
@@ -3809,12 +3806,8 @@
             total.tyTrong = total.tyTrongCount? (total.tyTrongWeighted / total.tyTrongCount) : 0;
 
             box.innerHTML = htmlParts.join('');
-            /* Desktop: company strip; Mobile: traditional card */
-            if (window.innerWidth >= 900) {
-                ctyBox.innerHTML = buildCtyStrip(total);
-            } else {
-                ctyBox.innerHTML = buildCtyCard(total);
-            }
+            /* Always render both company layouts; CSS will show the correct one */
+            ctyBox.innerHTML = buildCtyCard(total) + buildCtyStrip(total);
             /* Desktop: move company card before desktop-split */
             if (window.innerWidth >= 900) {
                 var split = $('desktop-split');
