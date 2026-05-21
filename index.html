@@ -1816,49 +1816,48 @@
             line-height: 1.15;
         }
 
-        /* ★ Cột có ngày tháng — cho phép xuống dòng, thu gọn */
+        /* ★ Cột có ngày tháng — không xuống dòng, hiển thị đủ rộng */
         .td-page .pt tbody td.d-date-wrap {
-            white-space: normal !important;
-            word-break: break-word;
-            font-size: 8.5px;
-            line-height: 1.1;
+            white-space: nowrap !important;
+            font-size: inherit;
+            line-height: inherit;
         }
 
         /* ★ MÀU KHÁC NHAU CHO TỪNG NHÓM ĐIỀU KIỆN */
         /* Nhóm 0 — Hạng Vàng: vàng */
         .td-page .pt thead th.h-cond-g0.h-cond-top { background: #B8860B; color: #fff; }
         .td-page .pt thead th.h-cond-g0.h-cond-bot { background: #D4A017; color: #3a2600; }
-        .td-page .pt tbody td.d-cond-g0 { background: #FFF8DC; color: #4a3500; }
+        .td-page .pt tbody td.d-cond-g0 { background: rgba(255, 248, 220, 0.2); color: #4a3500; }
 
         /* Nhóm 1 — Hạng Bạch Kim: bạc */
         .td-page .pt thead th.h-cond-g1.h-cond-top { background: #5C6B7A; color: #fff; }
         .td-page .pt thead th.h-cond-g1.h-cond-bot { background: #8494A7; color: #1a2030; }
-        .td-page .pt tbody td.d-cond-g1 { background: #E8ECF2; color: #2a3040; }
+        .td-page .pt tbody td.d-cond-g1 { background: rgba(232, 236, 242, 0.2); color: #2a3040; }
 
         /* Nhóm 2 — Hạng Kim Cương: xanh diamond */
         .td-page .pt thead th.h-cond-g2.h-cond-top { background: #2B5EA7; color: #fff; }
         .td-page .pt thead th.h-cond-g2.h-cond-bot { background: #4A8AD4; color: #fff; }
-        .td-page .pt tbody td.d-cond-g2 { background: #DAE8FC; color: #1a2a50; }
+        .td-page .pt tbody td.d-cond-g2 { background: rgba(218, 232, 252, 0.2); color: #1a2a50; }
 
         /* Nhóm 3 — xanh lá */
         .td-page .pt thead th.h-cond-g3.h-cond-top { background: #2E7D32; color: #fff; }
         .td-page .pt thead th.h-cond-g3.h-cond-bot { background: #4CAF50; color: #1a3018; }
-        .td-page .pt tbody td.d-cond-g3 { background: #E0F2E0; color: #1a3520; }
+        .td-page .pt tbody td.d-cond-g3 { background: rgba(224, 242, 224, 0.2); color: #1a3520; }
 
         /* Nhóm 4 — đỏ tía */
         .td-page .pt thead th.h-cond-g4.h-cond-top { background: #7B1FA2; color: #fff; }
         .td-page .pt thead th.h-cond-g4.h-cond-bot { background: #AB47BC; color: #fff; }
-        .td-page .pt tbody td.d-cond-g4 { background: #F0E0F8; color: #3a1050; }
+        .td-page .pt tbody td.d-cond-g4 { background: rgba(240, 224, 248, 0.2); color: #3a1050; }
 
         /* ★ Cột điều kiện chứa "vé" — nền xanh lá */
         .td-page .pt thead th.h-cond-ve.h-cond-top { background: #2E7D32 !important; color: #fff !important; }
         .td-page .pt thead th.h-cond-ve.h-cond-bot { background: #43A047 !important; color: #fff !important; }
-        .td-page .pt tbody td.d-cond-ve { background: #C8E6C9 !important; color: #1B5E20 !important; font-weight: 700; white-space: normal !important; }
+        .td-page .pt tbody td.d-cond-ve { background: rgba(200, 230, 201, 0.2) !important; color: #1B5E20 !important; font-weight: 700; white-space: normal !important; }
 
         /* ★ Cột điều kiện chứa "%" — nền xanh lá nhạt */
         .td-page .pt thead th.h-cond-pct.h-cond-top { background: #2E7D32 !important; color: #fff !important; }
         .td-page .pt thead th.h-cond-pct.h-cond-bot { background: #43A047 !important; color: #fff !important; }
-        .td-page .pt tbody td.d-cond-pct { background: #E8F5E9 !important; color: #1B5E20 !important; font-weight: 700; white-space: normal !important; }
+        .td-page .pt tbody td.d-cond-pct { background: rgba(232, 245, 233, 0.2) !important; color: #1B5E20 !important; font-weight: 700; white-space: normal !important; }
 
         /* ★ CHỈ TIÊU / THỰC HIỆN — hàng header tầng trên cùng */
         .td-page .pt thead th.h-chi-tieu {
@@ -1939,39 +1938,44 @@
             background: transparent;
         }
 
-        /* === NỘI DUNG CỘT 1-4: nền trắng, chữ #111111 === */
+        /* === NỘI DUNG CỘT 1-4: nền trắng mờ, chữ #111111 === */
         .td-page .pt tbody td.d-info {
-            background: #fff;
+            background: rgba(255, 255, 255, 0.15);
             color: #111111;
         }
         /* Cột 1+3 căn giữa, cột 2+4 căn lề trái */
         .td-page .pt tbody td.d-info-center {
-            background: #fff;
+            background: rgba(255, 255, 255, 0.15);
             color: #111111;
             text-align: center !important;
         }
         .td-page .pt tbody td.d-info-left {
-            background: #fff;
+            background: rgba(255, 255, 255, 0.15);
             color: #111111;
             text-align: left !important;
             padding-left: 4px;
         }
-        /* Nhóm thông tin (ngày cấp, sl tvv...): nền #CAE5E8, căn giữa */
+        /* Nhóm thông tin (ngày cấp, sl tvv...): nền mờ #CAE5E8, căn giữa */
         .td-page .pt tbody td.d-text-info {
-            background: #CAE5E8;
+            background: rgba(202, 229, 232, 0.2);
             color: #1e3a5f;
             text-align: center;
         }
-        /* Nhóm số liệu: nền #CCCCFF, chữ #111111, căn giữa */
+        /* ★ Cột textInfo cuối cùng (Người TD) → căn lề trái */
+        .td-page .pt tbody td.d-text-info-last {
+            text-align: left !important;
+            padding-left: 6px !important;
+        }
+        /* Nhóm số liệu: nền mờ #CCCCFF, chữ #111111, căn giữa */
         .td-page .pt tbody td.d-numdata {
-            background: #CCCCFF;
+            background: rgba(204, 204, 255, 0.2);
             color: #111111;
             text-align: center;
             font-weight: 600;
         }
-        /* Nhóm số liệu FYP: nền xanh nhạt, chữ in đậm */
+        /* Nhóm số liệu FYP: nền xanh mờ, chữ in đậm */
         .td-page .pt tbody td.d-numdata-fyp {
-            background: #D4EDDA;
+            background: rgba(212, 237, 218, 0.25);
             color: #1a3a1a;
             text-align: center;
             font-weight: 700;
@@ -1984,16 +1988,16 @@
             font-weight: normal;
             font-style: italic;
         }
-        /* Nhóm số liệu IP tháng: nền nhạt hơn numdata, chữ #111111, căn giữa */
+        /* Nhóm số liệu IP tháng: nền mờ nhạt hơn, chữ #111111, căn giữa */
         .td-page .pt tbody td.d-numdata-ip {
-            background: #DBDBFF;
+            background: rgba(219, 219, 255, 0.2);
             color: #111111;
             text-align: center;
             font-weight: 600;
         }
-        /* Nhóm tỷ lệ % — ô > 0%: nền #FFFFCC, in đậm in nghiêng, căn giữa */
+        /* Nhóm tỷ lệ % — ô > 0%: nền mờ #FFFFCC, in đậm in nghiêng, căn giữa */
         .td-page .pt tbody td.d-percent-pos {
-            background: #FFFFCC;
+            background: rgba(255, 255, 204, 0.2);
             color: #111111;
             text-align: center;
             font-weight: 700;
@@ -2006,19 +2010,19 @@
             text-align: center;
             font-style: italic;
         }
-        /* Nhóm điều kiện: nền lemonchiffon, chữ #111111 */
+        /* Nhóm điều kiện: nền lemonchiffon mờ, chữ #111111 */
         .td-page .pt tbody td.d-cond {
-            background: lemonchiffon;
+            background: rgba(255, 250, 205, 0.2);
             color: #111111;
             text-align: center;
             font-weight: 600;
         }
-        /* Cột điều kiện tăng dần sắc độ */
-        .td-page .pt tbody td.d-cond-shade1 { background: #FFFACD; }
-        .td-page .pt tbody td.d-cond-shade2 { background: #FFF8B0; }
-        .td-page .pt tbody td.d-cond-shade3 { background: #FFF59E; }
-        .td-page .pt tbody td.d-cond-shade4 { background: #FFF28A; }
-        .td-page .pt tbody td.d-cond-shade5 { background: #FFEF76; }
+        /* Cột điều kiện tăng dần sắc độ — mờ */
+        .td-page .pt tbody td.d-cond-shade1 { background: rgba(255, 250, 205, 0.15); }
+        .td-page .pt tbody td.d-cond-shade2 { background: rgba(255, 248, 176, 0.18); }
+        .td-page .pt tbody td.d-cond-shade3 { background: rgba(255, 245, 158, 0.2); }
+        .td-page .pt tbody td.d-cond-shade4 { background: rgba(255, 242, 138, 0.22); }
+        .td-page .pt tbody td.d-cond-shade5 { background: rgba(255, 239, 118, 0.25); }
         /* Đạt badge — dấu tích nhỏ, không thay đổi kích thước ô */
         .td-page .dat-badge {
             display: inline-flex; align-items: center; justify-content: center;
@@ -2034,9 +2038,9 @@
             font-style: italic !important;
             font-weight: 400 !important;
         }
-        /* Phần thưởng / Tiền thưởng: nền lightyellow, chữ #000044 IN ĐẬM, căn giữa */
+        /* Phần thưởng / Tiền thưởng: nền lightyellow mờ, chữ #000044 IN ĐẬM, căn giữa */
         .td-page .pt tbody td.d-money {
-            background: lightyellow;
+            background: rgba(255, 255, 224, 0.2);
             color: #000044;
             text-align: center;
             font-weight: 900;
@@ -2049,7 +2053,7 @@
         }
 
         /* STT column */
-        .td-page .pst { text-align: center !important; color: #94a3b8; font-weight: 700; width: 28px; min-width: 22px; max-width: 32px; background: #fff; padding: 2px 1px !important; font-size: 9px; }
+        .td-page .pst { text-align: center !important; color: #94a3b8; font-weight: 700; width: 28px; min-width: 22px; max-width: 32px; background: rgba(255, 255, 255, 0.15); padding: 2px 1px !important; font-size: 9px; }
         .td-page .pt th.pst-h { text-align: center; background: #000044; color: #fff; padding: 4px 1px !important; font-size: 9px; width: 28px; min-width: 22px; max-width: 32px; }
 
         /* Mobile — ưu tiên mobile trước */
@@ -2064,7 +2068,7 @@
             .td-page .pt td.d-info-left { padding-left: 2px; }
             /* ★ Mobile: ngày tháng thu gọn hơn */
             .td-page .pt thead th .hdr-date { font-size: 0.7em; }
-            .td-page .pt tbody td.d-date-wrap { font-size: 7px; line-height: 1.05; }
+            .td-page .pt tbody td.d-date-wrap { font-size: 8px; }
         }
         
         /* Form Elements */
@@ -2155,29 +2159,28 @@
         /* ===== DESKTOP OPTIMIZATION ===== */
         @media (min-width: 641px) {
             /* Popup wider on desktop */
-            .td-page .pop-box { max-width: 1600px; width: 98%; border-radius: 12px; flex-direction: column; }
+            .td-page .pop-box { max-width: 1400px; width: 96%; border-radius: 12px; flex-direction: row; }
             .td-page .pop-bg.open .pop-box { border-radius: 12px; }
-            /* Desktop: poster on top, table full-width below */
-            .td-page .pop-head { width: 100%; min-width: 0; max-width: none; flex-shrink: 0; flex-direction: row; border-right: none; border-bottom: 1px solid var(--td-border); overflow-y: visible; }
-            .td-page .pop-media { flex-shrink: 0; width: 320px; min-width: 260px; max-width: 400px; }
-            .td-page .pop-poster, .td-page .pop-ph { aspect-ratio: auto; height: 100%; width: 100%; min-height: 180px; max-height: 280px; object-fit: cover; }
-            .td-page .pop-poster { object-fit: cover; }
-            .td-page .pop-bar { position: relative; top: auto; flex-shrink: 0; padding: 14px 16px 16px; flex: 1; }
+            /* Desktop: poster left 1/3, table right 2/3 */
+            .td-page .pop-head { width: 33.333%; min-width: 280px; max-width: 420px; flex-shrink: 0; flex-direction: column; border-right: 1px solid var(--td-border); overflow-y: auto; }
+            .td-page .pop-media { flex-shrink: 0; }
+            .td-page .pop-poster, .td-page .pop-ph { aspect-ratio: auto; height: auto; width: 100%; }
+            .td-page .pop-poster { object-fit: contain; }
+            .td-page .pop-bar { position: relative; top: auto; flex-shrink: 0; padding: 14px 16px 16px; }
             .td-page .pop-ct { flex: 1; min-width: 0; overflow: auto; }
-            .td-page .pop-bar h2 { font-size: 1.18rem; text-align: left !important; }
-            .td-page .pop-bar h2.po-title { font-size: 1.18rem; text-align: left !important; }
+            .td-page .pop-bar h2 { font-size: 1.18rem; }
+            .td-page .pop-bar h2.po-title { font-size: 1.18rem; }
             .td-page .pop-subline { font-size: .78rem; padding: 6px 10px; }
             .td-page .pop-ct > .ptw { margin-left: 12px; margin-right: 12px; }
 
-            /* Table on desktop — full readable */
-            .td-page .ptw { max-height: 68vh; }
-            .td-page .pt { font-size: 12px; }
-            .td-page .pt thead th { padding: 6px 5px; font-size: 10px; line-height: 1.2; }
-            .td-page .pt tbody td { padding: 5px 5px; font-size: 11px; line-height: 1.3; }
-            .td-page .pt td.d-info-left { padding-left: 8px; }
-            .td-page .pt .pst { font-size: 10px; min-width: 28px; }
-            .td-page .pt th.pst-h { font-size: 10px; }
-            .td-page .pt .dat-badge { padding: 2px 5px; font-size: 10px; }
+            /* Table on desktop — vẫn gọn */
+            .td-page .pt { font-size: 11px; }
+            .td-page .pt thead th { padding: 4px 3px; font-size: 9px; line-height: 1.15; }
+            .td-page .pt tbody td { padding: 3px 3px; font-size: 10px; line-height: 1.25; }
+            .td-page .pt td.d-info-left { padding-left: 6px; }
+            .td-page .pt .pst { font-size: 9px; min-width: 24px; }
+            .td-page .pt th.pst-h { font-size: 9px; }
+            .td-page .pt .dat-badge { padding: 1px 4px; font-size: 9px; }
 
             /* Pcard grid desktop */
             .td-page .card-grid { gap: 18px; }
@@ -2194,10 +2197,6 @@
             padding: 16px 18px 18px;
             box-shadow: 0 12px 40px #00000050, inset 0 1px 0 #ffffff06;
         }
-        /* Desktop-only elements hidden by default (mobile) */
-        .dsk-company { display: none; }
-        .dsk-ad-wrap { display: none; }
-        .dsk-ad-table { display: none; }
         .afyp-chart-title {
             font-size: .82rem;
             font-weight: 700;
@@ -2248,7 +2247,7 @@
         .afyp-chart .chart-legend { display: flex; gap: 12px; margin-top: 14px; justify-content: center; flex-wrap: wrap; }
         .afyp-chart .legend-item { display: flex; align-items: center; gap: 6px; font-size: .7rem; color: #7aa0be; }
         .afyp-chart .legend-dot { width: 10px; height: 10px; border-radius: 3px; flex-shrink: 0; }
-        /* ===== DESKTOP: EXECUTIVE DASHBOARD — FULL REDESIGN ===== */
+        /* ===== DESKTOP: DASHBOARD GRID LAYOUT ===== */
         @media (min-width: 900px) {
             .afyp-chart-wrap { display: block; }
 
@@ -2262,330 +2261,162 @@
                 margin: 0 auto;
             }
 
-            /* --- TOP BAR --- */
+            /* --- TOP BAR: title left + controls right --- */
             #view-main header {
                 max-width: 1800px; width: 100%;
                 display: flex; align-items: center; justify-content: space-between;
-                margin-bottom: 0; padding-bottom: 0;
-                border-bottom: none;
+                margin-bottom: 20px; padding-bottom: 16px;
+                border-bottom: 1px solid #1a2a44;
             }
-            .hero-title { font-size: 1.1rem !important; margin: 0 !important; }
+            .hero-title { font-size: 1.3rem !important; margin: 0 !important; }
             .hero-sub { display: none; }
-            .ctrl-bar { margin-top: 0 !important; gap: 8px; }
+            .ctrl-bar { margin-top: 0 !important; gap: 6px; }
 
-            /* --- NAV --- */
+            /* --- NAV: compact pill row --- */
             #view-main .notice-bar { max-width: 1800px; width: 100%; }
+            #view-main #kpi-company { max-width: 1800px; width: 100%; }
             #view-main .nav-grid { max-width: 1800px; width: 100%; }
             #view-main .link-grid { max-width: 1800px; width: 100%; }
             .nav-grid {
-                display: flex; gap: 6px; margin: 12px 0 0; flex-wrap: nowrap;
-                padding-bottom: 0; border-bottom: none;
+                display: flex; gap: 6px; margin: 0 0 20px; flex-wrap: nowrap;
+                padding-bottom: 16px; border-bottom: 1px solid #1a2a44;
             }
             .nav-row-3 { display: contents; }
             .nav-btn { flex: 1; padding: 8px 10px; font-size: 10px; border-radius: 8px; white-space: nowrap; }
             .nav-btn .nav-icon { font-size: 11px; }
 
-            /* ===== COMPANY OVERVIEW STRIP (new desktop design) ===== */
-            #kpi-company { margin: 0; padding: 0; border: none; }
-            .kpi-cty { display: none !important; } /* hide mobile card on desktop */
-            .dsk-company {
-                display: flex; align-items: stretch; gap: 0;
-                background: linear-gradient(135deg, #0f1f38 0%, #162d50 50%, #0f1f38 100%);
-                border: 1px solid #2a4a72;
-                border-radius: 14px;
-                overflow: hidden;
-                margin-top: 16px;
-                box-shadow: 0 8px 32px #0008, inset 0 1px 0 #fff1;
-            }
-            .dsk-cty-left {
-                display: flex; flex-direction: column; justify-content: center;
-                padding: 20px 28px;
-                background: linear-gradient(135deg, #f2b24d18, #d4a84308);
-                border-right: 2px solid #f2b24d44;
-                min-width: 220px;
-            }
-            .dsk-cty-label {
-                font-size: 10px; font-weight: 800; text-transform: uppercase;
-                letter-spacing: .12em; color: #d4a843; margin-bottom: 6px;
-            }
-            .dsk-cty-pct {
-                font-size: 2.4rem; font-weight: 900; line-height: 1; color: #f2d38d;
-            }
-            .dsk-cty-prog-wrap { margin-top: 10px; }
-            .dsk-cty-prog {
-                width: 100%; height: 8px; border-radius: 99px;
-                background: #1a2a44; overflow: hidden;
-            }
-            .dsk-cty-prog-fill {
-                height: 100%; border-radius: inherit;
-                background: linear-gradient(90deg, #e0a030, #f2c860);
-                transition: width 1s cubic-bezier(.22, 1, .36, 1);
-            }
-            .dsk-cty-afyp {
-                margin-top: 8px;
-                font-size: 1.1rem; font-weight: 900; color: #fff;
-            }
-            .dsk-cty-kh {
-                font-size: .7rem; font-weight: 600; color: #5a8aba;
-            }
-            .dsk-cty-right {
-                display: flex; flex: 1; gap: 0; align-items: stretch;
-            }
-            .dsk-cty-tile {
-                flex: 1;
-                display: flex; flex-direction: column; align-items: center; justify-content: center;
-                padding: 18px 12px;
-                border-right: 1px solid #1a3050;
-                position: relative;
-            }
-            .dsk-cty-tile:last-child { border-right: none; }
-            .dsk-cty-tile-label {
-                font-size: 9px; font-weight: 800; text-transform: uppercase;
-                letter-spacing: .08em; color: #7a9aba; margin-bottom: 6px;
-            }
-            .dsk-cty-tile-val {
-                font-size: 1.6rem; font-weight: 900; line-height: 1;
-            }
-            .dsk-cty-tile.hd .dsk-cty-tile-val { color: #7fc2ff; }
-            .dsk-cty-tile.td .dsk-cty-tile-val { color: #d8b7ff; }
-            .dsk-cty-tile.chuan .dsk-cty-tile-val { color: #16e0d3; }
-            .dsk-cty-tile.ip .dsk-cty-tile-val { color: #ffd789; }
-            .dsk-cty-tile::after {
-                content: ''; position: absolute; bottom: 0; left: 20%; right: 20%;
-                height: 2px; border-radius: 2px;
-            }
-            .dsk-cty-tile.hd::after { background: #7fc2ff44; }
-            .dsk-cty-tile.td::after { background: #d8b7ff44; }
-            .dsk-cty-tile.chuan::after { background: #16e0d344; }
-            .dsk-cty-tile.ip::after { background: #ffd78944; }
-
-            /* ===== 2-COLUMN LAYOUT: Chart (left) + Departments (right) ===== */
+            /* === 3-COLUMN DASHBOARD GRID: Company | Chart | Departments === */
             .desktop-split {
                 display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 20px;
+                grid-template-columns: 280px 1fr 1fr;
+                gap: 16px;
                 width: 100%;
                 max-width: 1800px;
                 align-self: center;
                 align-items: start;
-                margin-top: 20px;
             }
-            .split-left { display: none; } /* company card now rendered via dsk-company */
-            .split-center {
-                display: flex; flex-direction: column; gap: 0;
-                position: sticky; top: 16px; align-self: start;
-            }
-            .split-right {
-                display: flex; flex-direction: column; gap: 0;
-            }
+            .split-left { display: flex; flex-direction: column; gap: 0; position: sticky; top: 16px; align-self: start; }
+            .split-center { display: flex; flex-direction: column; gap: 10px; }
+            .split-right { display: flex; flex-direction: column; gap: 0; }
 
-            /* ===== AFYP CHART (left column) ===== */
-            .afyp-chart-wrap {
-                border-radius: 14px; padding: 16px 18px 18px;
-                width: 100%; display: flex; flex-direction: column;
+            /* === COMPANY CARD: vertical compact panel (left column) === */
+            #kpi-company { margin: 0; padding: 0; border: none; }
+            .kpi-cty {
+                padding: 16px 18px 18px; margin: 0;
+                border-radius: 14px;
+                display: flex; flex-direction: column;
             }
-            .afyp-chart { flex: 1; min-height: 480px; width: 100%; }
+            .cty-inner { display: flex; flex-direction: column; gap: 0; }
+            .cty-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 12px; }
+            .cty-name { font-size: 11px; gap: 6px; }
+            .cty-name i { font-size: 12px; }
+            .cty-pct-num { font-size: 1.8rem; }
+            .cty-body { display: flex; flex-direction: column; gap: 6px; }
+            .cty .afyp-big { font-size: 1.4rem; }
+            .cty .kh-small { font-size: .65rem; }
+            .cty-progress { margin-top: 8px; height: 12px; }
+            .cty-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 12px; }
+            .cty-stat { border-radius: 8px; padding: 8px 6px; text-align: center; min-width: 0; }
+            .cty-stat-label { font-size: 7px; margin-bottom: 3px; }
+            .cty-stat-val { font-size: 18px; }
+
+            /* === AFYP CHART: center column === */
+            .afyp-chart-wrap { border-radius: 14px; padding: 16px 18px 18px; width: 100%; flex: 1; display: flex; flex-direction: column; }
+            .afyp-chart { flex: 1; min-height: 380px; width: 100%; }
             .afyp-chart svg { width: 100%; height: 100%; }
             .afyp-chart-summary { gap: 6px; margin-bottom: 12px; }
-            .afyp-chart-summary .sum-item { padding: 7px 8px; }
-            .afyp-chart-summary .sum-label { font-size: .58rem; }
-            .afyp-chart-summary .sum-val { font-size: .82rem; }
-            .afyp-chart-title { font-size: .8rem; margin-bottom: 10px; }
+            .afyp-chart-summary .sum-item { padding: 6px 8px; }
+            .afyp-chart-summary .sum-label { font-size: .55rem; }
+            .afyp-chart-summary .sum-val { font-size: .8rem; }
+            .afyp-chart-title { font-size: .78rem; margin-bottom: 10px; }
 
-            /* ===== SECTION DIVIDER ===== */
-            .section-divider {
-                margin: 0 0 10px; padding-bottom: 6px;
-                font-size: 10px; color: #8aaccc; text-transform: uppercase;
-                letter-spacing: .1em; font-weight: 800;
-                border-bottom: 2px solid #1a3355;
-            }
+            /* === SECTION DIVIDER === */
+            .section-divider { margin: 0 0 8px; font-size: 9px; color: #5a7a9a; text-transform: uppercase; letter-spacing: .08em; font-weight: 700; }
 
-            /* ===== DEPARTMENTS: 2x2 Grid ===== */
+            /* === DEPARTMENTS: right column, compact === */
             .kpi-stack {
-                display: grid !important;
-                grid-template-columns: 1fr 1fr;
-                gap: 14px;
+                display: flex !important;
+                flex-direction: column;
+                gap: 12px;
                 margin: 0;
             }
-            .dept-section { display: flex; flex-direction: column; gap: 0; }
+            .dept-section { display: flex; flex-direction: column; gap: 6px; }
+            .kpi-phong { margin: 0; padding: 10px 12px 10px; border-radius: 10px; }
+            .phong-head { margin-bottom: 4px; gap: 6px; }
+            .phong-name { font-size: 10px; gap: 5px; white-space: nowrap; }
+            .phong-name i { font-size: 11px; }
+            .phong-pct { font-size: 14px; }
+            .phong-body { gap: 4px; grid-template-columns: minmax(0, 1fr) minmax(60px, 140px); }
+            .phong .afyp-big { font-size: .95rem; }
+            .phong .kh-small { font-size: .55rem; }
+            .phong-progress { height: 5px; }
+            .phong-stats { gap: 4px; margin-top: 4px; }
+            .phong-stat { border-radius: 6px; padding: 4px 3px 3px; }
+            .phong-stat-label { font-size: 5.5px; margin-bottom: 0; }
+            .phong-stat-val { font-size: 11px; }
 
-            /* Department card — new flat panel style */
-            .kpi-phong {
-                margin: 0; padding: 14px 16px 12px; border-radius: 12px;
-                border-top: 3px solid #ff9f2b;
-            }
-            .phong-head { margin-bottom: 6px; gap: 8px; }
-            .phong-name { font-size: 11px; gap: 6px; white-space: nowrap; }
-            .phong-name i { font-size: 12px; }
-            .phong-pct { font-size: 16px; }
-            .phong-body {
-                gap: 6px;
-                grid-template-columns: minmax(0, 1fr) minmax(60px, 140px);
-            }
-            .phong .afyp-big { font-size: 1.1rem; }
-            .phong .kh-small { font-size: .6rem; }
-            .phong-progress { height: 6px; margin-top: 4px; }
-            .phong-stats {
-                display: flex !important; gap: 6px; margin-top: 8px;
-            }
-            .phong-stat {
-                flex: 1; border-radius: 8px; padding: 6px 4px 5px;
-                text-align: center; min-width: 0;
-            }
-            .phong-stat-label { font-size: 7px; margin-bottom: 2px; }
-            .phong-stat-val { font-size: 14px; }
-
-            /* ===== AD TABLE inside department ===== */
-            .ad-grid {
-                display: none !important; /* hide mobile AD cards on desktop */
-            }
-            .dsk-ad-wrap {
-                display: block;
-                margin-top: 8px;
-            }
-            .dsk-ad-table {
-                display: table;
-                width: 100%;
-                border-collapse: separate;
-                border-spacing: 0;
-                font-size: 11px;
-                background: #0a1525;
-                border-radius: 8px;
-                overflow: hidden;
-                border: 1px solid #1a2a44;
-            }
-            .dsk-ad-table thead th {
-                padding: 6px 6px 5px;
-                font-size: 9px; font-weight: 800;
-                text-transform: uppercase; letter-spacing: .04em;
-                color: #6a8aaa;
-                background: #0d1a2e;
-                border-bottom: 1px solid #1a2a44;
-                text-align: center;
-                white-space: nowrap;
-            }
-            .dsk-ad-table thead th:first-child { text-align: left; padding-left: 10px; }
-            .dsk-ad-table tbody tr {
-                cursor: pointer;
-                transition: background .15s;
-            }
-            .dsk-ad-table tbody tr:hover { background: #142440; }
-            .dsk-ad-table tbody td {
-                padding: 7px 6px;
-                text-align: center;
-                border-bottom: 1px solid #0f1e34;
-                font-weight: 700;
-                white-space: nowrap;
-                color: #c8d8ea;
-            }
-            .dsk-ad-table tbody td:first-child { text-align: left; padding-left: 10px; }
-            .dsk-ad-name { font-weight: 900; color: #e0f0ff; }
-            .dsk-ad-pct { font-weight: 900; }
-            .dsk-ad-pct.green { color: #4ade80; }
-            .dsk-ad-pct.gold { color: #fbbf24; }
-            .dsk-ad-pct.red { color: #f87171; }
-            .dsk-ad-mini-prog {
-                width: 40px; height: 4px; border-radius: 99px;
-                background: #1a2a44; display: inline-block; vertical-align: middle;
-                overflow: hidden;
-            }
-            .dsk-ad-mini-prog-fill {
-                height: 100%; border-radius: inherit;
-                transition: width .8s cubic-bezier(.22, 1, .36, 1);
-            }
+            /* === AD (employee) grid: 1 per row in right column === */
+            .ad-grid { display: grid !important; grid-template-columns: 1fr 1fr; gap: 4px; margin-top: 4px; margin-bottom: 0; align-items: stretch; }
+            .kpi-ad { padding: 5px 7px 4px; border-radius: 8px; }
+            .ad-inner { display: flex; flex-direction: column; height: 100%; }
+            .ad-top { gap: 3px; grid-template-columns: 1fr; }
+            .ad-left { display: flex; flex-direction: column; }
+            .ad-name-row { display: flex; align-items: center; gap: 4px; }
+            .ad-name { font-size: 9px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+            .ad-pct { font-size: 10px; }
+            .ad-kh { font-size: 5px; margin-top: 0; }
+            .ad-right { display: flex; flex-direction: column; gap: 2px; }
+            .ad-stats { gap: 2px; flex: 1; display: grid; grid-template-columns: repeat(3, 1fr); }
+            .ad-stat { border-radius: 5px; padding: 2px 2px 1px; }
+            .ad-stat-label { font-size: 5px; margin-bottom: 0; }
+            .ad-stat-val { font-size: 8px; }
+            .ad-progress { height: 2px; margin-top: auto; }
 
             .link-grid { gap: 8px; }
-
-            /* ===== DETAIL VIEW (Chi Tiết Ban Nhóm) - Desktop ===== */
-            #view-detail .detail-shell {
-                max-width: 1200px; width: 100%; margin: 0 auto; padding: 16px 24px;
-            }
-            #view-detail .detail-title { font-size: 1.8rem !important; }
-            #view-detail .detail-meta { font-size: 14px; }
-            /* Top 3 cards wider */
-            #view-detail .top3-grid { max-width: 900px; gap: 20px; }
-            .top3-card { padding: 18px 14px 14px; }
-            /* Group items: grid layout 2 columns on desktop */
-            #view-detail .detail-list-wrap {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 10px;
-                max-width: 1200px;
-            }
-            .grp-item {
-                padding: 10px 14px 8px;
-                border-radius: 12px;
-            }
-            .grp-name { font-size: 14px; }
-            .grp-pct { font-size: 14px; }
-            .grp-stat-main, .grp-stat-kh { font-size: 12px; }
-            .grp-prog { height: 5px; }
-            /* Month & func selectors */
-            #view-detail .month-grid { max-width: 600px; margin: 0 auto; }
-            #view-detail .func-row { max-width: 600px; margin: 8px auto; }
         }
 
         @media (min-width: 1024px) {
             #view-main { padding: 20px 32px 28px; }
-            .hero-title { font-size: 1.2rem !important; }
-            .desktop-split { gap: 24px; margin-top: 24px; }
-            .afyp-chart { min-height: 520px; }
-            .dsk-cty-pct { font-size: 2.8rem; }
-            .dsk-cty-afyp { font-size: 1.3rem; }
-            .dsk-cty-tile-val { font-size: 1.8rem; }
-            .phong-pct { font-size: 17px; }
-            .phong .afyp-big { font-size: 1.2rem; }
-            .phong-stat-val { font-size: 15px; }
-            .dsk-ad-table { font-size: 11.5px; }
-
-            /* Popup table desktop 1024+ */
-            .td-page .pop-box { max-width: 1700px; }
-            .td-page .ptw { max-height: 72vh; }
-            .td-page .pt { font-size: 12.5px; }
-            .td-page .pt thead th { padding: 7px 6px; font-size: 10.5px; }
-            .td-page .pt tbody td { padding: 6px 6px; font-size: 11.5px; }
-            .td-page .pop-media { width: 380px; }
-            .td-page .pop-poster, .td-page .pop-ph { max-height: 300px; }
-
-            /* Detail view 1024+ */
-            #view-detail .detail-shell { max-width: 1400px; padding: 20px 32px; }
-            #view-detail .detail-title { font-size: 2rem !important; }
-            #view-detail .detail-list-wrap { gap: 12px; }
-            .grp-name { font-size: 15px; }
-            .grp-pct { font-size: 15px; }
-            .grp-stat-main, .grp-stat-kh { font-size: 13px; }
+            #view-main header { margin-bottom: 22px; padding-bottom: 18px; }
+            .hero-title { font-size: 1.4rem !important; }
+            .nav-grid { margin-bottom: 22px; padding-bottom: 18px; }
+            .desktop-split { grid-template-columns: 300px 1fr 1fr; gap: 18px; }
+            .afyp-chart { min-height: 400px; }
+            .kpi-cty { padding: 18px 20px 20px; }
+            .cty-pct-num { font-size: 2rem; }
+            .cty .afyp-big { font-size: 1.5rem; }
+            .cty-stat-val { font-size: 20px; }
+            .phong-pct { font-size: 15px; }
+            .phong .afyp-big { font-size: 1.05rem; }
+            .phong-stat-val { font-size: 12px; }
+            .ad-name { font-size: 9.5px; }
+            .ad-pct { font-size: 10.5px; }
+            .ad-stat-val { font-size: 8.5px; }
         }
 
         @media (min-width: 1400px) {
-            #view-main { padding: 24px 44px 32px; }
-            .hero-title { font-size: 1.3rem !important; }
-            .desktop-split { gap: 28px; margin-top: 28px; }
-            .afyp-chart { min-height: 560px; }
+            #view-main { padding: 24px 40px 32px; }
+            #view-main header { margin-bottom: 24px; padding-bottom: 20px; }
+            .hero-title { font-size: 1.5rem !important; }
+            .nav-grid { margin-bottom: 24px; padding-bottom: 20px; }
+            .desktop-split { grid-template-columns: 320px 1fr 1fr; gap: 20px; }
+            .afyp-chart { min-height: 440px; }
             .afyp-chart-wrap { padding: 18px 22px 20px; }
-            .dsk-cty-left { padding: 24px 32px; min-width: 260px; }
-            .dsk-cty-pct { font-size: 3rem; }
-            .dsk-cty-afyp { font-size: 1.5rem; }
-            .dsk-cty-tile { padding: 22px 16px; }
-            .dsk-cty-tile-val { font-size: 2rem; }
-            .kpi-stack { gap: 18px; }
-            .kpi-phong { padding: 16px 18px 14px; }
-            .phong-pct { font-size: 18px; }
-            .phong .afyp-big { font-size: 1.3rem; }
-            .phong-stat-val { font-size: 16px; }
-            .dsk-ad-table { font-size: 12px; }
-
-            /* Popup table desktop 1400+ */
-            .td-page .pop-box { max-width: 1800px; width: 98%; }
-            .td-page .ptw { max-height: 80vh; }
-            .td-page .pt { font-size: 13px; }
-            .td-page .pt thead th { padding: 8px 7px; font-size: 11px; }
-            .td-page .pt tbody td { padding: 7px 7px; font-size: 12px; }
-            .td-page .pop-media { width: 420px; }
-            .td-page .pop-poster, .td-page .pop-ph { max-height: 320px; }
-
-            /* Detail view 1400+ */
-            #view-detail .detail-shell { max-width: 1600px; }
-            #view-detail .detail-title { font-size: 2.2rem !important; }
+            .kpi-cty { padding: 20px 22px 22px; }
+            .cty-pct-num { font-size: 2.2rem; }
+            .cty .afyp-big { font-size: 1.6rem; }
+            .cty-stat-val { font-size: 22px; }
+            .cty-stat-label { font-size: 7.5px; }
+            .kpi-stack { gap: 14px; }
+            .kpi-phong { padding: 12px 14px 12px; }
+            .phong-pct { font-size: 16px; }
+            .phong .afyp-big { font-size: 1.1rem; }
+            .phong-stat-val { font-size: 13px; }
+            .phong-stat-label { font-size: 6px; }
+            .ad-grid { gap: 5px; }
+            .ad-name { font-size: 10px; }
+            .ad-pct { font-size: 11px; }
+            .ad-stat-val { font-size: 9px; }
         }
 
         /* === USER OVERRIDES: Unified table headers, alignment, sticky title === */
@@ -2613,19 +2444,6 @@
             letter-spacing: .03em !important;
         }
         .td-page .pop-meta { align-items: center !important; }
-
-        /* Desktop: title left-aligned in horizontal header */
-        @media (min-width: 641px) {
-            .td-page .pop-bar-main {
-                align-items: flex-start !important;
-                text-align: left !important;
-            }
-            .td-page .pop-bar h2,
-            .td-page .pop-bar h2.po-title {
-                text-align: left !important;
-            }
-            .td-page .pop-meta { align-items: flex-start !important; }
-        }
 
         /* Override: unified header alignment */
         .td-page .pt thead th {
@@ -2779,10 +2597,10 @@
                 </div>
             </nav>
 
-            <!-- Desktop 2-row wrapper: Row1=Company(full) | Row2=Chart+Departments(2col) -->
+            <!-- Desktop 3-column wrapper: Company | Chart | Departments -->
             <div class="desktop-split" id="desktop-split">
                 <div class="split-left" id="split-company">
-                    <!-- Company card: full-width banner (JS moves it here on desktop) -->
+                    <!-- Company card goes here (JS moves it) -->
                 </div>
                 <div class="split-center" id="split-chart">
                     <!-- AFYP Chart (desktop only) -->
@@ -3303,34 +3121,10 @@
                 '</div>' +
                 buildTeamBoard(active, activeIdx);
         }
-        /* Desktop: show AD detail when clicking table row */
-        function showAdDetailView(adKey, info) {
-            go('view-detail');
-            if (info) {
-                /* Pre-select the AD's group in detail view */
-                setTimeout(function() {
-                    var dtMeta = $('detail-meta');
-                    if (dtMeta && info.managerName) {
-                        dtMeta.textContent = info.managerName;
-                    }
-                }, 300);
-            }
-        }
-
         function bindDashboardEvents() {
             if (document.body.dataset.mainDashBound === '1') return;
             document.body.dataset.mainDashBound = '1';
             document.addEventListener('click', function(e) {
-                // Desktop: AD table row click → show detail view
-                var adRow = e.target.closest('.dsk-ad-table tbody tr[data-ad-key]');
-                if (adRow) {
-                    var adKey = adRow.getAttribute('data-ad-key');
-                    if (adKey && dashboardState.adGroups[adKey]) {
-                        var info = dashboardState.adGroups[adKey];
-                        showAdDetailView(adKey, info);
-                    }
-                    return;
-                }
                 // Ad group button click
                 var groupBtn = e.target.closest('.ad-group-btn');
                 if (groupBtn) {
@@ -3858,14 +3652,12 @@
                 delay += 60;
 
                 if (p.ads.length && !p.noAds) {
-                    /* Always render both mobile cards + desktop table; CSS handles visibility */
                     deptHtml += '<div class="ad-grid">';
                     p.ads.forEach(function(ad) {
                         deptHtml += buildAdCard(ad, delay);
                         delay += 30;
                     });
                     deptHtml += '</div>';
-                    deptHtml += buildAdTable(p.ads, delay);
                 }
                 deptHtml += '</div>';
                 htmlParts.push(deptHtml);
@@ -3883,68 +3675,15 @@
             total.tyTrong = total.tyTrongCount? (total.tyTrongWeighted / total.tyTrongCount) : 0;
 
             box.innerHTML = htmlParts.join('');
-            /* Always render both company layouts; CSS will show the correct one */
-            ctyBox.innerHTML = buildCtyCard(total) + buildCtyStrip(total);
-            /* Desktop: move company card before desktop-split */
+            ctyBox.innerHTML = buildCtyCard(total);
+            /* Desktop: move company card into split-company column */
             if (window.innerWidth >= 900) {
-                var split = $('desktop-split');
-                if (split && ctyBox.parentNode !== split.parentNode) {
-                    split.parentNode.insertBefore(ctyBox, split);
-                }
+                var splitCompany = $('split-company');
+                if (splitCompany && ctyBox.parentNode !== splitCompany) splitCompany.appendChild(ctyBox);
             }
             bindDashboardEvents();
             triggerAnimations();
             renderAfypChart();
-        }
-
-        /* ===== DESKTOP-SPECIFIC BUILDERS ===== */
-
-        /* Company strip: horizontal banner with KPI tiles */
-        function buildCtyStrip(item) {
-            var pct = item.kh ? (item.afyp / item.kh * 100) : 0, cp = Math.min(pct, 100);
-            var pctClass = pct >= 100 ? 'green' : pct >= 75 ? 'gold' : 'red';
-            return '<div class="dsk-company">' +
-                '<div class="dsk-cty-left">' +
-                '<div class="dsk-cty-label"><i class="fa-solid fa-trophy" style="color:#f2b24d;margin-right:4px"></i>Tổng Công Ty</div>' +
-                '<div class="dsk-cty-pct" data-pct="' + pct + '">0%</div>' +
-                '<div class="dsk-cty-prog-wrap"><div class="dsk-cty-prog"><div class="dsk-cty-prog-fill" data-w="' + cp + '%"></div></div></div>' +
-                '<div class="dsk-cty-afyp" data-count="' + item.afyp + '">0</div>' +
-                '<div class="dsk-cty-kh">KH: ' + fmt(item.kh) + '</div>' +
-                '</div>' +
-                '<div class="dsk-cty-right">' +
-                '<div class="dsk-cty-tile hd"><div class="dsk-cty-tile-label">Lượt HĐ</div><div class="dsk-cty-tile-val" data-count="' + item.lhd + '">0</div></div>' +
-                '<div class="dsk-cty-tile td"><div class="dsk-cty-tile-label">Tuyển dụng</div><div class="dsk-cty-tile-val" data-count="' + item.td + '">0</div></div>' +
-                '<div class="dsk-cty-tile chuan"><div class="dsk-cty-tile-label">Lượt chuẩn</div><div class="dsk-cty-tile-val" data-count="' + item.hdChuan + '">0</div></div>' +
-                '<div class="dsk-cty-tile ip"><div class="dsk-cty-tile-label">IP/AFYP</div><div class="dsk-cty-tile-val">' + esc(fmtTyTrong(item.tyTrong)) + '</div></div>' +
-                '</div>' +
-                '</div>';
-        }
-
-        /* AD table: compact table for desktop department sections */
-        function buildAdTable(ads, delay) {
-            var html = '<div class="dsk-ad-wrap"><table class="dsk-ad-table">';
-            html += '<thead><tr>' +
-                '<th>AD</th><th>% KH</th><th>AFYP</th><th>HĐ</th><th>TD</th><th>Chuẩn</th><th>IP</th><th></th>' +
-                '</tr></thead><tbody>';
-            ads.forEach(function(ad, i) {
-                var pct = ad.kh ? (ad.afyp / ad.kh * 100) : 0;
-                var cp = Math.min(pct, 100);
-                var pctClass = pct >= 100 ? 'green' : pct >= 75 ? 'gold' : 'red';
-                var progStart = progressColor(Math.max(pct - 24, 0));
-                var progEnd = progressColor(pct);
-                html += '<tr class="anim-in" data-ad-key="' + esc(ad.managerKey || '') + '" style="animation-delay:' + (delay + i * 30) + 'ms">' +
-                    '<td><span class="dsk-ad-name">' + esc(ad.ten) + '</span></td>' +
-                    '<td><span class="dsk-ad-pct ' + pctClass + '">' + pct.toFixed(0) + '%</span></td>' +
-                    '<td>' + fmt(ad.afyp) + '</td>' +
-                    '<td>' + ad.lhd + '</td>' +
-                    '<td>' + ad.td + '</td>' +
-                    '<td>' + ad.hdChuan + '</td>' +
-                    '<td>' + esc(fmtTyTrong(ad.tyTrong)) + '</td>' +
-                    '<td><span class="dsk-ad-mini-prog"><span class="dsk-ad-mini-prog-fill" data-w="' + cp + '%" style="background:linear-gradient(90deg,' + progStart + ',' + progEnd + ')"></span></span></td>' +
-                    '</tr>';
-            });
-            html += '</tbody></table></div>';
-            return html;
         }
 
         function subsHTML(lhd, td, hdc, cls) {
@@ -4037,7 +3776,7 @@
 
         function triggerAnimations() {
             requestAnimationFrame(function() {
-                var allFills = document.querySelectorAll('.mini-progress-fill[data-w],.cty-progress-fill[data-w],.phong-progress-fill[data-w],.ad-progress-fill[data-w],.dsk-cty-prog-fill[data-w],.dsk-ad-mini-prog-fill[data-w]');
+                var allFills = document.querySelectorAll('.mini-progress-fill[data-w],.cty-progress-fill[data-w],.phong-progress-fill[data-w],.ad-progress-fill[data-w]');
                 for (var i = 0; i < allFills.length; i++) allFills[i].style.width = allFills[i].dataset.w;
                 var allCounts = document.querySelectorAll('[data-count]');
                 for (var i = 0; i < allCounts.length; i++) animateValue(allCounts[i], num(allCounts[i].dataset.count));
@@ -5780,6 +5519,8 @@ if (ok) { toast('Đã xóa', 'ok'); ccf(); await lfs(); }
                             if (c === sttColIdx) tdCls = 'pst';
                         } else if (cat2 === 'textInfo') {
                             tdCls = 'd-text-info';
+                            /* ★ Cột textInfo cuối cùng (Người TD) → căn lề trái */
+                            if (c === lastTextInfoCol) tdCls = 'd-text-info d-text-info-last';
                         } else if (cat2 === 'numdata') {
                             tdCls = 'd-numdata';
                         } else if (cat2 === 'numdataFyp') {
@@ -6135,6 +5876,11 @@ if (ok) { toast('Đã xóa', 'ok'); ccf(); await lfs(); }
                 }
 
                 /* === HÀNG DỮ LIỆU === */
+                /* ★ Tìm cột textInfo cuối cùng → dùng để căn lề trái (Người TD) */
+                var lastTextInfoCol = -1;
+                for (var ltic = dc - 1; ltic >= infoColCount; ltic--) {
+                    if (colCats[ltic] === 'textInfo') { lastTextInfoCol = ltic; break; }
+                }
                 var data = all.slice(1);
                 for(var r=0;r<data.length;r++){
                     var rc=data[r]||[];
@@ -6337,13 +6083,18 @@ if (ok) { toast('Đã xóa', 'ok'); ccf(); await lfs(); }
 
         syncData();
 
-        /* Resize: cập nhật biểu đồ AFYP + re-render desktop layout */
+        /* Resize: cập nhật biểu đồ AFYP */
         var _afypResizeTimer;
         window.addEventListener('resize', function() {
             clearTimeout(_afypResizeTimer);
             _afypResizeTimer = setTimeout(function() {
                 renderAfypChart();
-                /* On significant resize, re-render to switch between desktop/mobile layouts */
+                /* Desktop: move company card into split-company column; mobile: leave in place */
+                var ctyBox = $('kpi-company');
+                var splitCompany = $('split-company');
+                if (window.innerWidth >= 900 && splitCompany && ctyBox && ctyBox.parentNode !== splitCompany) {
+                    splitCompany.appendChild(ctyBox);
+                }
             }, 200);
         });
     </script>
