@@ -6117,6 +6117,19 @@ if (ok) { toast('Đã xóa', 'ok'); ccf(); await lfs(); }
         window.addEventListener('load', function() {
             navigator.serviceWorker.register('sw.js').then(function(reg) {
                 console.log('Service Worker registered, scope:', reg.scope);
+                /* ★ TỰ ĐỘNG CẬP NHẬT: kiểm tra SW mới mỗi lần mở app */
+                reg.onupdatefound = function() {
+                    var newWorker = reg.installing;
+                    newWorker.onstatechange = function() {
+                        if (newWorker.state === 'activated') {
+                            /* SW mới đã kích hoạt → reload trang để dùng bản mới */
+                            console.log('[SW] New version activated, reloading...');
+                            window.location.reload();
+                        }
+                    };
+                };
+                /* Luôn kiểm tra cập nhật khi mở app */
+                reg.update();
             }).catch(function(err) {
                 console.log('Service Worker registration failed:', err);
             });
