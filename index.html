@@ -2535,6 +2535,38 @@
                 height: 100%; border-radius: inherit;
                 transition: width .8s cubic-bezier(.22, 1, .36, 1);
             }
+            /* ★ Desktop AD drill-down row */
+            .dsk-ad-drill-row > td {
+                border-top: 2px solid #2a4a70;
+                border-bottom: 1px solid #1a2a44;
+            }
+            .dsk-ad-drill-row .ad-drill-head {
+                display: flex; justify-content: space-between; align-items: center;
+                padding: 8px 12px; background: #0d1a2e; color: #8ab4d8;
+                font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .04em;
+            }
+            .dsk-ad-drill-row .ad-group-list {
+                display: flex; flex-wrap: wrap; gap: 4px; padding: 6px 12px;
+                background: #0d1a2e;
+            }
+            .dsk-ad-drill-row .ad-group-btn {
+                padding: 4px 10px; border-radius: 6px; border: 1px solid #2a4a70;
+                background: #142440; color: #8ab4d8; font-size: 10px; font-weight: 700;
+                cursor: pointer; transition: all .15s; font-family: inherit;
+            }
+            .dsk-ad-drill-row .ad-group-btn.on,
+            .dsk-ad-drill-row .ad-group-btn:hover {
+                background: #2a4a70; color: #fff; border-color: #4a7ab5;
+            }
+            .dsk-ad-drill-row .ad-group-btn .cnt {
+                margin-left: 4px; opacity: .6; font-size: 9px;
+            }
+            .dsk-ad-drill-row .ad-team-board {
+                padding: 8px 12px 12px;
+            }
+            .dsk-ad-drill-row .ad-empty {
+                padding: 16px 12px; text-align: center; color: #6a8aaa; font-size: 11px;
+            }
 
             .link-grid { gap: 8px; }
 
@@ -3347,16 +3379,43 @@
         }
         /* Desktop: show AD detail when clicking table row */
         function showAdDetailView(adKey, info) {
-            go('view-detail');
-            if (info) {
-                /* Pre-select the AD's group in detail view */
-                setTimeout(function() {
-                    var dtMeta = $('detail-meta');
-                    if (dtMeta && info.managerName) {
-                        dtMeta.textContent = info.managerName;
-                    }
-                }, 300);
+            /* ★ Toggle drill-down panel below the AD table row */
+            var adRow = document.querySelector('.dsk-ad-table tbody tr[data-ad-key="' + adKey + '"]');
+            if (!adRow || !info) return;
+
+            /* Remove any existing drill-down rows */
+            var existingDrill = adRow.parentNode.querySelector('.dsk-ad-drill-row');
+            if (existingDrill) {
+                existingDrill.remove();
+                return; /* toggle off */
             }
+            /* Remove drills from other tables too */
+            document.querySelectorAll('.dsk-ad-drill-row').forEach(function(r) { r.remove(); });
+
+            /* Build drill-down content */
+            var drillContent = '';
+            if (info.mode === 'members' && info.members && info.members.length) {
+                drillContent = '<div class="ad-drill-head"><span>Danh sách TVV</span><span>' + info.members.length + ' TVV</span></div>';
+                drillContent += buildMemberOnlyBoard(info.title || info.managerName, info.members);
+            } else if (info.mode === 'groups' && info.groups && info.groups.length) {
+                var active = info.groups[0];
+                drillContent = '<div class="ad-drill-head"><span>Nhóm thuộc quyền</span><span>' + info.groups.length + ' nhóm</span></div>';
+                drillContent += '<div class="ad-group-list">';
+                info.groups.forEach(function(group) {
+                    drillContent += '<button type="button" class="ad-group-btn on" data-ad-drill-key="' + esc(adKey) + '" data-group-name="' + esc(group.name) + '">' + esc(group.name) + '<span class="cnt">(' + group.members.length + ')</span></button>';
+                });
+                drillContent += '</div>';
+                drillContent += buildTeamBoard(active, 0);
+            } else {
+                drillContent = '<div class="ad-empty">Chưa có dữ liệu.</div>';
+            }
+
+            /* Insert drill row after the clicked row */
+            var drillRow = document.createElement('tr');
+            drillRow.className = 'dsk-ad-drill-row';
+            var colSpan = adRow.cells.length;
+            drillRow.innerHTML = '<td colspan="' + colSpan + '" style="padding:0;background:#0d1a2e">' + drillContent + '</td>';
+            adRow.parentNode.insertBefore(drillRow, adRow.nextSibling);
         }
 
         function bindDashboardEvents() {
@@ -3376,6 +3435,29 @@
                 // Ad group button click
                 var groupBtn = e.target.closest('.ad-group-btn');
                 if (groupBtn) {
+                    /* ★ Desktop drill-down group button */
+                    var drillRow = groupBtn.closest('.dsk-ad-drill-row');
+                    if (drillRow) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        var adDrillKey = groupBtn.getAttribute('data-ad-drill-key') || '';
+                        var groupName = groupBtn.getAttribute('data-group-name') || '';
+                        var info = dashboardState.adGroups[adDrillKey];
+                        if (info && info.groups) {
+                            var activeIdx = info.groups.findIndex(function(g) { return g.name === groupName; });
+                            if (activeIdx < 0) activeIdx = 0;
+                            /* Update active button styling */
+                            drillRow.querySelectorAll('.ad-group-btn').forEach(function(b) { b.classList.remove('on'); });
+                            groupBtn.classList.add('on');
+                            /* Rebuild team board */
+                            var teamBoard = drillRow.querySelector('.ad-team-board');
+                            if (teamBoard) {
+                                teamBoard.outerHTML = buildTeamBoard(info.groups[activeIdx], activeIdx);
+                            }
+                        }
+                        return;
+                    }
+                    /* Mobile card group button */
                     var ownerCard = groupBtn.closest('.kpi-ad[data-ad-key]');
                     if (ownerCard) {
                         e.preventDefault();
