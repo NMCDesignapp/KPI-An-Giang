@@ -1747,10 +1747,10 @@
             background: #002200;
             color: #fff;
         }
-        /* Nhóm số liệu FYP: nền nhạt hơn, in đậm nổi bật */
+        /* ★ Nhóm số liệu FYP (TỔNG FYP): nổi bật — nền xanh ngọc đậm, chữ trắng vàng */
         .td-page .pt thead th.h-num-fyp {
-            background: #1a5c1a;
-            color: #cfc;
+            background: #0d6e3f;
+            color: #fff;
             font-weight: 900;
         }
         /* Nhóm số liệu FYC: tiêu đề nền xanh dương, chữ trắng */
@@ -1769,15 +1769,15 @@
             background: orangered;
             color: #00008B;
         }
-        /* Điều kiện — hàng trên (phân tầng/danh hiệu): #BD6B09, chữ xanh dương đậm */
+        /* Điều kiện — hàng trên (phân tầng/danh hiệu): tông nâu ấm, chữ trắng */
         .td-page .pt thead th.h-cond-top {
-            background: #BD6B09;
-            color: #00008B;
+            background: #6D4C2A;
+            color: #fff;
         }
-        /* Điều kiện — hàng dưới (chỉ tiêu >=, <=): #EC870E, chữ xanh dương đậm */
+        /* Điều kiện — hàng dưới (chỉ tiêu >=, <=): tông nâu nhạt, chữ tối */
         .td-page .pt thead th.h-cond-bot {
-            background: #EC870E;
-            color: #00008B;
+            background: #A67C52;
+            color: #1a0e00;
             position: sticky;
             top: auto;
             z-index: 3;
@@ -1824,40 +1824,43 @@
         }
 
         /* ★ MÀU KHÁC NHAU CHO TỪNG NHÓM ĐIỀU KIỆN */
-        /* Nhóm 0 — Hạng Vàng: vàng */
-        .td-page .pt thead th.h-cond-g0.h-cond-top { background: #B8860B; color: #fff; }
-        .td-page .pt thead th.h-cond-g0.h-cond-bot { background: #D4A017; color: #3a2600; }
-        .td-page .pt tbody td.d-cond-g0 { background: rgba(255, 248, 220, 0.06); color: #4a3500; }
+        /* Nguyên tắc: hạng cao nhất → đậm nhất, hạng thấp → nhạt, nội dung → nhạt nhất */
+        /* Thứ tự: g0 Vàng (thấp nhất) → g1 Bạch Kim → g2 Kim Cương (cao nhất) */
 
-        /* Nhóm 1 — Hạng Bạch Kim: bạc */
+        /* Nhóm 0 — Hạng Vàng (thấp nhất): tông vàng nhạt, chữ trắng trên đậm, tối trên nhạt */
+        .td-page .pt thead th.h-cond-g0.h-cond-top { background: #C9A84C; color: #fff; }
+        .td-page .pt thead th.h-cond-g0.h-cond-bot { background: #DFC37A; color: #3a2800; }
+        .td-page .pt tbody td.d-cond-g0 { background: rgba(201, 168, 76, 0.07); color: #4a3500; }
+
+        /* Nhóm 1 — Hạng Bạch Kim (trung bình): tông bạc đậm hơn */
         .td-page .pt thead th.h-cond-g1.h-cond-top { background: #5C6B7A; color: #fff; }
         .td-page .pt thead th.h-cond-g1.h-cond-bot { background: #8494A7; color: #1a2030; }
-        .td-page .pt tbody td.d-cond-g1 { background: rgba(232, 236, 242, 0.06); color: #2a3040; }
+        .td-page .pt tbody td.d-cond-g1 { background: rgba(92, 107, 122, 0.07); color: #1a2a35; }
 
-        /* Nhóm 2 — Hạng Kim Cương: xanh diamond */
-        .td-page .pt thead th.h-cond-g2.h-cond-top { background: #2B5EA7; color: #fff; }
-        .td-page .pt thead th.h-cond-g2.h-cond-bot { background: #4A8AD4; color: #fff; }
-        .td-page .pt tbody td.d-cond-g2 { background: rgba(218, 232, 252, 0.06); color: #1a2a50; }
+        /* Nhóm 2 — Hạng Kim Cương (cao nhất): tông xanh diamond đậm nhất */
+        .td-page .pt thead th.h-cond-g2.h-cond-top { background: #0D47A1; color: #fff; }
+        .td-page .pt thead th.h-cond-g2.h-cond-bot { background: #1976D2; color: #fff; }
+        .td-page .pt tbody td.d-cond-g2 { background: rgba(13, 71, 161, 0.07); color: #0a1a50; }
 
         /* Nhóm 3 — xanh lá */
         .td-page .pt thead th.h-cond-g3.h-cond-top { background: #2E7D32; color: #fff; }
-        .td-page .pt thead th.h-cond-g3.h-cond-bot { background: #4CAF50; color: #1a3018; }
-        .td-page .pt tbody td.d-cond-g3 { background: rgba(224, 242, 224, 0.06); color: #1a3520; }
+        .td-page .pt thead th.h-cond-g3.h-cond-bot { background: #4CAF50; color: #0a2010; }
+        .td-page .pt tbody td.d-cond-g3 { background: rgba(46, 125, 50, 0.07); color: #1a3520; }
 
         /* Nhóm 4 — đỏ tía */
         .td-page .pt thead th.h-cond-g4.h-cond-top { background: #7B1FA2; color: #fff; }
         .td-page .pt thead th.h-cond-g4.h-cond-bot { background: #AB47BC; color: #fff; }
-        .td-page .pt tbody td.d-cond-g4 { background: rgba(240, 224, 248, 0.06); color: #3a1050; }
+        .td-page .pt tbody td.d-cond-g4 { background: rgba(123, 31, 162, 0.07); color: #3a1050; }
 
         /* ★ Cột điều kiện chứa "vé" — nền xanh lá */
         .td-page .pt thead th.h-cond-ve.h-cond-top { background: #2E7D32 !important; color: #fff !important; }
         .td-page .pt thead th.h-cond-ve.h-cond-bot { background: #43A047 !important; color: #fff !important; }
-        .td-page .pt tbody td.d-cond-ve { background: rgba(200, 230, 201, 0.06) !important; color: #1B5E20 !important; font-weight: 700; white-space: normal !important; }
+        .td-page .pt tbody td.d-cond-ve { background: rgba(46, 125, 50, 0.08) !important; color: #1B5E20 !important; font-weight: 700; white-space: normal !important; }
 
         /* ★ Cột điều kiện chứa "%" — nền xanh lá nhạt */
         .td-page .pt thead th.h-cond-pct.h-cond-top { background: #2E7D32 !important; color: #fff !important; }
         .td-page .pt thead th.h-cond-pct.h-cond-bot { background: #43A047 !important; color: #fff !important; }
-        .td-page .pt tbody td.d-cond-pct { background: rgba(232, 245, 233, 0.06) !important; color: #1B5E20 !important; font-weight: 700; white-space: normal !important; }
+        .td-page .pt tbody td.d-cond-pct { background: rgba(46, 125, 50, 0.08) !important; color: #1B5E20 !important; font-weight: 700; white-space: normal !important; }
 
         /* ★ CHỈ TIÊU / THỰC HIỆN — hàng header tầng trên cùng */
         .td-page .pt thead th.h-chi-tieu {
@@ -1973,10 +1976,10 @@
             text-align: center;
             font-weight: 600;
         }
-        /* Nhóm số liệu FYP: nền xanh cực mờ, chữ in đậm */
+        /* ★ Nhóm số liệu FYP (TỔNG FYP): nền xanh ngọc cực mờ, chữ in đậm */
         .td-page .pt tbody td.d-numdata-fyp {
-            background: rgba(212, 237, 218, 0.06);
-            color: #1a3a1a;
+            background: rgba(13, 110, 63, 0.10);
+            color: #0a3d20;
             text-align: center;
             font-weight: 700;
         }
@@ -5802,19 +5805,21 @@ if (ok) { toast('Đã xóa', 'ok'); ccf(); await lfs(); }
                     numdataIp: 'background:#1a3d1a;color:#ccffcc;font-weight:bold;text-align:center;',
                     percent:   'background:orangered;color:#00008B;font-weight:bold;text-align:center;',
                     money:     'background:#000044;color:#FFD700;font-weight:bold;text-align:center;',
-                    condition: 'background:#BD6B09;color:#00008B;font-weight:bold;text-align:center;',
-                    condBot:   'background:#EC870E;color:#00008B;font-weight:bold;text-align:center;'
+                    condition: 'background:#6D4C2A;color:#ffffff;font-weight:bold;text-align:center;',
+                    condBot:   'background:#A67C52;color:#1a0e00;font-weight:bold;text-align:center;'
                 };
-                var condGroupTopColors = ['#B8860B','#5C6B7A','#2B5EA7','#2E7D32','#7B1FA2'];
-                var condGroupBotColors = ['#D4A017','#8494A7','#4A8AD4','#4CAF50','#AB47BC'];
-                var condGroupCellBgs   = ['#FFF8DC','#E8ECF2','#DAE8FC','#E0F2E0','#F0E0F8'];
+                /* ★ Nguyên tắc: hạng cao nhất → đậm nhất, nội dung → nhạt nhất */
+                /* g0 Vàng (nhạt nhất) → g1 Bạch Kim → g2 Kim Cương (đậm nhất) */
+                var condGroupTopColors = ['#C9A84C','#5C6B7A','#0D47A1','#2E7D32','#7B1FA2'];
+                var condGroupBotColors = ['#DFC37A','#8494A7','#1976D2','#4CAF50','#AB47BC'];
+                var condGroupCellBgs   = ['#FDF6E3','#EDF0F4','#E3F2FD','#E8F5E9','#F3E5F5'];
 
                 var dStyles = {
                     info:      'background:#ffffff;color:#1e3a5f;text-align:center;',
                     infoLeft:  'background:#ffffff;color:#1e3a5f;text-align:left;padding-left:6px;',
                     textInfo:  'background:#CAE5E8;color:#1e3a5f;text-align:center;',
                     numdata:   'background:#CCCCFF;color:#111111;text-align:center;font-weight:600;',
-                    numdataFyp:'background:#D4EDDA;color:#1a3a1a;text-align:center;font-weight:700;',
+                    numdataFyp:'background:#D4EDDA;color:#0a3d20;text-align:center;font-weight:700;',
                     numdataFyc:'background:transparent;color:#cc0000;text-align:center;font-style:italic;',
                     numdataIp: 'background:#DBDBFF;color:#111111;text-align:center;font-weight:600;',
                     percentPos:'background:#FFFFCC;color:#111111;text-align:center;font-weight:700;font-style:italic;',
