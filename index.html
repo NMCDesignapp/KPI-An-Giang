@@ -1738,18 +1738,19 @@
             background: #000044;
             color: #fff;
         }
-        /* Nhóm thông tin phụ (cột 5+): nền #103667, chữ trắng */
+        /* Nhóm thông tin phụ (ngày, chặng...): nền xám đậm */
         .td-page .pt thead th.h-text-info {
-            background: #103667;
+            background: #555;
             color: #fff;
         }
+        /* Nhóm số liệu (số thực hiện): nền xanh lá đậm */
         .td-page .pt thead th.h-num {
-            background: #002200;
-            color: #fff;
-        }
-        /* Nhóm số liệu FYP: nền nhạt hơn, in đậm nổi bật */
-        .td-page .pt thead th.h-num-fyp {
             background: #1a5c1a;
+            color: #cfc;
+        }
+        /* Nhóm số liệu FYP: nền xanh ngọc đậm hơn */
+        .td-page .pt thead th.h-num-fyp {
+            background: #0d6e3f;
             color: #cfc;
             font-weight: 900;
         }
@@ -1759,9 +1760,9 @@
             color: #ffffff;
             font-weight: 700;
         }
-        /* Nhóm số liệu IP tháng: nền nhạt hơn h-num */
+        /* Nhóm số liệu IP tháng: như h-num */
         .td-page .pt thead th.h-num-ip {
-            background: #1a3d1a;
+            background: #1a5c1a;
             color: #cfc;
         }
         /* Nhóm tỷ lệ %: nền orangered, chữ xanh dương đậm */
@@ -1816,51 +1817,53 @@
             line-height: 1.15;
         }
 
-        /* ★ Cột có ngày tháng — cho phép xuống dòng, thu gọn */
+        /* ★ Cột có ngày tháng — KHÔNG tô màu, in nghiêng, cho phép xuống dòng */
         .td-page .pt tbody td.d-date-wrap {
             white-space: normal !important;
             word-break: break-word;
             font-size: 8.5px;
             line-height: 1.1;
+            font-style: italic;
+            color: #555;
         }
 
         /* ★ MÀU KHÁC NHAU CHO TỪNG NHÓM ĐIỀU KIỆN */
         /* Thứ tự: g0 Vàng (thấp nhất) → g1 Bạch Kim → g2 Kim Cương (cao nhất) */
 
-        /* Nhóm 0 — Hạng Vàng (thấp nhất): tông vàng nhạt, chữ trắng trên đậm, tối trên nhạt */
+        /* Nhóm 0 — Hạng Vàng (thấp nhất): vàng */
         .td-page .pt thead th.h-cond-g0.h-cond-top { background: #C9A84C; color: #fff; }
         .td-page .pt thead th.h-cond-g0.h-cond-bot { background: #DFC37A; color: #3a2800; }
-        .td-page .pt tbody td.d-cond-g0 { background: rgba(201, 168, 76, 0.07); color: #4a3500; }
+        .td-page .pt tbody td.d-cond-g0 { background: rgba(201, 168, 76, 0.06); color: #7a5a00; }
 
-        /* Nhóm 1 — Hạng Bạch Kim (trung bình): tông bạc đậm hơn */
+        /* Nhóm 1 — Hạng Bạch Kim: bạc */
         .td-page .pt thead th.h-cond-g1.h-cond-top { background: #5C6B7A; color: #fff; }
         .td-page .pt thead th.h-cond-g1.h-cond-bot { background: #8494A7; color: #1a2030; }
-        .td-page .pt tbody td.d-cond-g1 { background: rgba(92, 107, 122, 0.07); color: #1a2a35; }
+        .td-page .pt tbody td.d-cond-g1 { background: rgba(92, 107, 122, 0.06); color: #2a3a50; }
 
-        /* Nhóm 2 — Hạng Kim Cương (cao nhất): tông xanh diamond đậm nhất */
+        /* Nhóm 2 — Hạng Kim Cương (cao nhất): xanh diamond */
         .td-page .pt thead th.h-cond-g2.h-cond-top { background: #0D47A1; color: #fff; }
         .td-page .pt thead th.h-cond-g2.h-cond-bot { background: #1976D2; color: #fff; }
-        .td-page .pt tbody td.d-cond-g2 { background: rgba(13, 71, 161, 0.07); color: #0a1a50; }
+        .td-page .pt tbody td.d-cond-g2 { background: rgba(13, 71, 161, 0.06); color: #0a2a60; }
 
         /* Nhóm 3 — xanh lá */
         .td-page .pt thead th.h-cond-g3.h-cond-top { background: #2E7D32; color: #fff; }
         .td-page .pt thead th.h-cond-g3.h-cond-bot { background: #4CAF50; color: #0a2010; }
-        .td-page .pt tbody td.d-cond-g3 { background: rgba(46, 125, 50, 0.07); color: #1a3520; }
+        .td-page .pt tbody td.d-cond-g3 { background: rgba(46, 125, 50, 0.06); color: #1a4020; }
 
         /* Nhóm 4 — đỏ tía */
         .td-page .pt thead th.h-cond-g4.h-cond-top { background: #7B1FA2; color: #fff; }
         .td-page .pt thead th.h-cond-g4.h-cond-bot { background: #AB47BC; color: #fff; }
-        .td-page .pt tbody td.d-cond-g4 { background: rgba(123, 31, 162, 0.07); color: #3a1050; }
+        .td-page .pt tbody td.d-cond-g4 { background: rgba(123, 31, 162, 0.06); color: #4a1060; }
 
         /* ★ Cột điều kiện chứa "vé" — nền xanh lá */
         .td-page .pt thead th.h-cond-ve.h-cond-top { background: #2E7D32 !important; color: #fff !important; }
         .td-page .pt thead th.h-cond-ve.h-cond-bot { background: #43A047 !important; color: #fff !important; }
-        .td-page .pt tbody td.d-cond-ve { background: rgba(46, 125, 50, 0.08) !important; color: #1B5E20 !important; font-weight: 700; white-space: normal !important; }
+        .td-page .pt tbody td.d-cond-ve { background: rgba(46, 125, 50, 0.06) !important; color: #1a4020 !important; font-weight: 700; white-space: normal !important; }
 
         /* ★ Cột điều kiện chứa "%" — nền xanh lá nhạt */
         .td-page .pt thead th.h-cond-pct.h-cond-top { background: #2E7D32 !important; color: #fff !important; }
         .td-page .pt thead th.h-cond-pct.h-cond-bot { background: #43A047 !important; color: #fff !important; }
-        .td-page .pt tbody td.d-cond-pct { background: rgba(46, 125, 50, 0.08) !important; color: #1B5E20 !important; font-weight: 700; white-space: normal !important; }
+        .td-page .pt tbody td.d-cond-pct { background: rgba(46, 125, 50, 0.06) !important; color: #1a4020 !important; font-weight: 700; white-space: normal !important; }
 
         /* ★ CHỈ TIÊU / THỰC HIỆN — hàng header tầng trên cùng */
         .td-page .pt thead th.h-chi-tieu {
@@ -1925,7 +1928,7 @@
         /* === BODY: không xuống dòng, thu gọn === */
         .td-page .pt tbody tr { transition: background .15s; }
         .td-page .pt tbody tr:nth-child(even) td { }
-        .td-page .pt tbody tr:hover td { background: #e0f2fe !important; }
+        .td-page .pt tbody tr:hover td { background: rgba(59, 130, 246, 0.08) !important; }
         .td-page .pt tbody tr.is-focus { background: #bfdbfe !important; }
         .td-page .pt tbody tr.is-focus td { color: #1e3a5f !important; font-weight: 700; }
         .td-page .pt tbody td {
@@ -1941,45 +1944,69 @@
             background: transparent;
         }
 
-        /* === NỘI DUNG CỘT 1-4: nền trắng, chữ #111111 === */
+        /* ======================================================================== */
+        /* ★ BỘ QUY TẮC THỐNG NHẤT CHO TẤT CẢ BẢNG (THI ĐUA / CHÍNH SÁCH / CLB) */
+        /* ======================================================================== */
+        /*
+          Nguyên tắc:
+          1. Cột info (1-4): trắng, chữ đậm
+          2. Cột textInfo (ngày, chặng...): KHÔNG tô màu, chỉ in nghiêng
+          3. Cột numdata/numdataIp (số liệu thực hiện): tô xanh lá cực mờ
+          4. Cột numdataFyp (FYP/Tổng FYP): tô xanh ngọc mờ, đậm hơn numdata
+          5. Cột numdataFyc (FYC): KHÔNG tô, in nghiêng, đỏ
+          6. Cột percent (%): KHÔNG tô, in nghiêng
+          7. Cột money (thưởng): tô vàng cực mờ
+          8. Cột condition (chỉ tiêu): tô theo nhóm g0-g4, nền nhạt nhất
+          9. Cột date: KHÔNG tô, in nghiêng
+          10. Màu body phải tương ứng với màu header của cùng nhóm
+        */
+
+        /* === INFO: nền trắng, chữ đậm === */
         .td-page .pt tbody td.d-info {
             background: #fff;
-            color: #111111;
+            color: #111;
         }
-        /* Cột 1+3 căn giữa, cột 2+4 căn lề trái */
         .td-page .pt tbody td.d-info-center {
             background: #fff;
-            color: #111111;
+            color: #111;
             text-align: center !important;
         }
         .td-page .pt tbody td.d-info-left {
             background: #fff;
-            color: #111111;
+            color: #111;
             text-align: left !important;
             padding-left: 4px;
         }
-        /* Nhóm thông tin (ngày cấp, sl tvv...): nền #CAE5E8, căn giữa */
+
+        /* === TEXT-INFO: KHÔNG tô màu, chỉ in nghiêng === */
         .td-page .pt tbody td.d-text-info {
-            background: #CAE5E8;
-            color: #1e3a5f;
+            background: transparent;
+            color: #555;
             text-align: center;
+            font-style: italic;
         }
-        /* Nhóm số liệu: nền #CCCCFF, chữ #111111, căn giữa */
+        .td-page .pt tbody td.d-text-info-last {
+            text-align: left !important;
+            padding-left: 6px;
+        }
+
+        /* === NUMDATA: số liệu thực hiện — xanh lá cực mờ === */
         .td-page .pt tbody td.d-numdata {
-            background: #CCCCFF;
-            color: #111111;
+            background: rgba(0, 100, 0, 0.06);
+            color: #1a3a1a;
             text-align: center;
             font-weight: 600;
         }
-        /* Nhóm số liệu FYP: nền xanh nhạt, chữ in đậm */
-        /* ★ Nhóm số liệu FYP (TỔNG FYP): nền xanh ngọc cực mờ, chữ in đậm */
+
+        /* === NUMDATA-FYP: FYP/Tổng FYP — xanh ngọc mờ, đậm hơn === */
         .td-page .pt tbody td.d-numdata-fyp {
             background: rgba(13, 110, 63, 0.10);
             color: #0a3d20;
             text-align: center;
             font-weight: 700;
         }
-        /* Nhóm số liệu FYC: bỏ tô nền, in nghiêng, chữ đỏ */
+
+        /* === NUMDATA-FYC: KHÔNG tô, in nghiêng, đỏ === */
         .td-page .pt tbody td.d-numdata-fyc {
             background: transparent;
             color: #cc0000;
@@ -1987,41 +2014,43 @@
             font-weight: normal;
             font-style: italic;
         }
-        /* Nhóm số liệu IP tháng: nền nhạt hơn numdata, chữ #111111, căn giữa */
+
+        /* === NUMDATA-IP: như numdata — xanh lá cực mờ === */
         .td-page .pt tbody td.d-numdata-ip {
-            background: #DBDBFF;
-            color: #111111;
+            background: rgba(0, 100, 0, 0.06);
+            color: #1a3a1a;
             text-align: center;
             font-weight: 600;
         }
-        /* Nhóm tỷ lệ % — ô > 0%: nền #FFFFCC, in đậm in nghiêng, căn giữa */
+
+        /* === PERCENT: KHÔNG tô, in nghiêng === */
         .td-page .pt tbody td.d-percent-pos {
-            background: #FFFFCC;
-            color: #111111;
+            background: transparent;
+            color: #555;
             text-align: center;
-            font-weight: 700;
+            font-weight: 600;
             font-style: italic;
         }
-        /* Nhóm tỷ lệ % — ô còn lại: in nghiêng, căn giữa, chữ xám */
         .td-page .pt tbody td.d-percent-zero {
             background: transparent;
             color: #999;
             text-align: center;
             font-style: italic;
         }
-        /* Nhóm điều kiện: nền lemonchiffon, chữ #111111 */
+
+        /* === CONDITION: nền nhạt nhất theo nhóm, màu text tương ứng header === */
         .td-page .pt tbody td.d-cond {
-            background: lemonchiffon;
-            color: #111111;
+            background: rgba(180, 140, 60, 0.06);
+            color: #3a2800;
             text-align: center;
             font-weight: 600;
         }
-        /* Cột điều kiện tăng dần sắc độ */
-        .td-page .pt tbody td.d-cond-shade1 { background: #FFFACD; }
-        .td-page .pt tbody td.d-cond-shade2 { background: #FFF8B0; }
-        .td-page .pt tbody td.d-cond-shade3 { background: #FFF59E; }
-        .td-page .pt tbody td.d-cond-shade4 { background: #FFF28A; }
-        .td-page .pt tbody td.d-cond-shade5 { background: #FFEF76; }
+        /* ★ Cột điều kiện tăng dần sắc độ — KHÔNG dùng nữa, thay bằng nhóm g0-g4 */
+        .td-page .pt tbody td.d-cond-shade1 { background: inherit; }
+        .td-page .pt tbody td.d-cond-shade2 { background: inherit; }
+        .td-page .pt tbody td.d-cond-shade3 { background: inherit; }
+        .td-page .pt tbody td.d-cond-shade4 { background: inherit; }
+        .td-page .pt tbody td.d-cond-shade5 { background: inherit; }
         /* Đạt badge — dấu tích nhỏ, không thay đổi kích thước ô */
         .td-page .dat-badge {
             display: inline-flex; align-items: center; justify-content: center;
@@ -2037,12 +2066,12 @@
             font-style: italic !important;
             font-weight: 400 !important;
         }
-        /* Phần thưởng / Tiền thưởng: nền lightyellow, chữ #000044 IN ĐẬM, căn giữa */
+        /* === MONEY: thưởng — vàng cực mờ === */
         .td-page .pt tbody td.d-money {
-            background: rgba(255, 255, 224, 0.2);
-            color: #000044;
+            background: rgba(255, 215, 0, 0.08);
+            color: #5a4a00;
             text-align: center;
-            font-weight: 900;
+            font-weight: 700;
         }
         /* Thưởng có giá trị — in nghiêng */
         .td-page .thuong-highlight {
