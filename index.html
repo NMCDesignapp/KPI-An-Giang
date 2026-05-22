@@ -2562,10 +2562,103 @@
                 margin-left: 4px; opacity: .6; font-size: 9px;
             }
             .dsk-ad-drill-row .ad-team-board {
-                padding: 8px 12px 12px;
+                padding: 10px 16px 16px;
             }
             .dsk-ad-drill-row .ad-empty {
                 padding: 16px 12px; text-align: center; color: #6a8aaa; font-size: 11px;
+            }
+            /* ★ Desktop drill-down table — nới rộng, font lớn hơn, tên TVV không bị cắt */
+            .dsk-ad-drill-row .ad-team-wrap {
+                max-height: 520px;
+                border-color: #2a4a7066;
+                background: #f0f4f8;
+            }
+            .dsk-ad-drill-row .ad-team-table {
+                table-layout: auto;
+                min-width: 680px;
+                background: #f0f4f8;
+            }
+            .dsk-ad-drill-row .ad-team-table th,
+            .dsk-ad-drill-row .ad-team-table td {
+                font-size: 11px;
+                padding: 4px 6px;
+                border-color: #2a4a7044;
+                background: #f0f4f8;
+                color: #1a2a3a;
+            }
+            .dsk-ad-drill-row .ad-team-table th {
+                background: #1a3a5c;
+                color: #e0ecf4;
+                font-size: 11px;
+                padding: 5px 6px;
+                border-color: rgba(255,255,255,0.1);
+            }
+            .dsk-ad-drill-row .ad-team-table col.cg-stt { width: 34px; }
+            .dsk-ad-drill-row .ad-team-table col.cg-code { width: 110px; }
+            .dsk-ad-drill-row .ad-team-table col.cg-name { width: 200px; }
+            .dsk-ad-drill-row .ad-team-table col.cg-cv { width: 40px; }
+            .dsk-ad-drill-row .ad-team-table col.cg-ip { width: 44px; }
+            .dsk-ad-drill-row .ad-team-table td.name {
+                overflow: visible;
+                text-overflow: unset;
+                white-space: normal;
+                font-size: 11.5px;
+                padding-left: 8px;
+                color: #0e1e2e;
+            }
+            .dsk-ad-drill-row .ad-team-table td.code-cell {
+                font-size: 10.5px;
+                text-align: center;
+                color: #3a5a7a;
+            }
+            .dsk-ad-drill-row .ad-team-table td.cv-cell {
+                font-size: 10px;
+                text-align: center;
+            }
+            .dsk-ad-drill-row .ad-team-table td.month {
+                font-size: 10.5px;
+            }
+            .dsk-ad-drill-row .ad-team-table .ip-group {
+                background: #1a3a5c !important;
+                font-size: 11px;
+                padding: 4px 2px;
+                line-height: 16px;
+                height: 22px;
+            }
+            .dsk-ad-drill-row .ad-team-table .ip-sub {
+                background: #1a3a5c !important;
+                font-size: 10px;
+                padding: 3px 2px;
+                line-height: 14px;
+            }
+            .dsk-ad-drill-row .ad-team-table th[colspan="6"] {
+                background: #1a3a5c;
+                color: #e0ecf4;
+                border-color: rgba(255,255,255,0.1);
+            }
+            .dsk-ad-drill-row .ad-team-table tbody tr:nth-child(even) td { background: #e8eef4; }
+            .dsk-ad-drill-row .ad-team-table tbody tr:hover td { background: #d4dff0 !important; }
+            .dsk-ad-drill-row .ad-team-table td.month.has-val {
+                background: rgba(255, 153, 51, 0.22);
+                color: #b35900;
+                font-weight: 700;
+            }
+            .dsk-ad-drill-row .ad-team-table tbody tr:nth-child(even) td.month.has-val {
+                background: rgba(255, 153, 51, 0.18);
+            }
+            .dsk-ad-drill-row .ad-team-table tbody tr:hover td.month.has-val {
+                background: rgba(255, 153, 51, 0.35) !important;
+            }
+            /* ★ Team info summary trên desktop */
+            .dsk-ad-drill-row .team-info-summary {
+                display: flex; flex-wrap: wrap; gap: 6px 16px;
+                padding: 6px 0 10px;
+                font-size: 11px; color: #8ab4d8;
+            }
+            .dsk-ad-drill-row .team-info-summary span { color: #5a8aaa; }
+            .dsk-ad-drill-row .ad-team-cap {
+                font-size: 12px; font-weight: 800; color: #b0d0f0;
+                padding: 4px 0 2px;
             }
 
             .link-grid { gap: 8px; }
