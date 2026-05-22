@@ -6074,6 +6074,9 @@ if (ok) { toast('Đã xóa', 'ok'); ccf(); await lfs(); }
                     } else if (cgCat === 'nameInfo') {
                         /* ★ Cột tên người (TVV, NTD...) → rộng cho tên, căn trái */
                         colgroupHtml += '<col style="width:100px;min-width:60px">';
+                    } else if (/tvv/i.test(String(hd[cgi] || '').trim())) {
+                        /* ★ Cột TVV/TVVM (số lượng tư vấn viên) → rộng hơn để hiển thị đủ */
+                        colgroupHtml += '<col style="width:62px;min-width:45px">';
                     } else {
                         colgroupHtml += '<col style="min-width:30px">';
                     }
