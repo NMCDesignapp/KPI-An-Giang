@@ -1140,7 +1140,7 @@
         .sub-line { height: 1px; background: linear-gradient(90deg, transparent, #d4a84340, #d4a84366, #d4a84340, transparent); }
 
         /* --- DETAIL VIEW --- */
-        .detail-shell { margin-top: 10px; }
+        .detail-shell { margin-top: 10px; margin-left: auto; margin-right: auto; max-width: 100%; }
         .detail-topbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; position: sticky; top: 0; z-index: 50; background: transparent; box-shadow: none; padding: 4px 0; }
         .detail-topbar .btn-back-u { width: 38px; height: 38px; border-radius: 12px; }
         .detail-spacer { width: 38px; height: 38px; flex-shrink: 0; }
@@ -2678,6 +2678,8 @@
                 grid-template-columns: 1fr 1fr;
                 gap: 10px;
                 max-width: 1200px;
+                width: 100%;
+                margin: 0 auto;
             }
             .grp-item {
                 padding: 10px 14px 8px;
@@ -2715,7 +2717,7 @@
             .td-page .pop-poster, .td-page .pop-ph { max-height: 300px; }
 
             /* Detail view 1024+ */
-            #view-detail .detail-shell { max-width: 1400px; padding: 20px 32px; }
+            #view-detail .detail-shell { max-width: 1400px; width: 100%; margin: 0 auto; padding: 20px 32px; }
             #view-detail .detail-title { font-size: 2rem !important; }
             #view-detail .detail-list-wrap { gap: 12px; }
             .grp-name { font-size: 15px; }
@@ -2751,7 +2753,7 @@
             .td-page .pop-poster, .td-page .pop-ph { max-height: 320px; }
 
             /* Detail view 1400+ */
-            #view-detail .detail-shell { max-width: 1600px; }
+            #view-detail .detail-shell { max-width: 1600px; width: 100%; margin: 0 auto; }
             #view-detail .detail-title { font-size: 2.2rem !important; }
         }
 
