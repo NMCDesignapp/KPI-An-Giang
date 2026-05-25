@@ -4339,8 +4339,11 @@
             var items = rows.map(function(r) {
                 var v = getDetailVal(r, t);
                 var name = r.ten_nhan_vien.replace(/^Nhóm\s*/i, '');
-                var pct = v.kh ? (v.afyp / v.kh * 100) : 0;
-                return { name: name, afyp: v.afyp, kh: v.kh, pct: pct };
+                /* ★ Giá trị t1-t12, kh1-kh12 là VNĐ raw → chia 1.000.000 cho đơn vị trđ */
+                var afypTrd = Math.round(v.afyp / 1000000);
+                var khTrd = Math.round(v.kh / 1000000);
+                var pct = khTrd ? (afypTrd / khTrd * 100) : 0;
+                return { name: name, afyp: afypTrd, kh: khTrd, pct: pct };
             });
 
             items.sort(function(a, b) { return b.pct - a.pct; });
