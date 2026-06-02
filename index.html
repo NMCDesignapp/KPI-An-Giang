@@ -3417,11 +3417,11 @@
                 '<th colspan="6" class="ip-group">IP</th>' +
                 '</tr>' +
                 '<tr>';
-            for (var mm = 1; mm <= 6; mm++) memberHead += '<th class="mini-col ip-sub">' + mm + '</th>';
+            for (var mm = 3; mm <= 9; mm++) memberHead += '<th class="mini-col ip-sub">T' + mm + '</th>';
             memberHead += '</tr></thead>';
             var memberRows = (group.members || []).map(function(member, memberIdx) {
                 var row = '<tr><td class="label">' + (memberIdx + 1) + '</td><td class="code-cell">' + esc(member.maSo) + '</td><td class="name">' + esc(member.ten) + '</td><td class="cv-cell">' + esc(member.chucVu) + '</td>';
-                for (var mi = 0; mi < 6; mi++) { var mv = member.months[mi] || 0; row += '<td class="month' + (mv > 0 ? ' has-val' : '') + '">' + esc(fmt(mv)) + '</td>'; }
+                for (var mi = 2; mi <= 8; mi++) { var mv = member.months[mi] || 0; row += '<td class="month' + (mv > 0 ? ' has-val' : '') + '">' + esc(fmt(mv)) + '</td>'; }
                 row += '</tr>';
                 return row;
             }).join('');
@@ -3462,7 +3462,7 @@
                 // Lượt HD: count months (in displayed 6 months) where IP >= 3 (triệu)
                 // Lượt HD chuẩn: same but IP >= 12 (triệu)
                 var months = m.months || [];
-                for (var i = 0; i < 6; i++) {
+                for (var i = 2; i <= 8; i++) {
                     var v = +months[i] || 0;
                     if (v >= 3) luotHD++;
                     if (v >= 12) luotHDChuan++;
@@ -3502,11 +3502,11 @@
                 '<th colspan="6" class="ip-group">IP</th>' +
                 '</tr>' +
                 '<tr>';
-            for (var mm = 1; mm <= 6; mm++) memberHead += '<th class="mini-col ip-sub">' + mm + '</th>';
+            for (var mm = 3; mm <= 9; mm++) memberHead += '<th class="mini-col ip-sub">T' + mm + '</th>';
             memberHead += '</tr></thead>';
             var memberRows = (members || []).map(function(member, memberIdx) {
                 var row = '<tr><td class="label">' + (memberIdx + 1) + '</td><td class="code-cell">' + esc(member.maSo) + '</td><td class="name">' + esc(member.ten) + '</td><td class="cv-cell">' + esc(member.chucVu) + '</td>';
-                for (var mi = 0; mi < 6; mi++) { var mv = member.months[mi] || 0; row += '<td class="month' + (mv > 0 ? ' has-val' : '') + '">' + esc(fmt(mv)) + '</td>'; }
+                for (var mi = 2; mi <= 8; mi++) { var mv = member.months[mi] || 0; row += '<td class="month' + (mv > 0 ? ' has-val' : '') + '">' + esc(fmt(mv)) + '</td>'; }
                 row += '</tr>';
                 return row;
             }).join('');
