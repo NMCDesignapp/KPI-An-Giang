@@ -1559,7 +1559,7 @@
 
         /* --- RACE / POLICY PAGE STYLES (Derived from td-page) --- */
         .td-page {
-            --td-bg: #0a1628; --td-bg2: #0e1f38; --td-card: #132a47; --td-border: #31584d;
+            --td-bg: #0e1d35; --td-bg2: #122743; --td-card: #173356; --td-border: #31584d;
             --td-fg: #e8edf3; --td-fgm: #7a8fa6; --td-accent: #d4a843;
             --td-gold: #f5c842; --td-gold-light: #ffe08f; --td-gold-dark: #c69520;
             --td-gold-glow: rgba(245, 200, 66, 0.25);
@@ -1567,17 +1567,17 @@
         }
         .td-page .td-bg-a {
             position: fixed; inset: 0; z-index: 0; pointer-events: none;
-            background: radial-gradient(ellipse 80% 40% at 50% -5%, #f5c84218, transparent 70%), radial-gradient(ellipse 50% 30% at 90% 100%, #d4a84320, transparent);
+            background: radial-gradient(ellipse 80% 40% at 50% -5%, #f5c84212, transparent 70%), radial-gradient(ellipse 50% 30% at 90% 100%, #d4a84314, transparent);
         }
         .td-page .fd { font-family: Georgia, 'Times New Roman', serif; }
         .td-page .td-topnav {
-            position: sticky; top: 0; z-index: 100; background: #0a1628f8; backdrop-filter: blur(18px); border-bottom: 1px solid #ffffff0d;
+            position: sticky; top: 0; z-index: 100; background: #0e1d35f8; backdrop-filter: blur(18px); border-bottom: 1px solid #ffffff0d;
         }
         body.has-notice .td-page .td-topnav { top: var(--notice-h); }
         .td-page .td-sub-title { font-size: 10px; font-weight: 700; color: var(--td-accent); text-transform: uppercase; letter-spacing: .18em; }
-        .td-page .td-sub-line-wrap { padding: 0 24px; background: #0a1628f8; backdrop-filter: blur(18px); }
+        .td-page .td-sub-line-wrap { padding: 0 24px; background: #0e1d35f8; backdrop-filter: blur(18px); }
         .td-page .td-sub-line { height: 1px; background: linear-gradient(90deg, transparent, #f5c84240, #f5c84266, #f5c84240, transparent); }
-        .td-page .td-shell { max-width: 1120px; margin: 0 auto; padding: 22px 18px 88px; }
+        .td-page .td-shell { max-width: 1120px; margin: 0 auto; padding: 22px 18px 88px; background: #101e3680; border-radius: 0; }
 
         /* Admin Button */
         .td-page .admin-btn {
@@ -1612,7 +1612,7 @@
         /* Card Grid */
         .td-page .card-grid { display: grid; grid-template-columns: 1fr; gap: 18px; max-width: 920px; margin: 0 auto; }
         .td-page .pcard {
-            position: relative; border-radius: 20px; overflow: hidden; background: linear-gradient(180deg, #14304f 0%, #0e1e33 100%); border: 1px solid #2f4d6b;
+            position: relative; border-radius: 20px; overflow: hidden; background: linear-gradient(180deg, #1a3b5e 0%, #122a48 100%); border: 1px solid #3a5a7a;
             cursor: pointer; transition: all .3s cubic-bezier(.16,1,.3,1); animation: tdCIn .5s cubic-bezier(.16,1,.3,1) both;
             display: flex; flex-direction: column;
             box-shadow: 0 14px 34px #0000004d;
@@ -1625,8 +1625,8 @@
         .td-page .pcard-img { position: relative; width: 100%; aspect-ratio: 16 / 9; overflow: hidden; background: #111; flex-shrink: 0; }
         .td-page .pcard-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .45s; }
         .td-page .pcard:hover .pcard-img img { transform: scale(1.06); }
-        .td-page .pcard-grad { position: absolute; inset: 0; background: linear-gradient(to top, #081321a8 0%, #08132148 34%, transparent 72%); }
-        .td-page .pcard-noimg { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #0c2240, var(--td-bg2)); color: var(--td-fgm); z-index: 0; }
+        .td-page .pcard-grad { position: absolute; inset: 0; background: linear-gradient(to top, #0e1d35a8 0%, #0e1d3548 34%, transparent 72%); }
+        .td-page .pcard-noimg { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #132d4d, var(--td-bg2)); color: var(--td-fgm); z-index: 0; }
         .td-page .pcard-noimg i { font-size: 1.8rem; opacity: .3; }
         .td-page .pcard-body {
             position: absolute;
