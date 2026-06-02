@@ -3459,10 +3459,10 @@
             var nowY = NOW.getFullYear(), nowM = NOW.getMonth() + 1;
             (members || []).forEach(function(m) {
                 total++;
-                // Lượt HD: count months (in displayed 6 months) where IP >= 3 (triệu)
+                // Lượt HD: count months (all 12 months) where IP >= 3 (triệu)
                 // Lượt HD chuẩn: same but IP >= 12 (triệu)
                 var months = m.months || [];
-                for (var i = 2; i <= 8; i++) {
+                for (var i = 0; i < 12; i++) {
                     var v = +months[i] || 0;
                     if (v >= 3) luotHD++;
                     if (v >= 12) luotHDChuan++;
