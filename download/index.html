@@ -4636,10 +4636,25 @@
                 return selMonths.indexOf(m) !== -1;
             }).sort(function(a, b) { return num(a.ngay_kh) - num(b.ngay_kh); });
 
-            /* Merge user entries from localStorage */
-            var userEntries = getCalUserEntries().filter(function(e) {
-                return selMonths.indexOf(e.thangkh) !== -1;
-            });
+            /* Merge user entries from API or localStorage */
+            var userEntries;
+            if (CAL_API_URL) {
+                /* Fetch from API for each selected month */
+                var fetchPromises = selMonths.map(function(m) { return fetchCalApiEntries(m); });
+                userEntries = [];
+                /* If API available, renderCalendar will be called again after fetch completes */
+                selMonths.forEach(function(m) {
+                    if (calApiCache[m]) userEntries = userEntries.concat(calApiCache[m]);
+                });
+                /* Trigger background fetch and re-render */
+                if (CAL_API_URL && !userEntries.length) {
+                    Promise.all(fetchPromises).then(function() { renderCalendar(); });
+                }
+            } else {
+                userEntries = getCalLocalEntries().filter(function(e) {
+                    return selMonths.indexOf(e.thangkh) !== -1;
+                });
+            }
             rows = rows.concat(userEntries);
 
             if (!selMonths.length) {
@@ -4744,15 +4759,46 @@
             renderCalendar();
         };
 
-        /* ===== CALENDAR INLINE EDIT (password-locked) ===== */
+        /* ===== CALENDAR INLINE EDIT (password-locked, shared via Vercel API) ===== */
         var CAL_EDIT_PW = '123456';
+        var CAL_API_URL = ''; /* ← Thay bằng URL Vercel API sau khi deploy, ví dụ: 'https://kpi-bvnt-ag-api.vercel.app' */
+        try { var _ovApi = localStorage.getItem('kpi_cal_api_url'); if (_ovApi) CAL_API_URL = _ovApi; } catch(e) {}
         var calEditUnlocked = false;
+        var calApiCache = {}; /* month → entries[] from API */
 
-        function getCalUserEntries() {
+        /* Lưu local (fallback khi chưa có API) */
+        function getCalLocalEntries() {
             try { return JSON.parse(localStorage.getItem('kpi_cal_user_entries') || '[]'); } catch(e) { return []; }
         }
-        function setCalUserEntries(entries) {
+        function setCalLocalEntries(entries) {
             localStorage.setItem('kpi_cal_user_entries', JSON.stringify(entries));
+        }
+
+        /* Gọi API — fetch entries cho 1 tháng */
+        function fetchCalApiEntries(month) {
+            if (!CAL_API_URL) return Promise.resolve(null);
+            return fetch(CAL_API_URL + '/api/entries?month=' + month)
+                .then(function(r) { return r.json(); })
+                .then(function(data) { calApiCache[month] = data; return data; })
+                .catch(function() { return null; });
+        }
+
+        /* Lấy tất cả user entries (API + local fallback) */
+        function getCalUserEntries() {
+            var local = getCalLocalEntries();
+            /* Nếu có API, lấy từ cache */
+            var apiEntries = [];
+            for (var m in calApiCache) {
+                if (calApiCache[m]) apiEntries = apiEntries.concat(calApiCache[m]);
+            }
+            return apiEntries.length ? apiEntries : local;
+        }
+
+        /* Lấy user entries cho tháng cụ thể */
+        function getCalUserEntriesForMonth(month) {
+            if (calApiCache[month]) return calApiCache[month];
+            var local = getCalLocalEntries().filter(function(e) { return e.thangkh === month; });
+            return local;
         }
 
         window.openCalSettings = function() {
@@ -4806,35 +4852,81 @@
             if (!owners.length) { try { alert('Vui lòng chọn phụ trách!'); } catch(e) {} return; }
 
             var parts = dateVal.split('-');
-            var year = parts[0];
             var month = String(parseInt(parts[1], 10)).padStart(2, '0');
             var day = parseInt(parts[2], 10);
 
             var entry = {
-                id: Date.now(),
                 ngay_kh: day,
                 thangkh: month,
                 noi_dung: contentVal,
-                phu_trach: owners.join(', '),
-                source: 'user'
+                phu_trach: owners.join(', ')
             };
 
-            var entries = getCalUserEntries();
-            entries.push(entry);
-            setCalUserEntries(entries);
+            /* Nếu có API → lưu lên server, ngược lại → localStorage */
+            if (CAL_API_URL) {
+                fetch(CAL_API_URL + '/api/entries', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(entry)
+                }).then(function(r) { return r.json(); }).then(function(saved) {
+                    /* Cập nhật cache */
+                    if (!calApiCache[month]) calApiCache[month] = [];
+                    calApiCache[month].push(saved);
+                    renderCalendar();
+                }).catch(function(err) {
+                    console.error('[KPI] Lỗi lưu API:', err);
+                    /* Fallback: lưu local */
+                    entry.id = Date.now();
+                    entry.source = 'user';
+                    var local = getCalLocalEntries();
+                    local.push(entry);
+                    setCalLocalEntries(local);
+                    renderCalendar();
+                });
+            } else {
+                /* Không có API → localStorage */
+                entry.id = Date.now();
+                entry.source = 'user';
+                var local = getCalLocalEntries();
+                local.push(entry);
+                setCalLocalEntries(local);
+                renderCalendar();
+            }
 
             /* Reset form */
             $('cal-edit-content').value = '';
             document.querySelectorAll('.cal-owner-btn.selected').forEach(function(b) { b.classList.remove('selected'); });
-
-            renderCalendar();
         };
 
         window.deleteCalEntry = function(entryId) {
-            var entries = getCalUserEntries();
-            entries = entries.filter(function(e) { return e.id !== entryId; });
-            setCalUserEntries(entries);
-            renderCalendar();
+            if (CAL_API_URL) {
+                /* Tìm tháng của entry */
+                var month = '';
+                for (var m in calApiCache) {
+                    if (calApiCache[m] && calApiCache[m].some(function(e) { return String(e.id) === String(entryId); })) {
+                        month = m;
+                        break;
+                    }
+                }
+                fetch(CAL_API_URL + '/api/entries?id=' + entryId + '&month=' + month + '&pw=' + CAL_EDIT_PW, {
+                    method: 'DELETE'
+                }).then(function(r) { return r.json(); }).then(function() {
+                    if (calApiCache[month]) {
+                        calApiCache[month] = calApiCache[month].filter(function(e) { return String(e.id) !== String(entryId); });
+                    }
+                    renderCalendar();
+                }).catch(function() {
+                    if (calApiCache[month]) {
+                        calApiCache[month] = calApiCache[month].filter(function(e) { return String(e.id) !== String(entryId); });
+                    }
+                    renderCalendar();
+                });
+            } else {
+                var local = getCalLocalEntries();
+                local = local.filter(function(e) { return e.id !== entryId; });
+                setCalLocalEntries(local);
+                renderCalendar();
+            }
         };
 
         /* ================= RACE / POLICY PAGE FACTORY ================= */
