@@ -4754,20 +4754,44 @@ function admLock() { s.ddOpen = false; gid(P + 'AdmDD').classList.remove('show')
                     var rows = TD_csv(csv);
                     if (rows.length < 2) throw new Error('Chỉ có tiêu đề.');
                     
+                    /* Ánh xạ tên cột → vị trí cột từ hàng tiêu đề */
+                    var dsHeaders = rows[0] || [];
+                    var dsColMap = {};
+                    for (var hi = 0; hi < dsHeaders.length; hi++) {
+                        var hn = normalizeHeaderName(dsHeaders[hi]);
+                        if (hn && !dsColMap.hasOwnProperty(hn)) dsColMap[hn] = hi;
+                    }
+                    /* Tìm chỉ mục cột theo nhiều tên có thể có */
+                    function dsCol(/* candidates */) {
+                        for (var ai = 0; ai < arguments.length; ai++) {
+                            if (dsColMap.hasOwnProperty(arguments[ai])) return dsColMap[arguments[ai]];
+                        }
+                        return -1;
+                    }
+                    var ciName = dsCol('ten_chuong_trinh','ten','name','chuong_trinh');
+                    var ciPoster = dsCol('poster','poster_url','hinh','hinh_anh','image','url_hinh');
+                    var ciSheet = dsCol('sheet','sheet_name','ten_sheet','tab');
+                    var ciDateS = dsCol('ngay_bat_dau','date_start','tu_ngay','ngay_bd','bat_dau','ngay_bat_dau_kt');
+                    var ciDateE = dsCol('ngay_ket_thuc','date_end','den_ngay','ngay_kt','ket_thuc');
+                    var ciDatePH = dsCol('ngay_ph','ph_date','ph_han','han_ph','ngay_phat_hanh');
+                    var ciCols = dsCol('so_cot','cols','columns','so_cot_hien_thi','cot');
+                    var ciRows = dsCol('so_hang','rows','so_hang_hien_thi','hang');
+
                     s.programs = [];
                     for (var i = 1; i < rows.length; i++) {
                         var r = rows[i];
-                        if (!r[0] || !r[0].trim()) continue;
+                        var nameVal = ciName >= 0 ? (r[ciName] || '').trim() : (r[0] || '').trim();
+                        if (!nameVal) continue;
                         s.programs.push({
                             row: i + 1,
-                            name: (r[0] || '').trim(),
-                            posterUrl: (r[1] || '').trim(),
-                            sheetName: (r[2] || '').trim(),
-                            dateStart: TD_fdi((r[3] || '').trim()),
-                            dateEnd: TD_fdi((r[4] || '').trim()),
-                            datePH: TD_fdi((r[5] || '').trim()),
-                            cols: parseInt(r[6]) || 0,
-                            rows: parseInt(r[7]) || 0
+                            name: nameVal,
+                            posterUrl: ciPoster >= 0 ? (r[ciPoster] || '').trim() : (r[1] || '').trim(),
+                            sheetName: ciSheet >= 0 ? (r[ciSheet] || '').trim() : (r[2] || '').trim(),
+                            dateStart: TD_fdi(ciDateS >= 0 ? (r[ciDateS] || '').trim() : (r[3] || '').trim()),
+                            dateEnd: TD_fdi(ciDateE >= 0 ? (r[ciDateE] || '').trim() : (r[4] || '').trim()),
+                            datePH: TD_fdi(ciDatePH >= 0 ? (r[ciDatePH] || '').trim() : (r[5] || '').trim()),
+                            cols: parseInt(ciCols >= 0 ? r[ciCols] : r[6]) || 0,
+                            rows: parseInt(ciRows >= 0 ? r[ciRows] : r[7]) || 0
                         });
                     }
                     gid(P + 'SyncOk').style.display = 'inline-flex';
