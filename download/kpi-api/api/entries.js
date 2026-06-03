@@ -1,33 +1,17 @@
 /**
  * KPI BVNT An Giang — Shared Calendar Entries API
- * Uses Upstash Redis REST API for persistent shared storage
- * 
- * Setup: Set UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN in Vercel Environment Variables
- * Free tier: https://upstash.com → Create Redis → Copy REST URL + Token
- * 
+ * Uses Neon PostgreSQL for persistent shared storage
+ *
  * GET    /api/entries?month=06       → Get entries for a month
  * POST   /api/entries                → Create new entry { ngay_kh, thangkh, noi_dung, phu_trach }
- * DELETE /api/entries?id=x&month=06&pw=123456 → Delete entry by id
+ * DELETE /api/entries?id=x&pw=123456 → Delete entry by id
  */
 
-const UPSTASH_URL = process.env.UPSTASH_REDIS_REST_URL;
-const UPSTASH_TOKEN = process.env.UPSTASH_REDIS_REST_TOKEN;
+const { neon } = require('@neondatabase/serverless');
+
 const CAL_PW = '123456';
-const KEY_PREFIX = 'kpi-cal:';
 
-async function redis(command, ...args) {
-  if (!UPSTASH_URL || !UPSTASH_TOKEN) {
-    throw new Error('Upstash Redis not configured. Set UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN env vars.');
-  }
-  const res = await fetch(`${UPSTASH_URL}/${command}/${args.map(a => encodeURIComponent(a)).join('/')}`, {
-    headers: { Authorization: `Bearer ${UPSTASH_TOKEN}` }
-  });
-  const data = await res.json();
-  if (data.error) throw new Error(data.error);
-  return data.result;
-}
-
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   // CORS
   res.setHeader('Access-Control-Allow-Credentials', 'true');
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -38,6 +22,8 @@ export default async function handler(req, res) {
     return res.status(200).end();
   }
 
+  const sql = neon(process.env.DATABASE_URL);
+
   try {
     // ===== GET: Fetch entries for a month =====
     if (req.method === 'GET') {
@@ -45,10 +31,13 @@ export default async function handler(req, res) {
       if (!month) {
         return res.status(400).json({ error: 'Missing month parameter' });
       }
-      const key = KEY_PREFIX + month;
-      const raw = await redis('GET', key);
-      const entries = raw ? JSON.parse(raw) : [];
-      return res.status(200).json(entries);
+      const rows = await sql`
+        SELECT id, ngay_kh, thangkh, noi_dung, phu_trach, source, created_at
+        FROM calendar_entries
+        WHERE thangkh = ${month}
+        ORDER BY ngay_kh ASC, id ASC
+      `;
+      return res.status(200).json(rows);
     }
 
     // ===== POST: Create new entry =====
@@ -59,40 +48,32 @@ export default async function handler(req, res) {
         return res.status(400).json({ error: 'Thiếu thông tin: ngay_kh, thangkh, noi_dung, phu_trach' });
       }
 
-      const entry = {
-        id: Date.now(),
-        ngay_kh: Number(ngay_kh),
-        thangkh: String(thangkh).padStart(2, '0'),
-        noi_dung: String(noi_dung),
-        phu_trach: String(phu_trach),
-        source: 'user',
-        created: new Date().toISOString()
-      };
+      const result = await sql`
+        INSERT INTO calendar_entries (ngay_kh, thangkh, noi_dung, phu_trach, source)
+        VALUES (${Number(ngay_kh)}, ${String(thangkh).padStart(2, '0')}, ${String(noi_dung)}, ${String(phu_trach)}, 'user')
+        RETURNING id, ngay_kh, thangkh, noi_dung, phu_trach, source, created_at
+      `;
 
-      const key = KEY_PREFIX + entry.thangkh;
-      const raw = await redis('GET', key);
-      const entries = raw ? JSON.parse(raw) : [];
-      entries.push(entry);
-      await redis('SET', key, JSON.stringify(entries));
-
-      return res.status(201).json(entry);
+      return res.status(201).json(result[0]);
     }
 
     // ===== DELETE: Remove entry by id =====
     if (req.method === 'DELETE') {
-      const { id, month, pw } = req.query;
+      const { id, pw } = req.query;
       if (pw !== CAL_PW) {
         return res.status(403).json({ error: 'Sai mật khẩu' });
       }
-      if (!id || !month) {
-        return res.status(400).json({ error: 'Missing id or month' });
+      if (!id) {
+        return res.status(400).json({ error: 'Missing id' });
       }
-      const key = KEY_PREFIX + String(month).padStart(2, '0');
-      const raw = await redis('GET', key);
-      const entries = raw ? JSON.parse(raw) : [];
-      const filtered = entries.filter(e => String(e.id) !== String(id));
-      await redis('SET', key, JSON.stringify(filtered));
-      return res.status(200).json({ success: true, removed: entries.length - filtered.length });
+      const result = await sql`
+        DELETE FROM calendar_entries WHERE id = ${Number(id)}
+        RETURNING id
+      `;
+      if (result.length === 0) {
+        return res.status(404).json({ error: 'Không tìm thấy mục' });
+      }
+      return res.status(200).json({ success: true, removed: 1 });
     }
 
     return res.status(405).json({ error: 'Method not allowed' });
@@ -100,4 +81,4 @@ export default async function handler(req, res) {
     console.error('[KPI-API Error]', err.message);
     return res.status(500).json({ error: 'Lỗi server', detail: err.message });
   }
-}
+};

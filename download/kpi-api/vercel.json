@@ -1,12 +1,19 @@
 {
   "version": 2,
-  "name": "kpi-bvnt-ag-api",
+  "name": "kpi-bvnt-ag",
   "builds": [
-    { "src": "api/**/*.js", "use": "@vercel/node" }
+    { "src": "api/**/*.js", "use": "@vercel/node" },
+    { "src": "*.html", "use": "@vercel/static" },
+    { "src": "*.js", "use": "@vercel/static" },
+    { "src": "*.json", "use": "@vercel/static" },
+    { "src": "*.png", "use": "@vercel/static" }
   ],
   "routes": [
     { "src": "/api/entries", "dest": "/api/entries.js" },
     { "src": "/api/entries/(.*)", "dest": "/api/entries.js" },
+    { "src": "/sw.js", "dest": "/sw.js" },
+    { "src": "/manifest.json", "dest": "/manifest.json" },
+    { "src": "/icon-(.*)", "dest": "/icon-$1" },
     { "src": "/(.*)", "dest": "/index.html" }
   ],
   "headers": [
@@ -17,6 +24,12 @@
         { "key": "Access-Control-Allow-Origin", "value": "*" },
         { "key": "Access-Control-Allow-Methods", "value": "GET,POST,DELETE,OPTIONS" },
         { "key": "Access-Control-Allow-Headers", "value": "Content-Type,Authorization" }
+      ]
+    },
+    {
+      "source": "/sw.js",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-cache, no-store, must-revalidate" }
       ]
     }
   ]

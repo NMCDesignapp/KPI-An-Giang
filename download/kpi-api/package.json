@@ -1,10 +1,12 @@
 {
-  "name": "kpi-bvnt-ag-api",
+  "name": "kpi-bvnt-ag",
   "version": "1.0.0",
-  "description": "Shared storage API for KPI BVNT An Giang calendar entries",
+  "description": "KPI BVNT An Giang — PWA with Neon shared calendar",
   "scripts": {
     "dev": "vercel dev",
     "deploy": "vercel --prod"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@neondatabase/serverless": "^0.10.0"
+  }
 }
