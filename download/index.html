@@ -1523,6 +1523,92 @@
         .td-page .td-shell { padding-top: 0 !important; padding-bottom: 60px !important; }
         .td-page .admin-bar { padding-top: 0 !important; padding-bottom: 4px !important; }
         .cal-line { display: block; }
+
+        /* ===== CALENDAR SETTINGS / INLINE EDIT ===== */
+        .cal-settings-btn {
+            background: none; border: none; color: #6b8aaa; cursor: pointer;
+            font-size: 16px; padding: 4px 8px; transition: color .2s, transform .3s;
+            position: absolute; right: 0; top: 50%; transform: translateY(-50%);
+        }
+        .cal-settings-btn:hover { color: #008080; transform: translateY(-50%) rotate(90deg); }
+        .cal-settings-btn.unlocked { color: #008080; }
+
+        .cal-edit-inner {
+            background: linear-gradient(180deg, #f0faf8, #e4f2ef);
+            border: 1px solid #00808044;
+            border-radius: 14px;
+            padding: 16px;
+            margin: 12px 0 0;
+            box-shadow: 0 4px 16px #00808018;
+        }
+        .cal-edit-title {
+            font-size: 13px; font-weight: 900; color: #006060;
+            margin-bottom: 12px; text-transform: uppercase; letter-spacing: .04em;
+        }
+        .cal-edit-title i { margin-right: 6px; color: #008080; }
+        .cal-edit-row {
+            margin-bottom: 10px;
+        }
+        .cal-edit-label {
+            display: block; font-size: 10px; font-weight: 800;
+            color: #4a7a7a; text-transform: uppercase; letter-spacing: .06em;
+            margin-bottom: 4px;
+        }
+        .cal-edit-input {
+            width: 100%; padding: 8px 10px; border: 1.5px solid #00808044;
+            border-radius: 8px; font-family: inherit; font-size: 13px;
+            background: #fff; color: #1a3a3a; outline: none;
+            transition: border-color .2s;
+        }
+        .cal-edit-input:focus { border-color: #008080; box-shadow: 0 0 0 2px #00808022; }
+        .cal-edit-textarea {
+            width: 100%; padding: 8px 10px; border: 1.5px solid #00808044;
+            border-radius: 8px; font-family: inherit; font-size: 13px;
+            background: #fff; color: #1a3a3a; outline: none; resize: vertical;
+            transition: border-color .2s;
+        }
+        .cal-edit-textarea:focus { border-color: #008080; box-shadow: 0 0 0 2px #00808022; }
+        .cal-edit-owners {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 6px;
+        }
+        .cal-owner-btn {
+            padding: 8px 6px; border-radius: 8px; border: 2px solid #00808044;
+            background: #fff; color: #4a6a6a; font-family: inherit;
+            font-weight: 800; font-size: 11px; cursor: pointer;
+            text-transform: uppercase; letter-spacing: .03em;
+            transition: all .18s;
+        }
+        .cal-owner-btn:hover { border-color: #008080; background: #e8f8f4; }
+        .cal-owner-btn.selected {
+            background: #008080; color: #fff; border-color: #008080;
+            box-shadow: 0 2px 8px #00808033;
+        }
+        .cal-edit-actions {
+            display: flex; gap: 8px; margin-top: 14px;
+        }
+        .cal-edit-save {
+            flex: 1; padding: 10px; border: none; border-radius: 10px;
+            background: linear-gradient(135deg, #008080, #006666);
+            color: #fff; font-family: inherit; font-weight: 900;
+            font-size: 12px; text-transform: uppercase; letter-spacing: .05em;
+            cursor: pointer; transition: transform .15s, box-shadow .2s;
+        }
+        .cal-edit-save:hover { transform: translateY(-1px); box-shadow: 0 4px 14px #00808044; }
+        .cal-edit-save:active { transform: scale(.97); }
+        .cal-edit-cancel {
+            padding: 10px 18px; border: 1.5px solid #00808044; border-radius: 10px;
+            background: transparent; color: #4a7a7a; font-family: inherit;
+            font-weight: 800; font-size: 12px; cursor: pointer; transition: all .15s;
+        }
+        .cal-edit-cancel:hover { border-color: #008080; background: #e8f8f4; }
+        .cal-entry-user { background: #e8fff4 !important; border-left: 3px solid #008080 !important; }
+        .cal-entry-user .cal-text { font-weight: 700 !important; color: #006050 !important; }
+        .cal-entry-delete {
+            background: none; border: none; color: #e74c3c; cursor: pointer;
+            font-size: 10px; padding: 2px 4px; margin-left: 6px;
+            opacity: .5; transition: opacity .15s;
+        }
+        .cal-entry-delete:hover { opacity: 1; }
         .cal-line + .cal-line { margin-top: 4px; }
 
         /* --- SKELETON & STATES --- */
@@ -2566,6 +2652,7 @@
             }
             .dsk-ad-table tbody td:first-child { text-align: left; padding-left: 10px; }
             .dsk-ad-name { font-weight: 900; color: #e0f0ff; }
+            .dsk-ad-kh-cell { color: #8ab4d8; font-weight: 700; }
             .dsk-ad-pct { font-weight: 900; }
             .dsk-ad-pct.green { color: #4ade80; }
             .dsk-ad-pct.gold { color: #fbbf24; }
@@ -3033,8 +3120,35 @@
             <div class="sub-header">
                 <button class="btn-back-u" onclick="go('view-main')" aria-label="Quay lại"><i class="fa-solid fa-arrow-left"></i></button>
                 <span class="sub-title">Kế Hoạch Khung</span>
+                <button class="cal-settings-btn" onclick="openCalSettings()" title="Cài đặt"><i class="fa-solid fa-gear"></i></button>
             </div>
             <div class="sub-line-wrap"><div class="sub-line"></div></div>
+            <div id="cal-edit-panel" style="display:none">
+                <div class="cal-edit-inner">
+                    <div class="cal-edit-title"><i class="fa-solid fa-pen-to-square"></i> Thêm kế hoạch</div>
+                    <div class="cal-edit-row">
+                        <label class="cal-edit-label">Ngày</label>
+                        <input type="date" id="cal-edit-date" class="cal-edit-input">
+                    </div>
+                    <div class="cal-edit-row">
+                        <label class="cal-edit-label">Nội dung</label>
+                        <textarea id="cal-edit-content" class="cal-edit-textarea" rows="2" placeholder="Nhập nội dung kế hoạch..."></textarea>
+                    </div>
+                    <div class="cal-edit-row">
+                        <label class="cal-edit-label">P/Trách</label>
+                        <div class="cal-edit-owners">
+                            <button type="button" class="cal-owner-btn" data-owner="HTKD" onclick="toggleCalOwner(this)">HTKD</button>
+                            <button type="button" class="cal-owner-btn" data-owner="PTKD" onclick="toggleCalOwner(this)">PTKD</button>
+                            <button type="button" class="cal-owner-btn" data-owner="DVKH" onclick="toggleCalOwner(this)">DVKH</button>
+                            <button type="button" class="cal-owner-btn" data-owner="CÔNG TY" onclick="toggleCalOwner(this)">CÔNG TY</button>
+                        </div>
+                    </div>
+                    <div class="cal-edit-actions">
+                        <button type="button" class="cal-edit-save" onclick="saveCalEntry()"><i class="fa-solid fa-check"></i> Lưu</button>
+                        <button type="button" class="cal-edit-cancel" onclick="closeCalSettings()">Đóng</button>
+                    </div>
+                </div>
+            </div>
             <div class="cal-filter" id="cal-filter"></div>
             <div class="cal-func" id="cal-func"></div>
             <div class="cal-wrap">
@@ -3878,12 +3992,13 @@
             if (window.innerWidth < 900) { wrap.style.display = 'none'; return; }
             wrap.style.display = '';
 
-            /* Tính AFYP + KH theo tháng — chỉ dùng số AD cấp phòng (giống renderMain) */
-            var adKeys = [];
-            for (var pN in CO_CAU) CO_CAU[pN].forEach(function(k) { adKeys.push(k); });
+            /* Tính AFYP + KH theo tháng — dùng cùng logic renderMain (Công ty) */
             var months = [];
             var totalAfyp = 0, totalKh = 0;
             var curM = parseInt(CUR_MONTH, 10);
+            var adKeys = [];
+            for (var pN in CO_CAU) CO_CAU[pN].forEach(function(k) { adKeys.push(k); });
+
             for (var m = 1; m <= 12; m++) {
                 var mk = CUR_YEAR + '-' + String(m).padStart(2, '0');
                 var mRows = DATA.filter(function(x) { return x.ky === mk && x.ten_nhan_vien; });
@@ -4182,7 +4297,7 @@
         function buildAdTable(ads, delay) {
             var html = '<div class="dsk-ad-wrap"><table class="dsk-ad-table">';
             html += '<thead><tr>' +
-                '<th>AD</th><th>% KH</th><th>AFYP</th><th>HĐ</th><th>TD</th><th>Chuẩn</th><th>IP</th><th></th>' +
+                '<th>AD</th><th>% KH</th><th>AFYP</th><th>KH</th><th>HĐ</th><th>TD</th><th>Chuẩn</th><th>IP</th><th></th>' +
                 '</tr></thead><tbody>';
             ads.forEach(function(ad, i) {
                 var pct = ad.kh ? (ad.afyp / ad.kh * 100) : 0;
@@ -4194,6 +4309,7 @@
                     '<td><span class="dsk-ad-name">' + esc(ad.ten) + '</span></td>' +
                     '<td><span class="dsk-ad-pct ' + pctClass + '">' + pct.toFixed(0) + '%</span></td>' +
                     '<td>' + fmt(ad.afyp) + '</td>' +
+                    '<td class="dsk-ad-kh-cell">' + (ad.kh ? fmt(ad.kh) : '-') + '</td>' +
                     '<td>' + ad.lhd + '</td>' +
                     '<td>' + ad.td + '</td>' +
                     '<td>' + ad.hdChuan + '</td>' +
@@ -4520,6 +4636,12 @@
                 return selMonths.indexOf(m) !== -1;
             }).sort(function(a, b) { return num(a.ngay_kh) - num(b.ngay_kh); });
 
+            /* Merge user entries from localStorage */
+            var userEntries = getCalUserEntries().filter(function(e) {
+                return selMonths.indexOf(e.thangkh) !== -1;
+            });
+            rows = rows.concat(userEntries);
+
             if (!selMonths.length) {
                 box.innerHTML = '<div style="padding:40px 20px;text-align:center;color:var(--muted);font-style:italic;font-size:13px">Chưa có kế hoạch cho kỳ này</div>';
                 return;
@@ -4548,26 +4670,30 @@
                 if (isToday) rowCls.push('is-today');
                 if (weekday === 6 || weekday === 0) rowCls.push('is-weekend');
                 if (weekday === 0) rowCls.push('is-sunday');
+                /* Check if any plan is a user entry */
+                var hasUserEntry = plans.some(function(r) { return r.source === 'user'; });
+                if (hasUserEntry) rowCls.push('cal-entry-user');
 
                 var contentHtml = plans.length? plans.map(function(r) {
-                    return '<span class="cal-line">' + esc(r.noi_dung || '') + '</span>';
+                    var txt = esc(r.noi_dung || '');
+                    if (r.source === 'user' && calEditUnlocked) {
+                        txt += '<button class="cal-entry-delete" onclick="deleteCalEntry(' + r.id + ')" title="Xóa"><i class="fa-solid fa-trash"></i></button>';
+                    }
+                    return '<span class="cal-line">' + txt + '</span>';
                 }).join('') : '<span class="cal-empty"></span>';
 
                 var ownerMap = {}, owners = [];
                 plans.forEach(function(r) {
                     var owner = '';
-                    // 1) Ưu tiên cột chính xác "phu_trach" trước
                     if (r.phu_trach) {
                         owner = String(r.phu_trach).trim();
                     }
-                    // 2) Các tên cột thay thế phổ biến
                     if (!owner) {
                         var altKeys = ['p_trach','ptrach','nguoi_phu_trach','nguoi_thuc_hien'];
                         for (var ai = 0; ai < altKeys.length; ai++) {
                             if (r[altKeys[ai]]) { owner = String(r[altKeys[ai]]).trim(); break; }
                         }
                     }
-                    // 3) Fallback: tìm key chứa "trach" hoặc "phu_trach"
                     if (!owner) {
                         for (var k in r) {
                             if (!r.hasOwnProperty(k)) continue;
@@ -4578,7 +4704,6 @@
                             }
                         }
                     }
-                    // 4) Fallback cuối: dùng phong_ban
                     if (!owner && r.phong_ban) {
                         owner = String(r.phong_ban).trim();
                     }
@@ -4616,6 +4741,99 @@
         window.pickCal = function(v) {
             timeState.calendar = v;
             renderCalFilter();
+            renderCalendar();
+        };
+
+        /* ===== CALENDAR INLINE EDIT (password-locked) ===== */
+        var CAL_EDIT_PW = '123456';
+        var calEditUnlocked = false;
+
+        function getCalUserEntries() {
+            try { return JSON.parse(localStorage.getItem('kpi_cal_user_entries') || '[]'); } catch(e) { return []; }
+        }
+        function setCalUserEntries(entries) {
+            localStorage.setItem('kpi_cal_user_entries', JSON.stringify(entries));
+        }
+
+        window.openCalSettings = function() {
+            if (!calEditUnlocked) {
+                var pw = '';
+                try { pw = prompt('Nhập mật khẩu để mở cài đặt:'); } catch(e) { pw = ''; }
+                if (pw !== CAL_EDIT_PW) {
+                    if (pw !== null && pw !== '') { try { alert('Mật khẩu không đúng!'); } catch(e) {} }
+                    return;
+                }
+                calEditUnlocked = true;
+                var btn = document.querySelector('.cal-settings-btn');
+                if (btn) btn.classList.add('unlocked');
+            }
+            var panel = $('cal-edit-panel');
+            if (panel) {
+                panel.style.display = panel.style.display === 'none' ? '' : 'none';
+                /* Set default date to today */
+                var dateInput = $('cal-edit-date');
+                if (dateInput && !dateInput.value) {
+                    var today = new Date();
+                    dateInput.value = today.getFullYear() + '-' + String(today.getMonth() + 1).padStart(2, '0') + '-' + String(today.getDate()).padStart(2, '0');
+                }
+            }
+        };
+
+        window.closeCalSettings = function() {
+            var panel = $('cal-edit-panel');
+            if (panel) panel.style.display = 'none';
+            /* Reset form */
+            var dateInput = $('cal-edit-date');
+            var contentInput = $('cal-edit-content');
+            if (dateInput) dateInput.value = '';
+            if (contentInput) contentInput.value = '';
+            document.querySelectorAll('.cal-owner-btn.selected').forEach(function(b) { b.classList.remove('selected'); });
+        };
+
+        window.toggleCalOwner = function(btn) {
+            btn.classList.toggle('selected');
+        };
+
+        window.saveCalEntry = function() {
+            var dateVal = $('cal-edit-date') ? $('cal-edit-date').value : '';
+            var contentVal = $('cal-edit-content') ? $('cal-edit-content').value.trim() : '';
+            var ownerBtns = document.querySelectorAll('.cal-owner-btn.selected');
+            var owners = [];
+            ownerBtns.forEach(function(b) { owners.push(b.getAttribute('data-owner')); });
+
+            if (!dateVal) { try { alert('Vui lòng chọn ngày!'); } catch(e) {} return; }
+            if (!contentVal) { try { alert('Vui lòng nhập nội dung kế hoạch!'); } catch(e) {} return; }
+            if (!owners.length) { try { alert('Vui lòng chọn phụ trách!'); } catch(e) {} return; }
+
+            var parts = dateVal.split('-');
+            var year = parts[0];
+            var month = String(parseInt(parts[1], 10)).padStart(2, '0');
+            var day = parseInt(parts[2], 10);
+
+            var entry = {
+                id: Date.now(),
+                ngay_kh: day,
+                thangkh: month,
+                noi_dung: contentVal,
+                phu_trach: owners.join(', '),
+                source: 'user'
+            };
+
+            var entries = getCalUserEntries();
+            entries.push(entry);
+            setCalUserEntries(entries);
+
+            /* Reset form */
+            $('cal-edit-content').value = '';
+            document.querySelectorAll('.cal-owner-btn.selected').forEach(function(b) { b.classList.remove('selected'); });
+
+            renderCalendar();
+        };
+
+        window.deleteCalEntry = function(entryId) {
+            var entries = getCalUserEntries();
+            entries = entries.filter(function(e) { return e.id !== entryId; });
+            setCalUserEntries(entries);
             renderCalendar();
         };
 
