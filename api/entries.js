@@ -4,6 +4,7 @@
  *
  * GET    /api/entries?month=06       → Get entries for a month
  * POST   /api/entries                → Create new entry { ngay_kh, thangkh, noi_dung, phu_trach }
+ * PUT    /api/entries?id=x&pw=123456 → Update entry by id
  * DELETE /api/entries?id=x&pw=123456 → Delete entry by id
  */
 
@@ -15,7 +16,7 @@ module.exports = async function handler(req, res) {
   // CORS
   res.setHeader('Access-Control-Allow-Credentials', 'true');
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET,POST,DELETE,OPTIONS');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type,Authorization');
 
   if (req.method === 'OPTIONS') {
@@ -55,6 +56,32 @@ module.exports = async function handler(req, res) {
       `;
 
       return res.status(201).json(result[0]);
+    }
+
+    // ===== PUT: Update entry by id =====
+    if (req.method === 'PUT') {
+      const { id, pw } = req.query;
+      if (pw !== CAL_PW) {
+        return res.status(403).json({ error: 'Sai mật khẩu' });
+      }
+      if (!id) {
+        return res.status(400).json({ error: 'Missing id' });
+      }
+      const { ngay_kh, thangkh, noi_dung, phu_trach } = req.body || {};
+      if (!ngay_kh || !thangkh || !noi_dung || !phu_trach) {
+        return res.status(400).json({ error: 'Thiếu thông tin: ngay_kh, thangkh, noi_dung, phu_trach' });
+      }
+      const result = await sql`
+        UPDATE calendar_entries
+        SET ngay_kh = ${Number(ngay_kh)}, thangkh = ${String(thangkh).padStart(2, '0')},
+            noi_dung = ${String(noi_dung)}, phu_trach = ${String(phu_trach)}
+        WHERE id = ${Number(id)}
+        RETURNING id, ngay_kh, thangkh, noi_dung, phu_trach, source, created_at
+      `;
+      if (result.length === 0) {
+        return res.status(404).json({ error: 'Không tìm thấy mục' });
+      }
+      return res.status(200).json(result[0]);
     }
 
     // ===== DELETE: Remove entry by id =====
