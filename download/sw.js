@@ -1,5 +1,5 @@
 /* PWA Service Worker - KPI BVNT An Giang */
-const CACHE_NAME = 'kpi-bvnt-v23';
+const CACHE_NAME = 'kpi-bvnt-v24';
 const OFFLINE_URLS = ['/'];
 
 self.addEventListener('install', function(event) {

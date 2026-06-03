@@ -582,7 +582,8 @@
 
         /* Advisor Grid */
         .ad-grid { display: grid; grid-template-columns: 1fr; gap: 10px; margin-top: 10px; margin-bottom: 8px; }
-        .kpi-ad.is-phong { display: none; } /* phong card hidden on mobile, shown on desktop */
+        .kpi-ad.is-phong { display: block; } /* phong card uses same layout as AD card, different color via is-phong */
+        .kpi-phong { display: none !important; } /* old phong card hidden — replaced by kpi-ad.is-phong */
 
 
         .kpi-ad {
@@ -634,6 +635,9 @@
             grid-template-columns: 1.2fr repeat(4, minmax(0, .9fr));
             gap: 4px;
         }
+        .ad-stats:has(.ad-stat.kh) {
+            grid-template-columns: 1.1fr 0.7fr 0.6fr 0.6fr 0.7fr 0.8fr;
+        }
         .ad-stat {
             min-width: 0;
             border-radius: 10px;
@@ -683,6 +687,59 @@
         .ad-stat.ip { background: #f0e0bf; }
         .ad-stat.ip .ad-stat-label { color: #9a7235; }
         .ad-stat.ip .ad-stat-val { color: #8a5a12; }
+        /* KH stat tile (shared by both AD & phong cards) */
+        .ad-stat.kh { background: #e0e8f0; }
+        .ad-stat.kh .ad-stat-label { color: #4a6a8a; }
+        .ad-stat.kh .ad-stat-val { color: #2a4a6a; }
+        .ad-stat.kh .ad-stat-unit { color: #6a8ab0; }
+
+        /* ===== PHONG CARD — same as AD card but amber/orange tones ===== */
+        .kpi-ad.is-phong {
+            margin-top: 16px;
+            background: linear-gradient(180deg, #fef8ee, #f9edd8);
+            border: 1px solid #d4a04a88;
+            border-top: 3px solid #e8930c;
+        }
+        .kpi-ad.is-phong:hover {
+            box-shadow: 0 10px 22px #e8930c18;
+        }
+        .kpi-ad.is-phong.glow-full {
+            border-color: #f2b24d;
+            background: linear-gradient(180deg, #fff6e0, #fde8b8);
+            box-shadow: 0 0 0 2px #f2b24d55, 0 0 16px #f2b24d30, 0 6px 18px #00000018;
+        }
+        .kpi-ad.is-phong .ad-name {
+            color: #8a5a10;
+        }
+        .kpi-ad.is-phong .ad-name i { color: #d4900a; margin-right: 4px; }
+        .kpi-ad.is-phong .ad-pct { color: #c67e08; }
+        .kpi-ad.is-phong .ad-kh { color: #9a7030; }
+        .kpi-ad.is-phong .ad-progress {
+            background: linear-gradient(180deg, #f5ead4, #e8d4b0);
+            box-shadow: inset 0 1px 2px #c4a87040;
+        }
+        /* Stat color overrides for phong */
+        .kpi-ad.is-phong .ad-stat.afyp { background: #fce4b8; }
+        .kpi-ad.is-phong .ad-stat.afyp .ad-stat-label { color: #9a6a14; }
+        .kpi-ad.is-phong .ad-stat.afyp .ad-stat-val { color: #7a4e08; }
+        .kpi-ad.is-phong .ad-stat.afyp .ad-stat-unit { color: #a07830; }
+        .kpi-ad.is-phong .ad-stat.kh { background: #f5dbb5; }
+        .kpi-ad.is-phong .ad-stat.kh .ad-stat-label { color: #8a6020; }
+        .kpi-ad.is-phong .ad-stat.kh .ad-stat-val { color: #6a4810; }
+        .kpi-ad.is-phong .ad-stat.kh .ad-stat-unit { color: #9a7030; }
+        .kpi-ad.is-phong .ad-stat.lhd { background: #fde8d0; }
+        .kpi-ad.is-phong .ad-stat.lhd .ad-stat-label { color: #a06020; }
+        .kpi-ad.is-phong .ad-stat.lhd .ad-stat-val { color: #8a4a10; }
+        .kpi-ad.is-phong .ad-stat.td { background: #e4d4f0; }
+        .kpi-ad.is-phong .ad-stat.td .ad-stat-label { color: #7a50a0; }
+        .kpi-ad.is-phong .ad-stat.td .ad-stat-val { color: #6a30b0; }
+        .kpi-ad.is-phong .ad-stat.chuan { background: #d0ece4; }
+        .kpi-ad.is-phong .ad-stat.chuan .ad-stat-label { color: #2a8080; }
+        .kpi-ad.is-phong .ad-stat.chuan .ad-stat-val { color: #008080; }
+        .kpi-ad.is-phong .ad-stat.ip { background: #f5e0c0; }
+        .kpi-ad.is-phong .ad-stat.ip .ad-stat-label { color: #8a6020; }
+        .kpi-ad.is-phong .ad-stat.ip .ad-stat-val { color: #7a4a10; }
+
         .ad-progress {
             margin-top: 5px;
             height: 5px;
@@ -942,6 +999,12 @@
                 padding: 6px 8px 5px;
                 min-height: 66px;
             }
+            .kpi-ad.is-phong {
+                margin-top: 14px;
+                border-radius: 15px;
+                border: 1.5px solid #d4a04a88;
+                border-top: 3px solid #e8930c;
+            }
             .ad-top {
                 grid-template-columns: 96px minmax(0, 1fr);
                 gap: 7px;
@@ -952,6 +1015,8 @@
             .ad-pct { font-size: 13px; }
             .ad-kh { margin-top: 2px; font-size: 8px; line-height: 1.15; }
             .ad-stats { grid-template-columns: 1.2fr repeat(4, minmax(0, .78fr)); gap: 3px; }
+            .ad-stats:has(.ad-stat.kh) { grid-template-columns: repeat(3, 1fr); }
+            .ad-stat.kh .ad-stat-val { font-size: 10px; }
             .ad-stat {
                 border-radius: 8px;
                 padding: 5px 2px 4px;
@@ -2453,64 +2518,8 @@
             }
             .dept-section { display: flex; flex-direction: column; gap: 0; }
 
-            /* Hide old mobile phong card on desktop */
+            /* Old phong card hidden everywhere — replaced by kpi-ad.is-phong */
             .kpi-phong { display: none !important; }
-
-            /* ===== PHONG CARD — same as AD card but amber/orange tones ===== */
-            .kpi-ad.is-phong {
-                display: block;
-                background: linear-gradient(180deg, #fef8ee, #f9edd8);
-                border: 1px solid #d4a04a88;
-                border-top: 3px solid #e8930c;
-            }
-            .kpi-ad.is-phong:hover {
-                box-shadow: 0 10px 22px #e8930c18;
-            }
-            .kpi-ad.is-phong.glow-full {
-                border-color: #f2b24d;
-                background: linear-gradient(180deg, #fff6e0, #fde8b8);
-                box-shadow: 0 0 0 2px #f2b24d55, 0 0 16px #f2b24d30, 0 6px 18px #00000018;
-            }
-            .kpi-ad.is-phong .ad-name {
-                color: #8a5a10;
-            }
-            .kpi-ad.is-phong .ad-name i { color: #d4900a; margin-right: 4px; }
-            .kpi-ad.is-phong .ad-pct { color: #c67e08; }
-            .kpi-ad.is-phong .ad-kh { color: #9a7030; }
-            .kpi-ad.is-phong .ad-progress {
-                background: linear-gradient(180deg, #f5ead4, #e8d4b0);
-                box-shadow: inset 0 1px 2px #c4a87040;
-            }
-            /* Stat color overrides for phong */
-            .kpi-ad.is-phong .ad-stat.afyp { background: #fce4b8; }
-            .kpi-ad.is-phong .ad-stat.afyp .ad-stat-label { color: #9a6a14; }
-            .kpi-ad.is-phong .ad-stat.afyp .ad-stat-val { color: #7a4e08; }
-            .kpi-ad.is-phong .ad-stat.afyp .ad-stat-unit { color: #a07830; }
-            .kpi-ad.is-phong .ad-stat.kh { background: #f5dbb5; }
-            .kpi-ad.is-phong .ad-stat.kh .ad-stat-label { color: #8a6020; }
-            .kpi-ad.is-phong .ad-stat.kh .ad-stat-val { color: #6a4810; }
-            .kpi-ad.is-phong .ad-stat.kh .ad-stat-unit { color: #9a7030; }
-            .kpi-ad.is-phong .ad-stat.lhd { background: #fde8d0; }
-            .kpi-ad.is-phong .ad-stat.lhd .ad-stat-label { color: #a06020; }
-            .kpi-ad.is-phong .ad-stat.lhd .ad-stat-val { color: #8a4a10; }
-            .kpi-ad.is-phong .ad-stat.td { background: #e4d4f0; }
-            .kpi-ad.is-phong .ad-stat.td .ad-stat-label { color: #7a50a0; }
-            .kpi-ad.is-phong .ad-stat.td .ad-stat-val { color: #6a30b0; }
-            .kpi-ad.is-phong .ad-stat.chuan { background: #d0ece4; }
-            .kpi-ad.is-phong .ad-stat.chuan .ad-stat-label { color: #2a8080; }
-            .kpi-ad.is-phong .ad-stat.chuan .ad-stat-val { color: #008080; }
-            .kpi-ad.is-phong .ad-stat.ip { background: #f5e0c0; }
-            .kpi-ad.is-phong .ad-stat.ip .ad-stat-label { color: #8a6020; }
-            .kpi-ad.is-phong .ad-stat.ip .ad-stat-val { color: #7a4a10; }
-
-            /* ===== KH STAT TILE (shared by both AD & phong cards) ===== */
-            .ad-stat.kh { background: #e0e8f0; }
-            .ad-stat.kh .ad-stat-label { color: #4a6a8a; }
-            .ad-stat.kh .ad-stat-val { color: #2a4a6a; }
-            .ad-stat.kh .ad-stat-unit { color: #6a8ab0; }
-            .ad-stats:has(.ad-stat.kh) {
-                grid-template-columns: 1.2fr 0.7fr 0.6fr 0.6fr 0.7fr 0.8fr;
-            }
 
             /* ===== AD TABLE inside department ===== */
             .ad-grid {
@@ -3455,7 +3464,7 @@
         function renderPhongDrill(card) {
             if (!card) return;
             var adKey = card.getAttribute('data-ad-key') || '';
-            var drill = card.querySelector('.phong-drill');
+            var drill = card.querySelector('.phong-drill') || card.querySelector('.ad-drill');
             var entry = dashboardState.adGroups[adKey];
             if (!drill) return;
             if (!entry || !entry.members || !entry.members.length) {
