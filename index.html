@@ -4482,16 +4482,29 @@
                 var ownerMap = {}, owners = [];
                 plans.forEach(function(r) {
                     var owner = '';
-                    // First try: look for a dedicated "Phụ trách" column
-                    for (var k in r) {
-                        if (!r.hasOwnProperty(k)) continue;
-                        var nk = String(k).toLowerCase();
-                        if (nk.indexOf('trach') !== -1 || nk === 'p_trach' || nk === 'p/trach' || nk === 'phu' || nk.indexOf('nguoi_phu') !== -1 || nk === 'pt' || nk.indexOf('phu_trach') !== -1 || nk.indexOf('p_tr') !== -1 || nk === 'ptrach' || nk === 'nguoi_thuc_hien') {
-                            var v = String(r[k] || '').trim();
-                            if (v) { owner = v; break; }
+                    // 1) Ưu tiên cột chính xác "phu_trach" trước
+                    if (r.phu_trach) {
+                        owner = String(r.phu_trach).trim();
+                    }
+                    // 2) Các tên cột thay thế phổ biến
+                    if (!owner) {
+                        var altKeys = ['p_trach','ptrach','nguoi_phu_trach','nguoi_thuc_hien'];
+                        for (var ai = 0; ai < altKeys.length; ai++) {
+                            if (r[altKeys[ai]]) { owner = String(r[altKeys[ai]]).trim(); break; }
                         }
                     }
-                    // Fallback: use phong_ban if no dedicated "Phụ trách" column found
+                    // 3) Fallback: tìm key chứa "trach" hoặc "phu_trach"
+                    if (!owner) {
+                        for (var k in r) {
+                            if (!r.hasOwnProperty(k)) continue;
+                            var nk = String(k).toLowerCase();
+                            if (nk === 'phu_trach' || nk.indexOf('trach') !== -1 || nk === 'p_trach' || nk === 'ptrach' || nk === 'nguoi_thuc_hien' || nk.indexOf('nguoi_phu') !== -1 || nk.indexOf('phu_trach') !== -1 || nk.indexOf('p_tr') !== -1) {
+                                var v = String(r[k] || '').trim();
+                                if (v) { owner = v; break; }
+                            }
+                        }
+                    }
+                    // 4) Fallback cuối: dùng phong_ban
                     if (!owner && r.phong_ban) {
                         owner = String(r.phong_ban).trim();
                     }
