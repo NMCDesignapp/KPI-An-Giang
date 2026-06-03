@@ -28,3 +28,4 @@ skills/
 upload/
 .env
 worklog.md
+node_modules/
