@@ -582,8 +582,9 @@
 
         /* Advisor Grid */
         .ad-grid { display: grid; grid-template-columns: 1fr; gap: 10px; margin-top: 10px; margin-bottom: 8px; }
-        .dsk-phong-card { display: none; } /* hidden on mobile, shown on desktop */
-        
+        .kpi-ad.is-phong { display: none; } /* phong card hidden on mobile, shown on desktop */
+
+
         .kpi-ad {
             background: linear-gradient(180deg, #edf4fb, #dfeaf6);
             border: 1px solid #b6c9de;
@@ -2455,151 +2456,61 @@
             /* Hide old mobile phong card on desktop */
             .kpi-phong { display: none !important; }
 
-            /* ===== NEW: Desktop Horizontal Department Card (amber/orange tones) ===== */
-            .dsk-phong-card {
+            /* ===== PHONG CARD — same as AD card but amber/orange tones ===== */
+            .kpi-ad.is-phong {
                 display: block;
                 background: linear-gradient(180deg, #fef8ee, #f9edd8);
                 border: 1px solid #d4a04a88;
                 border-top: 3px solid #e8930c;
-                border-radius: 12px;
-                padding: 12px 16px 10px;
-                box-shadow: 0 4px 14px #00000012, inset 0 1px 0 #fff8;
-                transition: box-shadow .22s, transform .22s;
             }
-            .dsk-phong-card:hover {
-                transform: translateY(-1px);
-                box-shadow: 0 8px 22px #0000001a;
+            .kpi-ad.is-phong:hover {
+                box-shadow: 0 10px 22px #e8930c18;
             }
-            .dsk-phong-card.glow-full {
+            .kpi-ad.is-phong.glow-full {
                 border-color: #f2b24d;
                 background: linear-gradient(180deg, #fff6e0, #fde8b8);
                 box-shadow: 0 0 0 2px #f2b24d55, 0 0 16px #f2b24d30, 0 6px 18px #00000018;
             }
-            .dsk-phong-top {
-                display: grid;
-                grid-template-columns: minmax(130px, 1fr) minmax(0, 2.5fr);
-                gap: 12px;
-                align-items: center;
-            }
-            .dsk-phong-left {
-                min-width: 0;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-            }
-            .dsk-phong-name-row {
-                display: flex;
-                align-items: center;
-                gap: 6px;
-            }
-            .dsk-phong-name {
-                font-size: 13px;
-                font-weight: 900;
-                text-transform: uppercase;
+            .kpi-ad.is-phong .ad-name {
                 color: #8a5a10;
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
             }
-            .dsk-phong-name i { color: #d4900a; margin-right: 4px; }
-            .dsk-phong-pct {
-                font-size: 17px;
-                font-weight: 900;
-                line-height: 1;
-                color: #c67e08;
-                white-space: nowrap;
-                flex-shrink: 0;
-            }
-            .dsk-phong-kh {
-                margin-top: 4px;
-                display: block;
-                font-size: 10px;
-                color: #9a7030;
-                font-weight: 700;
-                line-height: 1.2;
-            }
-            .dsk-phong-right { min-width: 0; }
-            .dsk-phong-stats {
-                display: grid;
-                grid-template-columns: 1.4fr 0.7fr 0.6fr 0.7fr 0.8fr 0.8fr;
-                gap: 4px;
-            }
-            .dsk-phong-stat {
-                min-width: 0;
-                border-radius: 8px;
-                padding: 5px 4px 4px;
-                text-align: center;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-            }
-            .dsk-phong-stat-label {
-                display: block;
-                font-size: 7.5px;
-                font-weight: 800;
-                text-transform: uppercase;
-                margin-bottom: 2px;
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                max-width: 100%;
-            }
-            .dsk-phong-stat-val {
-                font-size: 13px;
-                font-weight: 900;
-                white-space: nowrap;
-                line-height: 1;
-            }
-            .dsk-phong-stat-val-main { font-size: 1em; line-height: 1; }
-            .dsk-phong-stat-unit {
-                font-size: .62em;
-                font-weight: 800;
-                margin-left: 2px;
-                vertical-align: baseline;
-                opacity: .9;
-            }
-            /* Stat color variants — amber/orange tones */
-            .dsk-phong-stat.afyp { background: #fce4b8; }
-            .dsk-phong-stat.afyp .dsk-phong-stat-label { color: #9a6a14; }
-            .dsk-phong-stat.afyp .dsk-phong-stat-val { color: #7a4e08; }
-            .dsk-phong-stat.afyp .dsk-phong-stat-unit { color: #a07830; }
-            .dsk-phong-stat.kh { background: #f5dbb5; }
-            .dsk-phong-stat.kh .dsk-phong-stat-label { color: #8a6020; }
-            .dsk-phong-stat.kh .dsk-phong-stat-val { color: #6a4810; }
-            .dsk-phong-stat.kh .dsk-phong-stat-unit { color: #9a7030; }
-            .dsk-phong-stat.lhd { background: #fde8d0; }
-            .dsk-phong-stat.lhd .dsk-phong-stat-label { color: #a06020; }
-            .dsk-phong-stat.lhd .dsk-phong-stat-val { color: #8a4a10; }
-            .dsk-phong-stat.td { background: #e4d4f0; }
-            .dsk-phong-stat.td .dsk-phong-stat-label { color: #7a50a0; }
-            .dsk-phong-stat.td .dsk-phong-stat-val { color: #6a30b0; }
-            .dsk-phong-stat.chuan { background: #d0ece4; }
-            .dsk-phong-stat.chuan .dsk-phong-stat-label { color: #2a8080; }
-            .dsk-phong-stat.chuan .dsk-phong-stat-val { color: #008080; }
-            .dsk-phong-stat.ip { background: #f5e0c0; }
-            .dsk-phong-stat.ip .dsk-phong-stat-label { color: #8a6020; }
-            .dsk-phong-stat.ip .dsk-phong-stat-val { color: #7a4a10; }
-            .dsk-phong-progress {
-                margin-top: 6px;
-                height: 5px;
-                border-radius: 999px;
-                overflow: hidden;
+            .kpi-ad.is-phong .ad-name i { color: #d4900a; margin-right: 4px; }
+            .kpi-ad.is-phong .ad-pct { color: #c67e08; }
+            .kpi-ad.is-phong .ad-kh { color: #9a7030; }
+            .kpi-ad.is-phong .ad-progress {
                 background: linear-gradient(180deg, #f5ead4, #e8d4b0);
                 box-shadow: inset 0 1px 2px #c4a87040;
             }
-            .dsk-phong-progress-fill {
-                height: 100%;
-                width: 0;
-                border-radius: inherit;
-                transition: width .9s cubic-bezier(.22, 1, .36, 1);
-                will-change: width;
+            /* Stat color overrides for phong */
+            .kpi-ad.is-phong .ad-stat.afyp { background: #fce4b8; }
+            .kpi-ad.is-phong .ad-stat.afyp .ad-stat-label { color: #9a6a14; }
+            .kpi-ad.is-phong .ad-stat.afyp .ad-stat-val { color: #7a4e08; }
+            .kpi-ad.is-phong .ad-stat.afyp .ad-stat-unit { color: #a07830; }
+            .kpi-ad.is-phong .ad-stat.kh { background: #f5dbb5; }
+            .kpi-ad.is-phong .ad-stat.kh .ad-stat-label { color: #8a6020; }
+            .kpi-ad.is-phong .ad-stat.kh .ad-stat-val { color: #6a4810; }
+            .kpi-ad.is-phong .ad-stat.kh .ad-stat-unit { color: #9a7030; }
+            .kpi-ad.is-phong .ad-stat.lhd { background: #fde8d0; }
+            .kpi-ad.is-phong .ad-stat.lhd .ad-stat-label { color: #a06020; }
+            .kpi-ad.is-phong .ad-stat.lhd .ad-stat-val { color: #8a4a10; }
+            .kpi-ad.is-phong .ad-stat.td { background: #e4d4f0; }
+            .kpi-ad.is-phong .ad-stat.td .ad-stat-label { color: #7a50a0; }
+            .kpi-ad.is-phong .ad-stat.td .ad-stat-val { color: #6a30b0; }
+            .kpi-ad.is-phong .ad-stat.chuan { background: #d0ece4; }
+            .kpi-ad.is-phong .ad-stat.chuan .ad-stat-label { color: #2a8080; }
+            .kpi-ad.is-phong .ad-stat.chuan .ad-stat-val { color: #008080; }
+            .kpi-ad.is-phong .ad-stat.ip { background: #f5e0c0; }
+            .kpi-ad.is-phong .ad-stat.ip .ad-stat-label { color: #8a6020; }
+            .kpi-ad.is-phong .ad-stat.ip .ad-stat-val { color: #7a4a10; }
+
+            /* ===== KH STAT TILE (shared by both AD & phong cards) ===== */
+            .ad-stat.kh { background: #e0e8f0; }
+            .ad-stat.kh .ad-stat-label { color: #4a6a8a; }
+            .ad-stat.kh .ad-stat-val { color: #2a4a6a; }
+            .ad-stat.kh .ad-stat-unit { color: #6a8ab0; }
+            .ad-stats:has(.ad-stat.kh) {
+                grid-template-columns: 1.2fr 0.7fr 0.6fr 0.6fr 0.7fr 0.8fr;
             }
-            /* Desktop banca card interaction */
-            .dsk-phong-card.banca { cursor: pointer; transition: box-shadow .22s, transform .22s, border-color .22s; }
-            .dsk-phong-card.banca:hover { transform: translateY(-1px); }
-            .dsk-phong-card.banca.open { border-color: #d4900a; box-shadow: 0 0 0 1px #d4900a5c, 0 18px 34px #00000042, inset 0 1px 0 #ffffff14; }
-            .dsk-phong-card.banca.open .phong-drill { display: block; }
 
             /* ===== AD TABLE inside department ===== */
             .ad-grid {
@@ -2860,9 +2771,6 @@
             .dsk-cty-tile { padding: 22px 16px; }
             .dsk-cty-tile-val { font-size: 2rem; }
             .kpi-stack { gap: 20px; }
-            .dsk-phong-card { padding: 14px 18px 12px; }
-            .dsk-phong-pct { font-size: 19px; }
-            .dsk-phong-stat-val { font-size: 15px; }
             .dsk-ad-table { font-size: 12px; }
 
             /* Popup table desktop 1400+ */
@@ -3704,10 +3612,10 @@
                     return;
                 }
                 // Phong banca card toggle (mobile or desktop)
-                var phongCard = e.target.closest('.kpi-phong.banca[data-ad-key], .dsk-phong-card.banca[data-ad-key]');
+                var phongCard = e.target.closest('.kpi-phong.banca[data-ad-key], .kpi-ad.is-phong.banca[data-ad-key]');
                 if (phongCard && $('main-content').contains(phongCard) && !e.target.closest('.ad-team-board')) {
                     var isOpen = phongCard.classList.contains('open');
-                    document.querySelectorAll('.kpi-phong.banca.open, .dsk-phong-card.banca.open').forEach(function(card) {
+                    document.querySelectorAll('.kpi-phong.banca.open, .kpi-ad.is-phong.banca.open').forEach(function(card) {
                         if (card !== phongCard) card.classList.remove('open');
                     });
                     if (isOpen) {
@@ -4358,29 +4266,27 @@
                 '</div>' +
                 '</div>';
 
-            /* === DESKTOP horizontal phong card (amber/orange tones, hidden on mobile) === */
-            html += '<div class="dsk-phong-card ' + (item.noAds ? 'banca ' : '') + 'anim-in' + glowCls(pct) + '"' + (bancaKey ? ' data-ad-key="' + esc(bancaKey) + '"' : '') + ' style="animation-delay:' + delay + 'ms">' +
-                '<div class="dsk-phong-top">' +
-                '<div class="dsk-phong-left">' +
-                '<div class="dsk-phong-name-row">' +
-                '<span class="dsk-phong-name"><i class="fa-solid fa-clipboard"></i>' + esc(item.ten) + '</span>' +
-                (hasPlan ? '<span class="dsk-phong-pct" data-pct="' + pct + '">0%</span>' : '') +
+            /* === DESKTOP phong card — same structure as AD card, just is-phong class for different color === */
+            html += '<div class="kpi-ad is-phong ' + (item.noAds ? 'banca ' : '') + 'anim-in' + glowCls(pct) + '"' + (bancaKey ? ' data-ad-key="' + esc(bancaKey) + '"' : '') + ' style="animation-delay:' + delay + 'ms">' +
+                '<div class="ad-inner">' +
+                '<div class="ad-top">' +
+                '<div class="ad-left">' +
+                '<div class="ad-name-row"><span class="ad-name"><i class="fa-solid fa-clipboard"></i>' + esc(item.ten) + '</span><span class="ad-pct">' + (hasPlan ? pct.toFixed(0) + '%' : '') + '</span></div>' +
+                (hasPlan ? '<span class="ad-kh">KH: ' + fmt(item.kh) + 'trđ</span>' : '') +
                 '</div>' +
-                (hasPlan ? '<span class="dsk-phong-kh">KH: ' + fmt(item.kh) + 'trđ</span>' : '') +
+                '<div class="ad-right"><div class="ad-stats">' +
+                '<div class="ad-stat afyp"><span class="ad-stat-label">AFYP</span><span class="ad-stat-val"><span class="ad-stat-val-main" data-count="' + afypTrd + '">0</span><span class="ad-stat-unit">trđ</span></span></div>' +
+                (hasPlan ? '<div class="ad-stat kh"><span class="ad-stat-label">KH</span><span class="ad-stat-val"><span class="ad-stat-val-main" data-count="' + khTrd + '">0</span><span class="ad-stat-unit">trđ</span></span></div>' : '') +
+                '<div class="ad-stat lhd"><span class="ad-stat-label">Lượt HĐ</span><span class="ad-stat-val" data-count="' + item.lhd + '">0</span></div>' +
+                (hasPlan ? '<div class="ad-stat td"><span class="ad-stat-label">TD</span><span class="ad-stat-val" data-count="' + item.td + '">0</span></div>' : '') +
+                '<div class="ad-stat chuan"><span class="ad-stat-label">Chuẩn</span><span class="ad-stat-val" data-count="' + item.hdChuan + '">0</span></div>' +
+                (!item.noAds ? '<div class="ad-stat ip"><span class="ad-stat-label">IP/AFYP</span><span class="ad-stat-val">' + esc(fmtTyTrong(item.tyTrong)) + '</span></div>' : '') +
                 '</div>' +
-                '<div class="dsk-phong-right">' +
-                '<div class="dsk-phong-stats">' +
-                '<div class="dsk-phong-stat afyp"><span class="dsk-phong-stat-label">AFYP</span><span class="dsk-phong-stat-val"><span class="dsk-phong-stat-val-main" data-count="' + afypTrd + '">0</span><span class="dsk-phong-stat-unit">trđ</span></span></div>' +
-                (hasPlan ? '<div class="dsk-phong-stat kh"><span class="dsk-phong-stat-label">KH</span><span class="dsk-phong-stat-val"><span class="dsk-phong-stat-val-main" data-count="' + khTrd + '">0</span><span class="dsk-phong-stat-unit">trđ</span></span></div>' : '') +
-                '<div class="dsk-phong-stat lhd"><span class="dsk-phong-stat-label">Lượt HĐ</span><span class="dsk-phong-stat-val" data-count="' + item.lhd + '">0</span></div>' +
-                (hasPlan ? '<div class="dsk-phong-stat td"><span class="dsk-phong-stat-label">TD</span><span class="dsk-phong-stat-val" data-count="' + item.td + '">0</span></div>' : '') +
-                '<div class="dsk-phong-stat chuan"><span class="dsk-phong-stat-label">Chuẩn</span><span class="dsk-phong-stat-val" data-count="' + item.hdChuan + '">0</span></div>' +
-                (!item.noAds ? '<div class="dsk-phong-stat ip"><span class="dsk-phong-stat-label">IP/AFYP</span><span class="dsk-phong-stat-val">' + esc(fmtTyTrong(item.tyTrong)) + '</span></div>' : '') +
-                '</div>' +
-                (hasPlan ? '<div class="dsk-phong-progress"><div class="dsk-phong-progress-fill" data-w="' + cp + '%" style="background:linear-gradient(90deg,' + progStart + ',' + progEnd + ')"></div></div>' : '') +
+                (hasPlan ? '<div class="ad-progress"><div class="ad-progress-fill" data-w="' + cp + '%" style="background:linear-gradient(90deg,' + progStart + ',' + progEnd + ')"></div></div>' : '') +
                 '</div>' +
                 '</div>' +
-                (item.noAds ? '<div class="phong-drill"></div>' : '') +
+                (item.noAds ? '<div class="ad-drill"></div>' : '') +
+                '</div>' +
                 '</div>';
 
             return html;
@@ -4390,6 +4296,7 @@
             var pct = item.kh ? (item.afyp / item.kh * 100) : 0, cp = Math.min(pct, 100);
             var progStart = progressColor(Math.max(pct - 24, 0));
             var progEnd = progressColor(pct);
+            var khTrd = Math.round(num(item.kh) / 1000000);
             return '<div class="kpi-ad anim-in' + glowCls(pct) + '" data-ad-key="' + esc(item.managerKey || '') + '" style="animation-delay:' + delay + 'ms">' +
                 '<div class="ad-inner">' +
                 '<div class="ad-top">' +
@@ -4399,6 +4306,7 @@
                 '</div>' +
                 '<div class="ad-right"><div class="ad-stats">' +
                 '<div class="ad-stat afyp"><span class="ad-stat-label">AFYP</span><span class="ad-stat-val"><span class="ad-stat-val-main" data-count="' + (num(item.afyp) / 1000000).toFixed(0) + '">0</span><span class="ad-stat-unit">trđ</span></span></div>' +
+                (khTrd ? '<div class="ad-stat kh"><span class="ad-stat-label">KH</span><span class="ad-stat-val"><span class="ad-stat-val-main" data-count="' + khTrd + '">0</span><span class="ad-stat-unit">trđ</span></span></div>' : '') +
                 '<div class="ad-stat lhd"><span class="ad-stat-label">Lượt HĐ</span><span class="ad-stat-val" data-count="' + item.lhd + '">0</span></div>' +
                 '<div class="ad-stat td"><span class="ad-stat-label">TD</span><span class="ad-stat-val" data-count="' + item.td + '">0</span></div>' +
                 '<div class="ad-stat chuan"><span class="ad-stat-label">L.Chuẩn</span><span class="ad-stat-val" data-count="' + item.hdChuan + '">0</span></div>' +
@@ -4413,7 +4321,7 @@
 
         function triggerAnimations() {
             requestAnimationFrame(function() {
-                var allFills = document.querySelectorAll('.mini-progress-fill[data-w],.cty-progress-fill[data-w],.phong-progress-fill[data-w],.ad-progress-fill[data-w],.dsk-cty-prog-fill[data-w],.dsk-ad-mini-prog-fill[data-w],.dsk-phong-progress-fill[data-w]');
+                var allFills = document.querySelectorAll('.mini-progress-fill[data-w],.cty-progress-fill[data-w],.phong-progress-fill[data-w],.ad-progress-fill[data-w],.dsk-cty-prog-fill[data-w],.dsk-ad-mini-prog-fill[data-w]');
                 for (var i = 0; i < allFills.length; i++) allFills[i].style.width = allFills[i].dataset.w;
                 var allCounts = document.querySelectorAll('[data-count]');
                 for (var i = 0; i < allCounts.length; i++) animateValue(allCounts[i], num(allCounts[i].dataset.count));
