@@ -1123,7 +1123,7 @@ function buildCtyStrip(item) {
 function buildAdTable(ads, delay) {
     var html = '<div class="dsk-ad-wrap"><table class="dsk-ad-table">';
     html += '<thead><tr>' +
-        '<th>AD</th><th>% KH</th><th>AFYP</th><th>HĐ</th><th>TD</th><th>Chuẩn</th><th>IP</th><th></th>' +
+        '<th>AD</th><th>% KH</th><th>AFYP</th><th>KH</th><th>HĐ</th><th>TD</th><th>Chuẩn</th><th>IP</th><th></th>' +
         '</tr></thead><tbody>';
     ads.forEach(function(ad, i) {
         var pct = ad.kh ? (ad.afyp / ad.kh * 100) : 0;
@@ -1131,10 +1131,12 @@ function buildAdTable(ads, delay) {
         var pctClass = pct >= 100 ? 'green' : pct >= 75 ? 'gold' : 'red';
         var progStart = progressColor(Math.max(pct - 24, 0));
         var progEnd = progressColor(pct);
+        var khTrd = Math.round(num(ad.kh) / 1000000);
         html += '<tr class="anim-in" data-ad-key="' + esc(ad.managerKey || '') + '" style="animation-delay:' + (delay + i * 30) + 'ms">' +
             '<td><span class="dsk-ad-name">' + esc(ad.ten) + '</span></td>' +
             '<td><span class="dsk-ad-pct ' + pctClass + '">' + pct.toFixed(0) + '%</span></td>' +
             '<td>' + fmt(ad.afyp) + '</td>' +
+            '<td class="dsk-ad-kh-cell">' + (khTrd ? khTrd + 'trđ' : '--') + '</td>' +
             '<td>' + ad.lhd + '</td>' +
             '<td>' + ad.td + '</td>' +
             '<td>' + ad.hdChuan + '</td>' +
@@ -1246,7 +1248,6 @@ function buildAdCard(item, delay) {
     var pct = item.kh ? (item.afyp / item.kh * 100) : 0, cp = Math.min(pct, 100);
     var progStart = progressColor(Math.max(pct - 24, 0));
     var progEnd = progressColor(pct);
-    var khTrd = Math.round(num(item.kh) / 1000000);
     return '<div class="kpi-ad anim-in' + glowCls(pct) + '" data-ad-key="' + esc(item.managerKey || '') + '" style="animation-delay:' + delay + 'ms">' +
         '<div class="ad-inner">' +
         '<div class="ad-top">' +
@@ -1256,7 +1257,6 @@ function buildAdCard(item, delay) {
         '</div>' +
         '<div class="ad-right"><div class="ad-stats">' +
         '<div class="ad-stat afyp"><span class="ad-stat-label">AFYP</span><span class="ad-stat-val"><span class="ad-stat-val-main" data-count="' + (num(item.afyp) / 1000000).toFixed(0) + '">0</span><span class="ad-stat-unit">trđ</span></span></div>' +
-        (khTrd ? '<div class="ad-stat kh"><span class="ad-stat-label">KH</span><span class="ad-stat-val"><span class="ad-stat-val-main" data-count="' + khTrd + '">0</span><span class="ad-stat-unit">trđ</span></span></div>' : '') +
         '<div class="ad-stat lhd"><span class="ad-stat-label">Lượt HĐ</span><span class="ad-stat-val" data-count="' + item.lhd + '">0</span></div>' +
         '<div class="ad-stat td"><span class="ad-stat-label">TD</span><span class="ad-stat-val" data-count="' + item.td + '">0</span></div>' +
         '<div class="ad-stat chuan"><span class="ad-stat-label">L.Chuẩn</span><span class="ad-stat-val" data-count="' + item.hdChuan + '">0</span></div>' +
