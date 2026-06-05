@@ -1256,7 +1256,7 @@ function buildAdCard(item, delay) {
         '<span class="ad-kh">KH: ' + fmt(item.kh) + 'trđ</span>' +
         '</div>' +
         '<div class="ad-right"><div class="ad-stats">' +
-        '<div class="ad-stat afyp"><span class="ad-stat-label">AFYP</span><span class="ad-stat-val"><span class="ad-stat-val-main" data-count="' + (num(item.afyp) / 1000000).toFixed(0) + '">0</span><span class="ad-stat-unit">trđ</span></span></div>' +
+        '<div class="ad-stat afyp"><span class="ad-stat-label">AFYP</span><span class="ad-stat-val">' + fmt(item.afyp) + '<span class="ad-stat-unit">đ</span></span></div>' +
         '<div class="ad-stat lhd"><span class="ad-stat-label">Lượt HĐ</span><span class="ad-stat-val" data-count="' + item.lhd + '">0</span></div>' +
         '<div class="ad-stat td"><span class="ad-stat-label">TD</span><span class="ad-stat-val" data-count="' + item.td + '">0</span></div>' +
         '<div class="ad-stat chuan"><span class="ad-stat-label">L.Chuẩn</span><span class="ad-stat-val" data-count="' + item.hdChuan + '">0</span></div>' +

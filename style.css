@@ -556,19 +556,19 @@ body.has-notice .app-wrap { padding-top: calc(24px + var(--notice-h) + 12px); }
 
 
 .kpi-ad {
-    background: linear-gradient(180deg, #1a3a3a, #152e2e);
-    border: 1px solid #3a8a7a55;
-    box-shadow: 0 6px 16px #00000030, inset 0 1px 0 #ffffff08;
+    background: linear-gradient(180deg, #1e4a42, #1a3e36);
+    border: 1px solid #4aaa9066;
+    box-shadow: 0 6px 16px #00000030, inset 0 1px 0 #ffffff0c;
     border-radius: 8px; padding: 7px 10px 6px;
     cursor: pointer;
     transition: box-shadow .22s, transform .22s, border-color .22s;
     contain: layout style paint;
 }
 .kpi-ad:hover { transform: translateY(-1px); box-shadow: 0 10px 22px #00000042; }
-.kpi-ad.open { border-color: #5abfaa; box-shadow: 0 0 0 1px #5abfaa5e, 0 12px 28px #00000044; }
+.kpi-ad.open { border-color: #6ad4b8; box-shadow: 0 0 0 1px #6ad4b85e, 0 12px 28px #00000044; }
 .kpi-ad.glow-full {
     border-color: #f2c46e;
-    background: linear-gradient(180deg, #2a4a3a, #1d3a30);
+    background: linear-gradient(180deg, #2e5a4a, #244a3e);
     box-shadow: 0 0 0 2px #f2c46e55, 0 0 18px #f2c46e40, 0 10px 22px #00000030;
 }
 .kpi-ad.glow-full .ad-pct,
@@ -590,16 +590,16 @@ body.has-notice .app-wrap { padding-top: calc(24px + var(--notice-h) + 12px); }
     gap: 5px;
 }
 .ad-right { min-width: 0; }
-.ad-name { font-size: 13px; font-weight: 900; color: #b8e8d8; white-space: normal; overflow: visible; text-overflow: clip; line-height: 1.2; word-break: break-word; }
+.ad-name { font-size: 13px; font-weight: 900; color: #c8f4e4; white-space: normal; overflow: visible; text-overflow: clip; line-height: 1.2; word-break: break-word; }
 .ad-pct {
     font-size: 14px;
     font-weight: 900;
     line-height: 1;
-    color: #80d4b8;
+    color: #90e8ca;
     white-space: nowrap;
     flex-shrink: 0;
 }
-.ad-kh { margin-top: 2px; display: block; font-size: 8px; color: #6aaa94; font-weight: 700; white-space: normal; line-height: 1.15; word-break: break-word; }
+.ad-kh { margin-top: 2px; display: block; font-size: 8px; color: #7ac0a8; font-weight: 700; white-space: normal; line-height: 1.15; word-break: break-word; }
 .ad-stats {
     display: grid;
     grid-template-columns: 1.2fr repeat(4, minmax(0, .9fr));
@@ -641,26 +641,26 @@ body.has-notice .app-wrap { padding-top: calc(24px + var(--notice-h) + 12px); }
     vertical-align: baseline;
     opacity: .85;
 }
-.ad-stat.afyp { background: #1a3a3a; }
-.ad-stat.afyp .ad-stat-label { color: #6aaa94; }
-.ad-stat.afyp .ad-stat-val { color: #a0e8c8; }
-.ad-stat.afyp .ad-stat-unit { color: #5a8a74; }
+.ad-stat.afyp { background: #1e4a42; }
+.ad-stat.afyp .ad-stat-label { color: #7ac0a8; }
+.ad-stat.afyp .ad-stat-val { color: #b4f4d8; }
+.ad-stat.afyp .ad-stat-unit { color: #6aaa90; }
 .ad-stat.kh { background: #2a3a5a; }
 .ad-stat.kh .ad-stat-label { color: #7a9cc0; }
 .ad-stat.kh .ad-stat-val { color: #a0c4e0; }
 .ad-stat.kh .ad-stat-unit { color: #6a8ab0; }
-.ad-stat.lhd { background: #1a3a4a; }
-.ad-stat.lhd .ad-stat-label { color: #5aa0c0; }
-.ad-stat.lhd .ad-stat-val { color: #80d0f0; }
-.ad-stat.td { background: #1a2a3a; }
-.ad-stat.td .ad-stat-label { color: #7aa0c0; }
-.ad-stat.td .ad-stat-val { color: #90c0e0; }
-.ad-stat.chuan { background: #0a2a2a; }
-.ad-stat.chuan .ad-stat-label { color: #4aaa90; }
-.ad-stat.chuan .ad-stat-val { color: #60d8b8; }
-.ad-stat.ip { background: #2a3a1a; }
-.ad-stat.ip .ad-stat-label { color: #8aaa60; }
-.ad-stat.ip .ad-stat-val { color: #c0d880; }
+.ad-stat.lhd { background: #1e3a4a; }
+.ad-stat.lhd .ad-stat-label { color: #6ab8d8; }
+.ad-stat.lhd .ad-stat-val { color: #90dcf4; }
+.ad-stat.td { background: #1e3240; }
+.ad-stat.td .ad-stat-label { color: #8ab8d8; }
+.ad-stat.td .ad-stat-val { color: #a0d4f0; }
+.ad-stat.chuan { background: #123a34; }
+.ad-stat.chuan .ad-stat-label { color: #5ac0a8; }
+.ad-stat.chuan .ad-stat-val { color: #74e8d0; }
+.ad-stat.ip { background: #2e4020; }
+.ad-stat.ip .ad-stat-label { color: #9abc70; }
+.ad-stat.ip .ad-stat-val { color: #cce890; }
 .ad-progress {
     margin-top: 4px;
     height: 4px;
@@ -918,9 +918,9 @@ body.has-notice .app-wrap { padding-top: calc(24px + var(--notice-h) + 12px); }
     .kpi-ad {
         border-radius: 6px;
         padding: 5px 7px 4px;
-        border: 1px solid #3a8a7a55;
-        border-top: 2px solid #5abfaa;
-        box-shadow: 0 0 0 1px #2a6a5a30, 0 8px 18px #0a15108a, inset 0 1px 0 #ffffff08;
+        border: 1px solid #4aaa9066;
+        border-top: 2px solid #6ad4b8;
+        box-shadow: 0 0 0 1px #3a8a7a30, 0 8px 18px #0a1a158a, inset 0 1px 0 #ffffff0a;
     }
     .ad-top {
         grid-template-columns: 80px minmax(0, 1fr);
