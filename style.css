@@ -2575,52 +2575,52 @@ body.has-notice .td-page .td-topnav { top: var(--notice-h); }
     /* Hide old mobile phong card on desktop */
     .kpi-phong { display: none !important; }
 
-    /* ===== PHONG CARD — same as AD card but amber/orange tones ===== */
+    /* ===== PHONG CARD — blue tones for department cards ===== */
     .kpi-ad.is-phong {
         display: block;
-        background: linear-gradient(180deg, #fef8ee, #f9edd8);
-        border: 1px solid #d4a04a88;
-        border-top: 3px solid #e8930c;
+        background: linear-gradient(180deg, #e8f0fa, #d4e2f4);
+        border: 1px solid #7aacdc88;
+        border-top: 3px solid #3a8ad4;
     }
     .kpi-ad.is-phong:hover {
-        box-shadow: 0 10px 22px #e8930c18;
+        box-shadow: 0 10px 22px #3a8ad418;
     }
     .kpi-ad.is-phong.glow-full {
-        border-color: #f2b24d;
-        background: linear-gradient(180deg, #fff6e0, #fde8b8);
-        box-shadow: 0 0 0 2px #f2b24d55, 0 0 16px #f2b24d30, 0 6px 18px #00000018;
+        border-color: #5aa0e0;
+        background: linear-gradient(180deg, #f0f6ff, #dce8f8);
+        box-shadow: 0 0 0 2px #5aa0e055, 0 0 16px #5aa0e030, 0 6px 18px #00000018;
     }
     .kpi-ad.is-phong .ad-name {
-        color: #8a5a10;
+        color: #1a4a7a;
     }
-    .kpi-ad.is-phong .ad-name i { color: #d4900a; margin-right: 4px; }
-    .kpi-ad.is-phong .ad-pct { color: #c67e08; }
-    .kpi-ad.is-phong .ad-kh { color: #9a7030; }
+    .kpi-ad.is-phong .ad-name i { color: #3a8ad4; margin-right: 4px; }
+    .kpi-ad.is-phong .ad-pct { color: #1a6ab4; }
+    .kpi-ad.is-phong .ad-kh { color: #4a7a9a; }
     .kpi-ad.is-phong .ad-progress {
-        background: linear-gradient(180deg, #f5ead4, #e8d4b0);
-        box-shadow: inset 0 1px 2px #c4a87040;
+        background: linear-gradient(180deg, #d4e2f4, #b8cce4);
+        box-shadow: inset 0 1px 2px #7098c040;
     }
-    /* Stat color overrides for phong */
-    .kpi-ad.is-phong .ad-stat.afyp { background: #fce4b8; }
-    .kpi-ad.is-phong .ad-stat.afyp .ad-stat-label { color: #9a6a14; }
-    .kpi-ad.is-phong .ad-stat.afyp .ad-stat-val { color: #7a4e08; }
-    .kpi-ad.is-phong .ad-stat.afyp .ad-stat-unit { color: #a07830; }
-    .kpi-ad.is-phong .ad-stat.kh { background: #f5dbb5; }
-    .kpi-ad.is-phong .ad-stat.kh .ad-stat-label { color: #8a6020; }
-    .kpi-ad.is-phong .ad-stat.kh .ad-stat-val { color: #6a4810; }
-    .kpi-ad.is-phong .ad-stat.kh .ad-stat-unit { color: #9a7030; }
-    .kpi-ad.is-phong .ad-stat.lhd { background: #fde8d0; }
-    .kpi-ad.is-phong .ad-stat.lhd .ad-stat-label { color: #a06020; }
-    .kpi-ad.is-phong .ad-stat.lhd .ad-stat-val { color: #8a4a10; }
-    .kpi-ad.is-phong .ad-stat.td { background: #e4d4f0; }
-    .kpi-ad.is-phong .ad-stat.td .ad-stat-label { color: #7a50a0; }
-    .kpi-ad.is-phong .ad-stat.td .ad-stat-val { color: #6a30b0; }
-    .kpi-ad.is-phong .ad-stat.chuan { background: #d0ece4; }
-    .kpi-ad.is-phong .ad-stat.chuan .ad-stat-label { color: #2a8080; }
-    .kpi-ad.is-phong .ad-stat.chuan .ad-stat-val { color: #008080; }
-    .kpi-ad.is-phong .ad-stat.ip { background: #f5e0c0; }
-    .kpi-ad.is-phong .ad-stat.ip .ad-stat-label { color: #8a6020; }
-    .kpi-ad.is-phong .ad-stat.ip .ad-stat-val { color: #7a4a10; }
+    /* Stat color overrides for phong — blue theme */
+    .kpi-ad.is-phong .ad-stat.afyp { background: #c8daf0; }
+    .kpi-ad.is-phong .ad-stat.afyp .ad-stat-label { color: #2a5a8a; }
+    .kpi-ad.is-phong .ad-stat.afyp .ad-stat-val { color: #1a3a6a; }
+    .kpi-ad.is-phong .ad-stat.afyp .ad-stat-unit { color: #4a7aa0; }
+    .kpi-ad.is-phong .ad-stat.kh { background: #d4e2f0; }
+    .kpi-ad.is-phong .ad-stat.kh .ad-stat-label { color: #2a5a8a; }
+    .kpi-ad.is-phong .ad-stat.kh .ad-stat-val { color: #1a4070; }
+    .kpi-ad.is-phong .ad-stat.kh .ad-stat-unit { color: #4a7aa0; }
+    .kpi-ad.is-phong .ad-stat.lhd { background: #b8d8f0; }
+    .kpi-ad.is-phong .ad-stat.lhd .ad-stat-label { color: #1a5a8a; }
+    .kpi-ad.is-phong .ad-stat.lhd .ad-stat-val { color: #0a3a6a; }
+    .kpi-ad.is-phong .ad-stat.td { background: #d8d4f0; }
+    .kpi-ad.is-phong .ad-stat.td .ad-stat-label { color: #5a40a0; }
+    .kpi-ad.is-phong .ad-stat.td .ad-stat-val { color: #3a2080; }
+    .kpi-ad.is-phong .ad-stat.chuan { background: #c0e4e0; }
+    .kpi-ad.is-phong .ad-stat.chuan .ad-stat-label { color: #1a7a7a; }
+    .kpi-ad.is-phong .ad-stat.chuan .ad-stat-val { color: #0a6060; }
+    .kpi-ad.is-phong .ad-stat.ip { background: #d8e8d4; }
+    .kpi-ad.is-phong .ad-stat.ip .ad-stat-label { color: #3a6a20; }
+    .kpi-ad.is-phong .ad-stat.ip .ad-stat-val { color: #2a4a10; }
 
     /* ===== KH STAT TILE (shared by both AD & phong cards) ===== */
     .ad-stat.kh { background: #e0e8f0; }
