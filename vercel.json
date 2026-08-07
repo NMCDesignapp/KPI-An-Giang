@@ -6,14 +6,17 @@
     { "src": "*.js", "use": "@vercel/static" },
     { "src": "*.css", "use": "@vercel/static" },
     { "src": "*.json", "use": "@vercel/static" },
-    { "src": "*.png", "use": "@vercel/static" }
+    { "src": "*.png", "use": "@vercel/static" },
+    { "src": "*.webp", "use": "@vercel/static" }
   ],
   "routes": [
     { "src": "/api/entries", "dest": "/api/entries.js" },
     { "src": "/api/entries/(.*)", "dest": "/api/entries.js" },
     { "src": "/sw.js", "dest": "/sw.js" },
-    { "src": "/style.css", "dest": "/style.css" },
+    { "src": "/style.css", "dest": "/api/theme-style.js" },
     { "src": "/app.js", "dest": "/app.js" },
+    { "src": "/kpi-bg.webp", "dest": "/kpi-bg.webp" },
+    { "src": "/nc-kpi-logo.webp", "dest": "/nc-kpi-logo.webp" },
     { "src": "/manifest.json", "dest": "/manifest.json" },
     { "src": "/icon-(.*)", "dest": "/icon-$1" },
     { "src": "/(.*)", "dest": "/index.html" }

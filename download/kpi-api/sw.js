@@ -1,5 +1,5 @@
 /* PWA Service Worker - KPI BVNT An Giang */
-const CACHE_NAME = 'kpi-bvnt-v26';
+const CACHE_NAME = 'kpi-bvnt-v33';
 const OFFLINE_URLS = ['/'];
 
 self.addEventListener('install', function(event) {
@@ -31,12 +31,10 @@ self.addEventListener('activate', function(event) {
 self.addEventListener('fetch', function(event) {
     if (event.request.method !== 'GET') return;
 
-    /* ★ QUAN TRỌNG: index.html LUÔN lấy từ mạng trước, không dùng cache */
     var url = new URL(event.request.url);
     var isHTML = url.pathname === '/' || url.pathname.endsWith('/index.html') || url.pathname.endsWith('.html');
 
     if (isHTML) {
-        /* Network-first cho HTML: ưu tiên mạng, chỉ dùng cache khi offline */
         event.respondWith(
             fetch(event.request, { cache: 'no-store' })
                 .then(function(response) {
@@ -56,7 +54,6 @@ self.addEventListener('fetch', function(event) {
         return;
     }
 
-    /* Các file khác (CSS, JS, images): network-first, fallback cache */
     event.respondWith(
         fetch(event.request)
             .then(function(response) {
